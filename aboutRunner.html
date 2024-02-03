@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=1.00, user-scalable=no">
+        <meta name="theme-color" content="#257BE6" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-intermosaic">
+        <link href="https://fonts.cdnfonts.com/css/sonic-logo" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="src/About-Page/about.css">
+        <link rel="shortcut icon" href="images/sonic.ico"/>
+        <script as="script" src="src/About-Page/about.js"></script>
+        <title>Sonic Runner</title>
+    </head>
+    <body>
+        <div class="load-wrapper active" id="load">
+            <div class="load">
+                <img id="loadIMG" src="images/sonic.ico"><img>
+            </div>
+        </div>
+        <header>
+            <a href="https://www.sonicthehedgehog.com/">
+                <img loading="lazy" src="images/Sonic_Runners_logo.png" alt="Sonic Runners" 
+                title="Logo" id="SonicRunners">
+            </a>
+            <div class="settings">
+                <button class="cog" onclick="openMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72.5 72.5" 
+                    enable-background="new 0 0 72.5 72.5" aria-hidden="true" class="triangle">
+                        <g id="triangle">
+                            <path d="M0,0l72.5,72.5H0V0z" ></path>
+                        </g>
+                    </svg>
+                    <p><i class="fa fa-cog"></i></p>
+                </button>
+            </div>
+            <div id="settings" class="sidenav">
+                <a class="closebtn" id="closebtn" onclick="closeBtn()"> <p><i class="fa fa-times "></i></p> </a>
+                <div class="title"><p> Site Settings </p></div>
+                <a class="option" id="Blue" onclick="blueTheme()"><p> Blue Mode - Active </p></a>
+                <a class="option" id="Dark" onclick="darkTheme()"><p> Dark Mode </p></a>
+                <div class="title"><p> Soundtrack Settings </p></div>
+                <a class="option" onclick="openSelect()"><p> Select Music </p></a>
+                <a class="option" onclick="muteMusic()" id="muteMusic"><p> Mute Music </p></a>
+                <a class="option" onclick="muteSound()" id="muteSound"><p> Mute SoundEffects </p></a>
+            </div>
+            
+            <div class="selectMusic" id="menuMusic">
+                <div class="majorTitle"><p> Select a Music </p></div>
+                <div class="title" style="background-color: transparent;"><p> Music for Menu</p></div>
+                <button onclick="selectMusic(0)"><p>Extras Menu - Sonic Mega Collection</p></button>
+                <button onclick="selectMusic(1)"><p>File Select - Sonic the Hedgehog 3 & Knuckles</p></button>
+                <button onclick="selectMusic(2)"><p>Sonic Mega Collection Main Menu Theme</p></button>
+                <button onclick="selectMusic(3)"><p>Chun-nan (Night) - Sonic Unleashed</p></button>
+                <button onclick="selectMusic(4)"><p>Options Screen - Sonic R</p></button>
+                <button onclick="selectMusic(5)"><p>A Ghost's Pumpkin Soup ... for Pumpkin Hill - Sonic Adventure 2</p></button>
+            </div>
+        </header>
+        <div class="subheader">
+        </div>
+
+        <div class="text-area">
+            <div class="text-content">
+                <h1> Sonic-R </h1>
+                <a href="index.html">
+                    <img src="images/print.jpg" style="width: auto; max-width:100%; height: auto;" 
+                    title="Sonic-R website game">
+                </a>
+                <p> Sonic-R/Sonic Runner (you can choose how to call it), is a fan-project developted by 
+                    <a href="https://github.com/PlopesK">PlopesK</a> using HTML, CSS and JS, based on the 
+                    <a href="https://chromedino.com/">Dino Game</a> from Chrome. <br><br>
+                    This project was created with love for the Sonic franchise, with no intended monetary values.<br><br>
+                    I hope I can still update the project with time, adding new playble characters, new stages, even new mechanics!<br><br>
+                </p>
+                <h2> Development </h2>
+                <p> The idea of the project is very simple, but it demanted a lot of work since I wasn't used to the JS 
+                    logic (I already had a lot of knowledges about HTML and CSS), so it was really useful to motivate me 
+                    to study more! <br><br>
+
+                    To develop the project, first I searched a lot to see how different ways people recreated the Dino game from Chrome,
+                    so, instead of copying one and just changing specific lines, I decided to try and create my own logic for this game.
+                    (so probrably the code isn't writed in the best way possible, since I'm technically only a beginner using JS).<br><br>
+
+                    <img src="sprites/badnik2.gif" style="width:26vh; height:15vh;" id="flyenemy" title="Buzz Bomber (Sonic the Hedgehog 1)">
+                    <div class="extramessage"> Creating the mechanic for the obstacles was the most difficult </div><br><br>
+                
+                    Even if it isn't the most well-coded project, neighter the most impressive or something a-like, I'm still proud with the result!
+                    And I'm certain that I learned a lot producing it :) <br><br>
+                    
+                    The project is mainly a love letter from a fan to others fans of the Sonic franchise! 
+                    It demanded a lot of hard work to be created (but still, it was really fun to develope),
+                    so I hope others can find something useful in it or have fun playing :D<br><br>
+                </p>
+
+                <p> <center><div class="transition"> 💓Lifes💓 </div></center>
+                    The first idea of the game was to have 1 life (just like the Dino Game).<br>
+                    But then I had the idea to change that to 3, since it would make the game more enjoyable (in my opinion ඞ).<br><br>
+                    In the beginning, the life system would be indicated by 'Rings' instead of 'Lifes', and an animation would be activated when you had only 1 life<br>
+                    
+                    <img src="sprites/rings-low.gif" title="Your rings are low!" alt="Rings Low" style="width: 15vh; border-radius: 0;">
+                    <img src="sprites/life-icon.gif" title="Lifes Icon" alt="Lifes Icon" style="margin-left: 10vh; width: 15vh;">
+                    <div class="extramessage"> <- Before and After -> changing idea </div> <br><br>
+
+                    I changed it because it didn't made sense... Like, in the Sonic Franchise you don't lose 1 Ring per hit,
+                    you lose <b>ALL</b> of them with 1 hit. So changing it for Lifes would be more accurate!<br><br>
+                    Maybe at some point i'll add a rings system. Who knows?<br><br>
+                </p>
+
+                <p> <br><center><div class="transition"> 🐞Obstacles🐞 </div></center>
+                    The obstacles system is based more in an 'random value' than just getting faster with time!<br><br>
+                    I made it like that because (in my opinion ඞ) it would be more fun to have to be prepared all the 
+                    time for a attack than just having to wait till the obstacles are fast enough to be challenging.<br>
+
+                    <img src="sprites/gameover-sonic.gif" title="You lose :(" alt="Game Over!" style="width: 25vh;"> <br>
+
+                    Hope everyone can enojoy it more like that too!<br><br>
+                </p>
+
+                <p> <br><center><div class="transition"> 🆙Double Jump🆙 </div></center>
+                    The Double Jump mechanic wasn't intended at first! <br><br>
+                    It would only be later added because of, at some points, how enemies would completelly cover your passage,
+                    forcing the player to take a hit... <br><br>
+                    
+                    The second reason was because (in my opinion ඞ) a Double Jump mechanic would turn the game more enjoyable,
+                    just because the player would have different mobilitys options!<br><br>
+
+                    <img src="sprites/sonic-previous-idle.gif" class="sonic" title="Sonic Previous-Idle"><br>
+                    <div class="extramessage"> This was the first idle animation added to Sonic!<br>
+                    Changed it because the new one fits better. </div> <br>
+
+                <h2> Sprites </h2>
+                <p> There's only an section focused on sprites because I wanted to tell how annoying was to cut and implement those graffics :,) <br><br>
+                    <img src="images/sprite-print.jpg" style="width:95%;" title="Piskel print, animating one of the stage background objects"><br>
+                    <div class="extramessage"> Drawing new sprites is <u>A LOT</u> less annoying than having to cut them, even when considering the animating process  </div><br><br>
+
+                    I had to install and cut every single sprite manually to recreate the stages and actions made by the characters. <br>
+                    For that, I used the <a href="https://www.piskelapp.com/">Piskel website</a> to create every gif and even modify some sprites to fit the project. <br><br>
+
+                    Most of the sprites where cutted from <a href="https://www.sega.com/games/sonic-hedgehog">
+                    Sonic the Hedgehog 1</a>, but the Sonic model is a mix between many sprites of Sonic from the
+                    <a href="https://sonic.fandom.com/wiki/Sonic_Advance">Sonic Advance Series</a> and <a href="https://sonic.fandom.com/wiki/Sonic_Battle">
+                        Sonic Battle</a> <br><br>
+
+                        <img src="sprites/sonic-idle.gif" class="sonic" title="Sonic Idle">  
+                        <img src="sprites/sonic-damage.gif" class="sonic" title="Sonic Taking Damage"> 
+                        <img src="sprites/sonic-jump.gif" class="sonic" id="jumped" title="Sonic Jumping">
+                        <img src="sprites/sonic-doublejump.gif" class="sonic" id="djumped" title="Sonic Double Jump">
+                        <img src="sprites/sonic-start.gif" class="sonic" title="Sonic Starting To Run">   
+                        <img src="sprites/sonic-run.gif" class="sonic" title="Sonic Running"> <br><br>
+
+                    Most of the spritesheets were downloaded from the 
+                    <a href="https://www.spriters-resource.com/genesis_32x_scd/sonicth1/sheet/27190/">Spriters Resource 
+                    website</a>, so a lot of thanks to everyone who uploaded those sprites, since that helped a lot :D <br><br>
+                </p>
+                <p> <br><center><div class="transition"> ⚫Shadow⚫ </div></center>
+                    All Shadow animation had a lot of frames, but the worst to create was the run animation...<br>
+                    Like, it has <b>28 Frames</b>, it's <i>A LOT</i>.<br>
+
+                    <img style="width: 30vh;" src="images/shadow-run.png" title="Chaos Control!" alt="Shadow Run Animation">
+                    <div class="extramessage"> Sprite Sheet </div> <br>
+
+                    <img src="sprites/Shadow/shadow-run.gif" title="Chaos Spear!" alt="Shadow Run Animation" class="sonic">
+                    <div class="extramessage"> Result </div> <br>
+                    
+                    It was really painful to create this character since all sprites were taken from <a href="https://www.spriters-resource.com/game_boy_advance/sonicbattle/sheet/10045/">
+                    Sonic Battle</a>...<br>
+                    But since he's one of my favorites, it was worthy to do :) <br><br>
+                </p>
+
+                <p> <br><center><div class="transition"> 🌷Amy🌷 </div></center>
+                    Amy double jump animation was taken from <a href="https://www.spriters-resource.com/game_boy_advance/sonicbattle/sheet/10042/">
+                    Sonic Battle</a>! Since she has the hability to double jump in game. <br>
+
+                    <img src="sprites/Amy/amy-doublejump.gif" title="My Sweet Passion!" alt="Amy Double Jump Animation" class="sonic">
+                    <div class="extramessage"> She's so happy </div> <br>
+                </p>
+
+                <p> <br><center><div class="transition"> 🔧Metal Sonic🔧 </div></center>
+                    Most Meatl Sonic sprites were taken from a Hackroom of Sonic 2! In this hackroom, you can play as 
+                    Metal Sonic in the game (since it wasn't possible in the original game)! <br>
+
+                    <img src="sprites/MetalSonic/metalsonic-idle.gif" title="Destroy Sonic!" alt="Metal Sonic Idle Animation" class="sonic">
+                    <div class="extramessage"> This idle animation is from the start of his battle in Sonic CD </div> <br>
+
+                    But still, there's sprites taken from Sonic CD! Sprites that I had to modify the color scheme to fit 
+                    the same vibrant colors from the hackroom...<br>
+
+                    <a href="https://www.spriters-resource.com/genesis_32x_scd/metalsonicinsonic2hack/sheet/99844/"> The Hackroom Sprites </a><br>
+                    <a href="https://www.spriters-resource.com/genesis_32x_scd/sonicthehedgehogcdsegacd/sheet/54700/"> Sonic CD Sprites </a><br><br>
+                </p>
+
+                <h2> Curiosities </h2>
+                <p> Both Sonic-R and Sonic Runners are already existing Sonic games! <br><br>
+                    <a href="https://sonic.fandom.com/pt-br/wiki/Sonic_R">Sonic-R</a> was a racing game developed for Sega Saturn and ported to many collections of games from the franchise, for example the Sonic Gems Collection for Playstation 2.
+                    As a kid I played it a lot and loved everything about it, even if the critics didn't liked it very much :,( <br><br>
+
+                    <a href="https://www.sonicthehedgeblog.com/post/174226967405/a-look-at-the-3d-model-of-sonic-from-a-sonic-r"> 
+                        <img src="https://64.media.tumblr.com/c26e1ac22e526a34561bb1ad6992666c/tumblr_p97kyawTlx1w1kerio1_400.gif" 
+                        title="A look at the 3D model of Sonic, from a ‘Sonic R’ trailer from Sega Flash Vol 7 demo disc.">
+                    </a>
+                    <div class="extramessage"> I really love this Sonic model, he's just so adorable lol</div> <br><br>
+
+                    <a href="https://sonic.fandom.com/wiki/Sonic_Runners">Sonic Runners</a> was an free mobile game that ended 
+                    service for the creation of <a href="https://sonic.fandom.com/wiki/Sonic_Runners_Adventure">
+                    Sonic Runners Adventure</a>, a paid mobile game with didn't made that much success. <br><br>
+
+                    It's really sad that it ended 1 year after lauching :,/. It was a really fun experience, 
+                    would be glad if it returned someday. But, even if it didn't returned officially, Sonic Runners received 
+                    a fan-project called <a href="https://sonicrunners.com/#/">Sonic Runners Revival</a>, wich is an 
+                    amazing work made by fans to recreate Sonic-Runners!<br><br>
+                </p>
+
+                <p> <br><center><div class="transition"> 🦔SONIC TEAM🦔 </div></center>
+                    The 'Shadow Team' logo used on the Dark Theme is fan-made!<br>
+                    
+                    <a href="https://www.deviantart.com/kaiser-art/art/Team-Shadow-Logo-276534234">
+                        <img style="width: 40vh;" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3b7997c1-7e9b-4257-8243-4d9acf4cbd0a/d4kn36i-2fe1b899-9e11-4cef-be8c-0a884b9d4621.png/v1/fill/w_1280,h_416,strp/__team_shadow_logo___by_kaiser_art_d4kn36i-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDE2IiwicGF0aCI6IlwvZlwvM2I3OTk3YzEtN2U5Yi00MjU3LTgyNDMtNGQ5YWNmNGNiZDBhXC9kNGtuMzZpLTJmZTFiODk5LTllMTEtNGNlZi1iZThjLTBhODg0YjlkNDYyMS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.NZDxbeGOENEkB2XpR1Gd_083vm9U3UAYxWemPgnjpgo"
+                        title="Shadow Team" alt="Shadow Team" class="team">
+                    </a>
+                    <div class="extramessage"> The author of this logo is called Kaiser-Art! </div> <br><br>
+
+                    And the 'Sonic Team' soundeffect was originally utilized on the Sonic Team Logo from 1997!<br>
+
+                    <img style="width: 40vh;" src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/97/Sonic_Team_Logo.svg/1280px-Sonic_Team_Logo.svg.png"
+                    title="Sonic Team" alt="Sonic Team" class="team">
+                    <div class="extramessage"> Official Sonic Team logo! </div> <br><br>
+                </p>
+                <p> <br><center><div class="transition"> 🌀Select Menus🌀 </div></center>
+                    The 'Character Select' menu background is based of the same menu on <a href="https://www.spriters-resource.com/game_boy_advance/sonicbattle/sheet/10818/">
+                    Sonic Battle</a>!<br>
+                    <img style="width: 40vh;" src="images/charselect.png" title="Choose your character!" alt="Character Select">
+                    <img style="width: 40vh;" src="images/charselect-dark.png" title="Choose your character!" alt="Character Select" >
+                    <div class="extramessage">  <- 'Blue' Mode || 'Dark' Mode -></div> <br>
+                    The Dark Mode version is an edit made by me! (I think it looked very dope lolඞ).<br><br>
+
+                    The 'Select a Character' was an edit made by me based on the 'Please Select a Player Character' 
+                    from Sonic Advance 3!<br>
+                    <center><img style="width: 40vh;" src="https://thekingofgrabs.files.wordpress.com/2020/05/sonic-advance-3-gba-004.png" title="Sonic Advance 3 Screen" alt="Character Select" ></center>
+
+                    Plus, I recorded <a href="https://www.spriters-resource.com/game_boy_advance/sonicadv/sheet/6600/">
+                    Sonic and Tails life icons</a> to add to the image! Just to look cooler.<br>
+                    <img style="width: 40vh;" src="images/select-a-character.png" title="Choose your character!" alt="Character Select" ><br>
+                    
+                    Furthermore, the 'Stage Select' image was taken from <a href="https://info.sonicretro.org/Sonic_the_Hedgehog_CD">Sonic CD</a> port for PC!<br>
+                    <center><img style="width: 40vh;" src="https://steamuserimages-a.akamaihd.net/ugc/689397056100414315/E618F6F4F455C500EA261CCFDBBCA66701042BF3/"
+                    title="Sonic CD Screen" alt="Stage Select" ></center>
+                </p>
+                <p> <br><center><div class="transition"> 🥚Coming Soon!🥚 </div></center>
+                    The 'Coming Soon' sprite is taken from <a href="https://info.sonicretro.org/Sonic_Advance">Sonic Advance 1!</a><br>
+
+                    <center><img style="width: 20vh;" src="images/coming.png" title="Goal!" alt="Coming Soon!" ></center>
+
+                    It's the <a href="https://www.spriters-resource.com/game_boy_advance/sonicadv/sheet/43732/">Eggman Goal Post</a> at 
+                    the end of level!
+                </p>
+            </div>
+        </div>
+
+        <div class="options">
+            <div class="return">
+                <a href="#"> <i class="fa fa-arrow-up" style="margin-top: 1.5vh;"></i> </a>
+            </div>
+            
+            <div class="go">
+                <a href="#footer"> <i class="fa fa-arrow-down" style="margin-top: 1.5vh;"></i> </a>
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html" style="text-decoration: underline;" id="footer"><p>Return to the Game</p></a>
+            <div class="social-media">
+                <a href="https://github.com/PlopesK"><i class="fab fa-github"></i></a>
+            </div>
+            <p>Creator: PlopesK</p>
+            <p>This website is a fan-production, not officially licensed by SEGA</p>
+            <p>© SEGA. SEGA, the SEGA logo and SONIC THE HEDGEHOG are either registered trademarks or trademarks 
+                of SEGA Holdings Co., Ltd. or its affiliates. All rights reserved. SEGA is registered in the U.S. 
+                Patent and Trademark Office. All other trademarks, logos and copyrights are property of their 
+                respective owners.</p>
+            <div class="sega">
+                <span class="logos">
+                    <figure class="img-section">
+                        <a href="https://www.sega.com/">
+                            <img src="https://www.sonicthehedgehog.com/wp-content/uploads/2021/08/Sega_Logo-WHT-R.png.webp" 
+                            alt="SEGA" title="SEGA" id="SEGA">
+                        </a>
+                    </figure>
+                    <figure class="img-section">
+                        <a href="https://www.sega.com/free-tags/sonic-team">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/97/Sonic_Team_Logo.svg/1280px-Sonic_Team_Logo.svg.png" 
+                            alt="Sonic Team" title="Sonic Team" id="SonicTeam" class="team">
+                        </a>
+                    </figure>
+                </span>
+            </div>
+        </footer>
+    </body>
+</html>

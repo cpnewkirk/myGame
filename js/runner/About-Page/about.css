@@ -1,0 +1,138 @@
+@import url('https://fonts.cdnfonts.com/css/sonic-logo');
+
+:root {
+    --BgContent: #2888FC;
+    --TitleBg: -webkit-gradient(linear, left top, right top, from(#fffe3f), to(#fec212));
+    --TitleText: #13b8ff;
+    --Link: #0043ef;
+    --LinkHover: #000097;
+}
+
+body {
+    word-wrap: break-word;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-area {
+    padding: 6.2vh;
+    width: 100%;
+    font-family: 'SF Intermosaic', sans-serif;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 2.6vh;
+    color: azure;
+}
+
+.text-content {
+    padding: 6.2vh;
+    width: 100%;
+    background-color: var(--BgContent);
+    border-radius: 1.5vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+}
+
+.text-content a {
+    text-decoration: underline;
+    color: var(--Link);
+}
+
+.text-content a:hover {
+    color: var(--LinkHover);
+}
+
+.text-content img {
+    margin-top: 3vh;
+    margin-bottom: 4vh;
+    border-radius: 1.5vh;
+    cursor: pointer;
+}
+
+h1, h2 {
+    font-family: 'Sonic Logo', sans-serif;
+    margin-bottom: 2vh;
+    margin-top: 3vh;
+    background: var(--TitleBg);
+    color: var(--TitleText);
+    border-radius: 1vh;
+}
+
+h1 {
+    font-size: 5vh;
+}
+
+h2 {
+    font-size: 4vh;
+}
+
+.transition {
+    font-family: 'Sonic Logo', sans-serif;
+    font-size: 3vh;
+    width: 70%;
+    height: 4vh;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    background: var(--TitleBg);
+    color: var(--TitleText);
+    border-radius: 1vh;
+}
+
+.extramessage {
+    font-size: 2vh;
+    opacity: 0.5;
+}
+
+.sonic {
+    width: 15vh; 
+    height: 15vh;
+}
+
+.options {
+    position: fixed;
+    width: 100%;
+    text-decoration: none;
+    font-size: 3.5vh;
+    z-index: 20;
+}
+
+.options a {
+    color: var(--TitleText);
+}
+
+.return {
+    position: fixed;
+    left: 4vh;
+    width: 6vh;
+    height: 6vh;
+    text-align: center;
+    border-radius: 4vh;
+    background: var(--TitleBg);
+    bottom: 4vh;
+}
+
+.go {
+    position: fixed;
+    right: 4vh;
+    width: 6vh;
+    height: 6vh;
+    text-align: center;
+    border-radius: 4vh;
+    background: var(--TitleBg);
+    bottom: 4vh;
+}
+
+/* 📱📱📱📱Mobile📱📱📱📱 */
+@media(max-width: 800px){
+    .text-area {
+        padding: 2vh;
+    }
+
+    .text-content {
+        padding: 2vh;
+    }
+}

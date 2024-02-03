@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.00, maximum-scale=1.50">
+        <meta name="theme-color" content="#257BE6" >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-intermosaic">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" href="images/sonic.ico"/>
+        <script as="script" src="src/loading.js"></script>
+        <script as="script" src="src/prep.js"></script>
+        <script rel="preload" as="script" src="src/game.js"></script> 
+        <script as="script" src="src/score.js"></script> 
+        <script rel="preload" as="script" src="src/soundtrack.js"></script> 
+        <script rel="preload" as="script" src="src/obstacle.js"></script>
+        <script as="script" src="src/characters.js"></script>
+        <script as="script" src="src/menus.js"></script>
+        <title>Sonic Runner</title>
+    </head>
+    <body>
+        <div class="load-wrapper active" id="load">
+            <div class="load">
+                <img id="loadIMG" src="images/sonic.ico"><img>
+            </div>
+        </div>
+        <header>
+            <a href="https://www.sonicthehedgehog.com/">
+                <img loading="lazy" src="images/Sonic_Runners_logo.png" alt="Sonic Runners" 
+                title="Logo" id="SonicRunners">
+            </a>
+            <div class="settings">
+                <button class="cog" onclick="openMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72.5 72.5" 
+                    enable-background="new 0 0 72.5 72.5" aria-hidden="true" class="triangle">
+                        <g id="triangle">
+                            <path d="M0,0l72.5,72.5H0V0z" ></path>
+                        </g>
+                    </svg>
+                    <p><i class="fa fa-cog"></i></p>
+                </button>
+            </div>
+            <div id="settings" class="sidenav">
+                <a class="closebtn" id="closebtn" onclick="closeBtn()"> <p><i class="fa fa-times "></i></p> </a>
+                <div class="title"><p> Site Settings </p></div>
+                <a class="option" id="Blue" onclick="blueTheme()"><p> Blue Mode - Active </p></a>
+                <a class="option" id="Dark" onclick="darkTheme()"><p> Dark Mode </p></a>
+                <div class="title"><p> Soundtrack Settings </p></div>
+                <a class="option" onclick="openSelect()"><p> Select Music </p></a>
+                <a class="option" onclick="muteMusic()" id="muteMusic"><p> Mute Music </p></a>
+                <a class="option" onclick="muteSound()" id="muteSound"><p> Mute SoundEffects </p></a>
+                <div class="title"><p> Game Settings </p></div>
+                <a class="option" onclick="disable(), check()" id="enable-txt"><p> Disable Background Objects </p></a>
+                <a class="option" onclick="lower(), check()" id="speed-txt"><p> Slow Background Speed </p></a>
+            </div>
+            
+            <div class="selectMusic" id="menuMusic">
+                <div class="majorTitle"><p> Select a Music </p></div>
+                <div class="title" style="background-color: transparent;"><p> Music for Menu</p></div>
+                <button onclick="selectMusic(0)"><p>Extras Menu - Sonic Mega Collection</p></button>
+                <button onclick="selectMusic(1)"><p>File Select - Sonic the Hedgehog 3 & Knuckles</p></button>
+                <button onclick="selectMusic(2)"><p>Sonic Mega Collection Main Menu Theme</p></button>
+                <button onclick="selectMusic(3)"><p>Chun-nan (Night) - Sonic Unleashed</p></button>
+                <button onclick="selectMusic(4)"><p>Options Screen - Sonic R</p></button>
+                <button onclick="selectMusic(5)"><p>A Ghost's Pumpkin Soup ... for Pumpkin Hill - Sonic Adventure 2</p></button>
+
+                <div class="selectGameMusic" id="gameMusic">
+                    <div class="title"><p> Music for the Game</p></div>
+                    <button onclick="selectGameMusic(0)"><p>Green Hill (Modern) - Sonic Generations</p></button>
+                    <button onclick="selectGameMusic(1)"><p>Live and Learn by Crush 40 (Main Theme of SA2)</p></button>
+                    <button onclick="selectGameMusic(2)"><p>Escape From the City (City Escape) - Sonic Adventure 2</p></button>
+                    <button onclick="selectGameMusic(3)"><p>BOSS BATTLE BIG ARM - Sonic the Hedgehog 3</p></button>
+                    <button onclick="selectGameMusic(4)"><p>Crisis City - Sonic the Hedgehog (2006)</p></button>
+                    <button onclick="selectGameMusic(5)"><p>Kick The Rock! - Sonic Adventure 2</p></button>
+                    <button onclick="selectGameMusic(6)"><p>Undefeatable - Sonic Frontiers</p></button>
+                    <button onclick="selectGameMusic(7)"><p>Dragon Road (Day) - Sonic Unleashed</p></button>
+                    <button onclick="selectGameMusic(8)"><p>Doomsday Zone - Sonic the Hedgehog 3 & Knuckles</p></button>
+                    <button onclick="selectGameMusic(9)"><p>Vela-Nova - Sonic Rush</p></button>
+                    <button onclick="selectGameMusic(10)"><p>Rooftop Run (Modern) - Sonic Generations</p></button>
+                </div>
+
+                <div class="selectGameOverMusic" id="gameoverMusic">
+                    <div class="title"><p> Music for Game Over</p></div>
+                    <button onclick="selectGameOverMusic(0)"><p>Sonic Advance 1, 2 and 3 - Game Over</p></button>
+                    <button onclick="selectGameOverMusic(1)"><p>Sonic CD - Game Over Music ~ Japan</p></button>
+                    <button onclick="selectGameOverMusic(2)"><p>Sonic CD - Game Over Music ~ USA</p></button>
+                    <button onclick="selectGameOverMusic(3)"><p>Sonic the Hedgehog 1 - Game Over</p></button>
+                    <button onclick="selectGameOverMusic(4)"><p>Sonic 3 And Knuckles - Game Over</p></button>
+                    <button onclick="selectGameOverMusic(5)"><p>Sonic Rush - Game Over</p></button>
+                </div>
+            </div>
+        </header>
+        <div class="subheader">
+        </div>
+        <div class="area">
+            <p id="play-txt" class="hid">Press any key or click the button to start!</p>
+            <div class="start">
+                <a id="play" class="button hid" onclick="wait()">
+                    <i class="fa fa-play"></i>
+                </a>
+                <div class="game" id="background">
+                    <div class="left-wall" id="left"></div>
+                    <div class="right-wall" id="right"></div>
+                    <div class="layout">
+                        <div class="column">
+                            <div class="score"> <img loading="lazy" src="sprites/score.png"> </div>
+                            <span class="score" id="points">00</span>
+                        </div>
+                    </div>
+                    <div id="sonic"></div>
+                    <div class= "objects-bg">
+                        <div class="object" id="bg-object1"></div>
+                        <div class="object" id="bg-object2"></div>
+                        <div class="object" id="object1"></div>
+                        <div class="object" id="object2"></div>
+                        <div class="object" id="object3"></div>
+                        <div class="object" id="object4"></div>
+                        <div class="object" id="object5"></div>
+                    </div>
+                    <div class="flying-enemy">
+                        <div class="obstacle" id="badnik2"></div>
+                    </div>
+                    <div class="ground-enemy">
+                        <div class="obstacle" id="badnik1"></div>
+                    </div>
+                    <div class="alive">
+                        <div class="row">
+                            <div class="rings"> <img loading="lazy" id="life-icon" src="sprites/life-icon.gif"> </div>
+                            <div class="rings" id="lifes"> </div>
+                        </div>
+                    </div>
+                    <div class="ground" id="ground"></div>
+                    <div class="extra hid" id="tip">Tip: You can <b> DOUBLE JUMP </b> if you press jump 2 times!</div>
+                </div>
+            </div>
+            <div class="gameover hidden" id="gameover">
+                <div class="restart">
+                    <img src="sprites/gameover.png" title="Game Over!" alt="Game Over" style="width: 45vh; 
+                    height: 6vh; margin-bottom: 2vh;">
+                    <a id="earned-points"> Score: </a><br>
+                    <a id="highscore"> HighScore: </a><br>
+                    <a id="newhighscore" class="hidden"> NEW HIGHSCORE! </a><br>
+                    <button class="button" id="restart" onclick="location.reload()">
+                        <i class="fa fa-undo"></i>
+                    </button>
+                    <img src="sprites/gameover-sonic.gif" title="Continue?" alt="Continue?" style="width: 24vh; 
+                    height: 16vh;">
+                </div>
+            </div>
+            <div class="select-area" id="charArea">
+                <button class="select" onclick="openCharSelect()"></button>
+                <div class="charOpt" id="charOpt">
+                    <!-- Row 1 -->
+                    <div class="charRow hidden option">
+                        <button class="char" onclick="ClassicSonic()" style="background-image: url(sprites/ClassicSonic/sonic3-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="Sonic()" style="background-image: url(sprites/sonic-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="Amy()" style="background-image: url(sprites/Amy/amy-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="Shadow()"style="background-image: url(sprites/Shadow/shadow-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="MetalSonic()"style="background-image: url(sprites/MetalSonic/metalsonic-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                    </div>
+                    <div class="mobile hidden option">
+                        <button class="char" onclick="ClassicSonic()" style="background-image: url(sprites/ClassicSonic/sonic3-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="Sonic()" style="background-image: url(sprites/sonic-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="MetalSonic()" style="background-image: url(sprites/MetalSonic/metalsonic-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="charRow hidden option">
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 20vh 12vh; background-position: center;"></button>
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 20vh 12vh; background-position: center;"></button>
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 20vh 12vh; background-position: center;"></button>
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 20vh 12vh; background-position: center;"></button>
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 20vh 12vh; background-position: center;"></button>
+                    </div>
+                    <div class="mobile hidden option">
+                        <button class="char" onclick="Shadow()" style="background-image: url(sprites/Shadow/shadow-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="Amy()" style="background-image: url(sprites/Amy/amy-run.gif); background-repeat: no-repeat; background-size: 10vh 10vh; background-position: center;"></button>
+                        <button class="char" onclick="ComingSoon()" style="background-image: url(images/coming.png); background-repeat: no-repeat; background-size: 22vh 12vh; background-position: center;"></button>
+                    </div>
+
+                    <!-- Info -->
+                    <p class="hidden option" id="charName"> Character Select </p>
+                    <p class="hidden option" id="extraInfo"> Choose your Character! </p>
+                    <button class="charClose hidden option" id="charClose" onclick="closeCharSelect()"> Close <i class="fa fa-times"></i></button>
+                </div>
+                <button class="select" onclick="Stage()"style="background-image: url(images/stage-select.jpg);"></button>
+            </div>
+        </div>
+
+        <footer>
+            <a href="about.html" style="text-decoration: underline;"><p>About Project</p></a>
+            <div class="social-media">
+                <a href="https://github.com/PlopesK/Sonic-R"><i class="fab fa-github"></i></a>
+            </div>
+            <p>Creator: PlopesK</p>
+            <p>This website is a fan-production, not officially licensed by SEGA</p>
+            <p>© SEGA. SEGA, the SEGA logo and SONIC THE HEDGEHOG are either registered trademarks or trademarks 
+                of SEGA Holdings Co., Ltd. or its affiliates. All rights reserved. SEGA is registered in the U.S. 
+                Patent and Trademark Office. All other trademarks, logos and copyrights are property of their 
+                respective owners.</p>
+            <div class="sega">
+                <span class="logos">
+                    <figure class="img-section">
+                        <a href="https://www.sega.com/">
+                            <img src="https://www.sonicthehedgehog.com/wp-content/uploads/2021/08/Sega_Logo-WHT-R.png.webp" 
+                            alt="SEGA" title="SEGA" id="SEGA">
+                        </a>
+                    </figure>
+                    <figure class="img-section">
+                        <a href="https://www.sega.com/free-tags/sonic-team">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/9/97/Sonic_Team_Logo.svg/1280px-Sonic_Team_Logo.svg.png" 
+                            alt="Sonic Team" title="Sonic Team" id="SonicTeam">
+                        </a>
+                    </figure>
+                </span>
+            </div>
+        </footer>
+    </body>
+</html>

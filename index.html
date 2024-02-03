@@ -1,17 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <title>Chao in Space II</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <title>Document</title>
-</head>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
+    <!-- Overworld styles -->
+    <link href="./styles/global.css" type="text/css" rel="stylesheet">
+    <link href="./styles/textMessage.css" type="text/css" rel="stylesheet">
+    <link href="./styles/sceneTransition.css" type="text/css" rel="stylesheet">
+    <link href="./styles/keyboardMenu.css" type="text/css" rel="stylesheet">
+    <link href="./styles/hud.css" type="text/css" rel="stylesheet">
+    <link href="./styles/titleScreen.css" type="text/css" rel="stylesheet">
+    <!-- Battle css -->
+    <link href="./styles/battle.css" type="text/css" rel="stylesheet">
+    <link href="./styles/combatant.css" type="text/css" rel="stylesheet">
+    <link href="./styles/submissionMenu.css" type="text/css" rel="stylesheet">
+    <link href="./styles/team.css" type="text/css" rel="stylesheet">
+    <link href="./styles/menus.css" type="text/css" rel="stylesheet">
 
-<body>
-    <p>Text</p>
-</body>
+    <!-- Memory css -->
+    <!-- <link href="./styles/memory.css"dsd type="text/css" rel="stylesheet"> -->
 
-<script src="./script.js"></script>
+    <!-- Tamagotchi css -->
+    <!-- <link href="./styles/tamagotchi.css" type="text/css" rel="stylesheet"> -->
+  </head>
+  <body>
 
+    <!-- <section class="memory-game">
+      <div class="memory-card" data-framework="amy">
+        <img class="front-face" src="./assets/memory/amy.svg" alt="amy" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="amy">
+        <img class="front-face" src="./assets/memory/amy.svg" alt="amy" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+  
+      <div class="memory-card" data-framework="shadow">
+        <img class="front-face" src="./assets/memory/shadow.svg" alt="shadow" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="shadow">
+        <img class="front-face" src="./assets/memory/shadow.svg" alt="shadow" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+  
+      <div class="memory-card" data-framework="knuckles">
+        <img class="front-face" src="./assets/memory/knuckles.svg" alt="knuckles" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="knuckles">
+        <img class="front-face" src="./assets/memory/knuckles.svg" alt="knuckles" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+  
+      <div class="memory-card" data-framework="tails">
+        <img class="front-face" src="./assets/memory/tails.svg" alt="tails" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="tails">
+        <img class="front-face" src="./assets/memory/tails.svg" alt="tails" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+  
+      <div class="memory-card" data-framework="sonic">
+        <img class="front-face" src="./assets/memory/sonic.svg" alt="sonic" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="sonic">
+        <img class="front-face" src="./assets/memory/sonic.svg" alt="sonic" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+  
+      <div class="memory-card" data-framework="super-sonic">
+        <img class="front-face" src="./assets/memory/super-sonic.svg" alt="super-sonic" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+      <div class="memory-card" data-framework="super-sonic">
+        <img class="front-face" src="./assets/memory/super-sonic.svg" alt="super-sonic" />
+        <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
+      </div>
+    </section> -->
+
+    <!-- <section>
+      <div class="home">
+        <img src="./assets/tamagotchi/tamagotchi-home.png"/>
+      </div>
+      <div class="stats">
+          <p id="hunger">Hunger: 1</p>
+          <p id="sleepiness">Sleepiness: 1</p>
+          <p id="boredom">Boredom: 1</p>
+          <p id="age">Age: 0</p>
+      </div>
+      <div class="tamagotchi">
+        <img src="./assets/tamagotchi/tamagotchi-egg.png"/>
+    </div>
+      <div class="actions">
+          <button id="feed">feed</button>
+          <button id="sleep">bedtime!</button>
+          <button id="play">play</button>
+          <button id="restart">restart</button>
+      </div>
+          <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+          <script type="text/javascript" src="./js/tamagotchi.js"></script>
+  </section> -->
+
+    <div class="game-container">
+      <canvas class="game-canvas" width="352" height="198"></canvas>
+    </div>
+    <p class="how-to-play">Use Arrow Keys to move. Enter to prompt/talk.</p>
+
+    <!-- Content -->
+    <script src="./js/content/pizzas.js"></script>
+    <script src="./js/content/actions.js"></script>
+    <script src="./js/content/enemies.js"></script>
+
+    <!-- State -->
+    <script src="./js/state/playerState.js"></script>
+
+    <!-- Scripts -->
+    <script src="./js/overworld/utils.js"></script>
+    <script src="./js/overworld/directionInput.js"></script>
+    <script src="./js/overworld/overworld.js"></script>
+    <script src="./js/overworld/gameObject.js"></script>
+    <script src="./js/overworld/person.js"></script>
+    <script src="./js/overworld/pizzaStone.js"></script>
+    <script src="./js/overworld/sprite.js"></script>
+    <script src="./js/overworld/overworldMap.js"></script>
+    <script src="./js/overworld/overworldEvent.js"></script>
+    <script src="./js/overworld/textMessage.js"></script>
+    <script src="./js/overworld/keyPressListener.js"></script>
+    <script src="./js/overworld/revealingText.js"></script>
+    <script src="./js/overworld/sceneTransition.js"></script>
+    <script src="./js/overworld/keyboardMenu.js"></script>
+    <script src="./js/overworld/hud.js"></script>
+    <script src="./js/overworld/pauseMenu.js"></script>
+    <script src="./js/overworld/craftingMenu.js"></script>
+    <script src="./js/overworld/progress.js"></script>
+    <script src="./js/overworld/titleScreen.js"></script>
+
+    <!-- Battle -->
+    <script src="./js/battle/battle.js"></script>
+    <script src="./js/battle/combatant.js"></script>
+    <script src="./js/battle/team.js"></script>
+    <script src="./js/battle/submissionMenu.js"></script>
+    <script src="./js/battle/replacementMenu.js"></script>
+    <script src="./js/battle/battleEvent.js"></script>
+    <script src="./js/battle/turnCycle.js"></script>
+    <script src="./js/battle/battleAnimations.js"></script>
+
+    <!-- Memory -->
+    <script src="./js/memory.js"></script>
+
+    <!-- Tamagotchi -->
+    <!-- <script src="./js/tamagotchi.js"></script> -->
+
+    <!-- Treasure -->
+    <!-- <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"
+    integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/data/collisions.js"></script>
+    <script src="./js/classes/collisionBlock.js"></script>
+    <script src="./js/classes/treasureSprite.js"></script>
+    <script src="./js/classes/player.js"></script>
+    <script src="./js/eventListeners.js"></script>
+    <script src="./js/treasure.js"></script> -->
+    
+    <script src="./js/overworld/init.js"></script>
+
+  </body>
 </html>
