@@ -1,6 +1,8 @@
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
 
+canvas.classList.add("treasure");
+
 canvas.width = 64 * 16; // 1024
 canvas.height = 64 * 9; // 576
 
