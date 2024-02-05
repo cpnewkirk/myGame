@@ -837,6 +837,11 @@ window.OverworldMaps = {
                 text: "I'm helping Sally diagnose the e-1000 robots with my nanites. I can't interface with them right now for some reason.",
                 faceHero: "nicole",
               },
+              {
+                type: "textMessage",
+                text: "The reason you can see me right now is beacuse I am projecting myself using a special technology.",
+                faceHero: "nicole",
+              },
             ],
           },
         ],
