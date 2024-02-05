@@ -146,10 +146,33 @@ class Overworld {
     //Kick off the game!
     this.startGameLoop();
 
-    // this.map.startCutscene([
-    // { type: "battle", enemyId: "beth" },
-    // { type: "changeMap", map: "DemoRoom" },
-    // { type: "textMessage", text: "This is the very first message!" },
-    // ]);
+    this.map.startCutscene([
+      { type: "walk", who: "hero", direction: "down" },
+      { type: "walk", who: "hero", direction: "down" },
+      { type: "walk", who: "hero", direction: "down" },
+      { type: "walk", who: "hero", direction: "down" },
+      { type: "walk", who: "hero", direction: "down" },
+      { type: "walk", who: "hero", direction: "down" },
+      {
+        type: "textMessage",
+        text: "It  feels good to be back in knothole after fighting Dr.Robotnik for so long.",
+      },
+      {
+        type: "textMessage",
+        text: "I wonder how everyone is doing.",
+      },
+
+      // { type: "walk", who: "Amy", direction: "right" },
+      // {
+      //   type: "stand",
+      //   who: "kitchenNpcA",
+      //   direction: "right",
+      //   time: 200,
+      // },
+      // { type: "stand", who: "hero", direction: "left", time: 200 },
+      // { type: "walk", who: "kitchenNpcA", direction: "up" },
+      // { type: "stand", who: "kitchenNpcA", direction: "up", time: 300 },
+      // { type: "stand", who: "hero", direction: "down", time: 400 },
+    ]);
   }
 }
