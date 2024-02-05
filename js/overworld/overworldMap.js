@@ -249,18 +249,6 @@ window.OverworldMaps = {
             ],
           },
         ],
-        behaviorLoop: [
-          { type: "walk", direction: "right" },
-          { type: "walk", direction: "right" },
-          { type: "walk", direction: "down" },
-          { type: "walk", direction: "down" },
-          { type: "walk", direction: "left" },
-          { type: "walk", direction: "left" },
-          { type: "walk", direction: "up" },
-          { type: "walk", direction: "up" },
-          { type: "stand", direction: "up", time: 500 },
-          { type: "stand", direction: "left", time: 500 },
-        ],
       },
       marine: {
         type: "Person",
@@ -317,9 +305,6 @@ window.OverworldMaps = {
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
 
-          { type: "walk", direction: "down" },
-          { type: "walk", direction: "down" },
-          { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
@@ -490,7 +475,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "textMessage",
-                text: "Hey Sonic! I'm taking apart this e-1000 unit to understand why they ent haywire the other day.",
+                text: "Hey Sonic! I'm taking apart this e-1000 unit to understand why they went haywire the other day.",
                 faceHero: "tails",
               },
               {
@@ -502,16 +487,16 @@ window.OverworldMaps = {
           },
         ],
         behaviorLoop: [
-          { type: "stand", direction: "up", time: 500 },
+          { type: "stand", direction: "up", time: 1000 },
           { type: "walk", direction: "left" },
-          { type: "stand", direction: "up", time: 500 },
+          { type: "stand", direction: "up", time: 1000 },
           { type: "walk", direction: "right" },
-          { type: "stand", direction: "down", time: 500 },
+          { type: "stand", direction: "down", time: 1000 },
         ],
       },
       vector: {
         type: "Person",
-        x: utils.withGrid(56),
+        x: utils.withGrid(57),
         y: utils.withGrid(35),
         direction: "down",
         src: "assets/characters/people/vector.png",
@@ -528,6 +513,7 @@ window.OverworldMaps = {
         ],
         behaviorLoop: [
           { type: "stand", direction: "down", time: 2500 },
+          { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
@@ -580,6 +566,7 @@ window.OverworldMaps = {
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
+          { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
@@ -658,7 +645,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(36),
         y: utils.withGrid(27),
-        direction: "left",
+        direction: "down",
         src: "assets/characters/people/gamma.png",
         talking: [
           {
@@ -690,16 +677,16 @@ window.OverworldMaps = {
       },
       saffron: {
         type: "Person",
-        x: utils.withGrid(55),
+        x: utils.withGrid(56),
         y: utils.withGrid(36),
-        direction: "left",
+        direction: "right",
         src: "assets/characters/people/saffron.png",
         talking: [
           {
             events: [
               {
                 type: "textMessage",
-                text: "With Vector in charge, we can do anythign!",
+                text: "With Vector in charge, we can do anything!",
                 faceHero: "saffron",
               },
             ],
@@ -708,7 +695,7 @@ window.OverworldMaps = {
       },
       mighty: {
         type: "Person",
-        x: utils.withGrid(57),
+        x: utils.withGrid(58),
         y: utils.withGrid(36),
         direction: "left",
         src: "assets/characters/people/mighty.png",
@@ -728,7 +715,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(58),
         y: utils.withGrid(7),
-        direction: "left",
+        direction: "right",
         src: "assets/characters/people/sally.png",
         talking: [
           {
@@ -889,7 +876,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(5),
         y: utils.withGrid(17),
-        direction: "left",
+        direction: "down",
         src: "assets/characters/people/chaos.png",
         talking: [
           {
@@ -927,7 +914,7 @@ window.OverworldMaps = {
         type: "Person",
         x: utils.withGrid(29),
         y: utils.withGrid(9),
-        direction: "left",
+        direction: "right",
         src: "assets/characters/people/omachao.png",
         talking: [
           {
@@ -1785,8 +1772,8 @@ window.OverworldMaps = {
       },
       chao23: {
         type: "Person",
-        x: utils.withGrid(3),
-        y: utils.withGrid(6),
+        x: utils.withGrid(5),
+        y: utils.withGrid(18),
         direction: "left",
         src: "assets/characters/people/chao.png",
         behaviorLoop: [
@@ -2005,8 +1992,14 @@ window.OverworldMaps = {
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
+          { type: "walk", direction: "left" },
         ],
       },
+      // grass: {
+      //   type: "grass",
+      //   x: utils.withGrid(1),
+      //   y: utils.withGrid(4),
+      // },
     },
     cutsceneSpaces: {
       [utils.asGridCoord(40, 24)]: [
@@ -2092,9 +2085,11 @@ window.OverworldMaps = {
         },
       ],
 
-      [utils.asGridCoord(28, 3)]: [
+      [utils.asGridCoord(28, 6)]: [
         {
           events: [
+            { type: "stand", who: "hero", direction: "up" },
+
             {
               type: "textMessage",
               text: "The sign says... Welcome to Knothole, home of the Freedom Fighters!",
@@ -2103,15 +2098,60 @@ window.OverworldMaps = {
         },
       ],
 
-      [utils.asGridCoord(6, 37)]: [
+      [utils.asGridCoord(7, 37)]: [
         {
           disqualify: ["ECHIDNA_SCENE"],
           events: [
             { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
+
+            { type: "walk", who: "laraSu", direction: "right" },
+            { type: "walk", who: "laraSu", direction: "up" },
+            { type: "walk", who: "laraSu", direction: "right" },
+            { type: "walk", who: "laraSu", direction: "up" },
+
             {
               type: "textMessage",
-              text: "I can't leave yet, I just got here!",
+              text: "Knuckles, I can't stand around when the master emerald is gone!",
             },
+            {
+              type: "textMessage",
+              text: "Let me help! You're not alone anymore.",
+            },
+
+            { type: "walk", who: "chao32", direction: "left" },
+            { type: "stand", who: "chao32", direction: "down" },
+            { type: "walk", who: "chao33", direction: "right" },
+            { type: "stand", who: "chao33", direction: "down" },
+            { type: "walk", who: "knuckles", direction: "left" },
+            { type: "walk", who: "knuckles", direction: "down" },
+            { type: "stand", who: "knuckles", direction: "right" },
+            { type: "stand", who: "laraSu", direction: "left" },
+
+            {
+              type: "textMessage",
+              text: "I won't go alone. Now that Sonic is here, we can go together.",
+            },
+
+            { type: "walk", who: "laraSu", direction: "down" },
+            { type: "walk", who: "laraSu", direction: "down" },
+            { type: "walk", who: "laraSu", direction: "left" },
+            { type: "walk", who: "laraSu", direction: "left" },
+            { type: "stand", who: "laraSu", direction: "right" },
+
+            { type: "walk", who: "knuckles", direction: "right" },
+            { type: "walk", who: "knuckles", direction: "up" },
+            { type: "stand", who: "laraSu", direction: "down" },
+
+            { type: "stand", who: "knuckles", direction: "down" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(7, 38)]: [
+        {
+          disqualify: ["ECHIDNA_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
+
             { type: "walk", who: "laraSu", direction: "right" },
             { type: "walk", who: "laraSu", direction: "up" },
             { type: "walk", who: "laraSu", direction: "right" },
@@ -2151,63 +2191,12 @@ window.OverworldMaps = {
           ],
         },
       ],
-      [utils.asGridCoord(6, 38)]: [
+      [utils.asGridCoord(7, 39)]: [
         {
           disqualify: ["ECHIDNA_SCENE"],
           events: [
             { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
-            {
-              type: "textMessage",
-              text: "I can't leave yet, I just got here!",
-            },
-            { type: "walk", who: "laraSu", direction: "right" },
-            { type: "walk", who: "laraSu", direction: "up" },
-            { type: "walk", who: "laraSu", direction: "right" },
-            { type: "walk", who: "laraSu", direction: "up" },
 
-            {
-              type: "textMessage",
-              text: "Knuckles, I can't stand around when the master emerald is gone!",
-            },
-            {
-              type: "textMessage",
-              text: "Let me help! You're not alone anymore.",
-            },
-
-            { type: "walk", who: "chao32", direction: "left" },
-            { type: "stand", who: "chao32", direction: "down" },
-            { type: "walk", who: "chao33", direction: "right" },
-            { type: "stand", who: "chao33", direction: "down" },
-            { type: "walk", who: "knuckles", direction: "left" },
-            { type: "walk", who: "knuckles", direction: "down" },
-            { type: "stand", who: "knuckles", direction: "right" },
-
-            {
-              type: "textMessage",
-              text: "I won't go alone. Now that Sonic is here, we can go together.",
-            },
-
-            { type: "walk", who: "laraSu", direction: "down" },
-            { type: "walk", who: "laraSu", direction: "down" },
-            { type: "walk", who: "laraSu", direction: "left" },
-            { type: "walk", who: "laraSu", direction: "left" },
-            { type: "stand", who: "laraSu", direction: "right" },
-
-            { type: "walk", who: "knuckles", direction: "right" },
-            { type: "walk", who: "knuckles", direction: "up" },
-            { type: "stand", who: "laraSu", direction: "down" },
-          ],
-        },
-      ],
-      [utils.asGridCoord(6, 39)]: [
-        {
-          disqualify: ["ECHIDNA_SCENE"],
-          events: [
-            { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
-            {
-              type: "textMessage",
-              text: "I can't leave yet, I just got here!",
-            },
             { type: "walk", who: "laraSu", direction: "right" },
             { type: "walk", who: "laraSu", direction: "up" },
             { type: "walk", who: "laraSu", direction: "right" },
@@ -2332,7 +2321,7 @@ window.OverworldMaps = {
       [utils.asGridCoord(25, 4)]: true,
       [utils.asGridCoord(26, 4)]: true,
       [utils.asGridCoord(27, 4)]: true,
-      [utils.asGridCoord(28, 3)]: true,
+      [utils.asGridCoord(28, 5)]: true,
       [utils.asGridCoord(28, 4)]: true,
       [utils.asGridCoord(28, 3)]: true,
       [utils.asGridCoord(28, 2)]: true,

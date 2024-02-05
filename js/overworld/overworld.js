@@ -155,7 +155,7 @@ class Overworld {
       { type: "walk", who: "hero", direction: "down" },
       {
         type: "textMessage",
-        text: "It  feels good to be back in knothole after fighting Dr.Robotnik for so long.",
+        text: "It  feels good to be back in Knothole after fighting Dr.Robotnik for so long.",
       },
       {
         type: "textMessage",
