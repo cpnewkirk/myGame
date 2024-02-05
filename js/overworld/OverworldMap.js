@@ -116,7 +116,7 @@ window.OverworldMaps = {
   Knothole: {
     id: "Knothole",
     lowerSrc: "assets/maps/knotholeLower.png",
-    upperSrc: "assets/maps/KnotholeUpper.png",
+    upperSrc: "assets/maps/knotholeUpper.png",
     configObjects: {
       hero: {
         type: "Person",
