@@ -138,7 +138,7 @@ window.OverworldMaps = {
     id: "Knothole",
     lowerSrc: "assets/maps/knotholeLower.png",
     upperSrc: "assets/maps/knotholeUpper.png",
-    backgroundMusic: "assets/audios/knothole.mp3",
+    backgroundMusic: "assets/audios/Knothole.mp3",
     configObjects: {
       hero: {
         type: "Person",
