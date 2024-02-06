@@ -27,7 +27,18 @@ class OverworldMap {
     background.loop = true;
     background.volume = 0.5;
     background.muted = false;
-    background.play();
+    const playPromise = background.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(function () {
+          // Automatic playback started!
+        })
+        .catch(function (error) {
+          // Automatic playback failed.
+          // Show a UI element to let the user manually start playback.
+        });
+    }
 
     this.element.textContent = "Mute/Unmute";
     this.element.onclick = (event) => {
