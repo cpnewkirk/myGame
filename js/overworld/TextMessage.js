@@ -1,6 +1,7 @@
 class TextMessage {
-  constructor({ text, onComplete }) {
+  constructor({ text, who, onComplete }) {
     this.text = text;
+    this.who = who || "...";
     this.onComplete = onComplete;
     this.element = null;
   }
@@ -9,17 +10,18 @@ class TextMessage {
     //Create the element
     this.element = document.createElement("div");
     this.element.classList.add("TextMessage");
+    this.element.innerHTML = `
+      <p class="TextMessage_speaker">${this.who.toUpperCase()}</p>
 
-    this.element.innerHTML = (`
       <p class="TextMessage_p"></p>
       <button class="TextMessage_button">Next</button>
-    `)
+    `;
 
     //Init the typewriter effect
     this.revealingText = new RevealingText({
       element: this.element.querySelector(".TextMessage_p"),
-      text: this.text
-    })
+      text: this.text,
+    });
 
     this.element.querySelector("button").addEventListener("click", () => {
       //Close the text message
@@ -28,12 +30,10 @@ class TextMessage {
 
     this.actionListener = new KeyPressListener("Enter", () => {
       this.done();
-    })
-
+    });
   }
 
   done() {
-
     if (this.revealingText.isDone) {
       this.element.remove();
       this.actionListener.unbind();
@@ -48,5 +48,4 @@ class TextMessage {
     container.appendChild(this.element);
     this.revealingText.init();
   }
-
 }

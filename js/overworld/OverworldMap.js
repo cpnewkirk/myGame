@@ -14,6 +14,28 @@ class OverworldMap {
 
     this.isCutscenePlaying = false;
     this.isPaused = false;
+
+    this.backgroundMusic = config.backgroundMusic;
+  }
+
+  startMusic() {
+    // Create music toggle
+    // const container = document.querySelector(".game-container");
+    this.element = document.createElement("div");
+    this.element.classList.add("toggle");
+
+    const background = new Audio(this.backgroundMusic);
+    background.loop = true;
+    background.volume = 0.5;
+    background.play();
+
+    this.element.innerHTML = `<button href="javascript:void(0);" onclick= "handleToggle()">Mute/Unmute</button>`;
+    document.querySelector(".game-container").appendChild(this.element);
+  }
+
+  handleToggle() {
+    console.log("here");
+    this.background.muted = !this.background.muted;
   }
 
   drawLowerImage(ctx, cameraPerson) {
@@ -117,6 +139,7 @@ window.OverworldMaps = {
     id: "Knothole",
     lowerSrc: "assets/maps/knotholeLower.png",
     upperSrc: "assets/maps/knotholeUpper.png",
+    backgroundMusic: "assets/audios/knothole.mp3",
     configObjects: {
       hero: {
         type: "Person",
@@ -137,6 +160,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "The chao have been so excited ever since you came back!",
                 faceHero: "amy",
+                who: "amy",
               },
             ],
           },
@@ -155,11 +179,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Sacre bleu! What are you doing back so soon, Sonic the hedgehog?",
                 faceHero: "antoine",
+                who: "antoine",
               },
               {
                 type: "textMessage",
                 text: "You shall not pass. The princess has told me to guard the way to New Mobotropolis until further notice.",
                 faceHero: "antoine",
+                who: "antoine",
               },
             ],
           },
@@ -178,11 +204,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Welcome back sugah!",
                 faceHero: "bunnie",
+                who: "bunnie",
               },
               {
                 type: "textMessage",
                 text: "Amy has been worried about the chao, I know she can use some help.",
                 faceHero: "bunnie",
+                who: "bunnie",
               },
             ],
           },
@@ -201,11 +229,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Sonic! Did you hear about the robots that went berserk?",
                 faceHero: "dulce",
+                who: "dulce",
               },
               {
                 type: "textMessage",
                 text: "The freedom fighters got them under control of corse! Sally is working with Nicole to see what happened to them.",
                 faceHero: "dulce",
+                who: "dulce",
               },
             ],
           },
@@ -245,6 +275,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Hey. You up for a treasure hunting adventure?",
                 faceHero: "knuckles",
+                who: "knuckles",
               },
             ],
           },
@@ -263,6 +294,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Sonic! Aren't the chao so beautiful! We don't have them in the Sol Zone.",
                 faceHero: "marine",
+                who: "marine",
               },
             ],
           },
@@ -281,6 +313,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "A family of chao are following me! Maybe I can feature them at my next concert!",
                 faceHero: "mina",
+                who: "mina",
               },
             ],
           },
@@ -421,6 +454,7 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "I heard knuckles is looking for the master emerald again. G.U.N. has their eyes on that jewel.",
+                who: "rouge",
               },
             ],
           },
@@ -438,6 +472,7 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "This world is a lot to wrap my head around, but I'm glad I have you all to help.",
+                who: "shade",
               },
             ],
           },
@@ -456,6 +491,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Not now Sonic. We're busy.",
                 faceHero: "shadow",
+                who: "shadow",
               },
             ],
           },
@@ -474,11 +510,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Hey Sonic! I'm taking apart this e-1000 unit to understand why they went haywire the other day.",
                 faceHero: "tails",
+                who: "tails",
               },
               {
                 type: "textMessage",
                 text: "I don't remember where all of the parts went though. Can you help me?",
                 faceHero: "tails",
+                who: "tails",
               },
             ],
           },
@@ -504,6 +542,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "The Chaotix are assigned another mystery! Espio and Charmy aren't here but Mighty, Saffron and I got it handled!",
                 faceHero: "vector",
+                who: "vector",
               },
             ],
           },
@@ -667,6 +706,7 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "Why do they get to be so happy... Where is Scourge...",
+                who: "fiona",
               },
             ],
           },
@@ -685,6 +725,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "With Vector in charge, we can do anything!",
                 faceHero: "saffron",
+                who: "saffron",
               },
             ],
           },
@@ -703,6 +744,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "We got this.",
                 faceHero: "mighty",
+                who: "mighty",
               },
             ],
           },
@@ -721,15 +763,18 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Sonic, glad to hear your mission went well, but I don't have time for a debrief.",
                 faceHero: "sally",
+                who: "sally",
               },
               {
                 type: "textMessage",
                 text: "The e-1000s are acting up and I'm worried it has to do with Robotnik.",
+                who: "sally",
               },
               {
                 type: "textMessage",
                 text: "Can you run and get me something? Let's do it to it!",
                 faceHero: "sally",
+                who: "sally",
               },
             ],
           },
@@ -748,6 +793,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Knuckles is so stubborn.",
                 faceHero: "laraSu",
+                who: "laraSu",
               },
             ],
           },
@@ -765,6 +811,7 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "Cheese, wait for me!",
+                who: "cream",
               },
             ],
           },
@@ -795,11 +842,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Hey there Sonic! Have you had a chance to speak with my cousin? I hear she is in need of help in the Chao Garden.",
                 faceHero: "robO",
+                who: "Rob o' the Hedge",
               },
               {
                 type: "textMessage",
                 text: "I'm looking for flickies hiding in the tall grass.",
                 faceHero: "robO",
+                who: "Rob o' the Hedge",
               },
             ],
           },
@@ -833,11 +882,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "I'm helping Sally diagnose the e-1000 robots with my nanites. I can't interface with them right now for some reason.",
                 faceHero: "nicole",
+                who: "nicole",
               },
               {
                 type: "textMessage",
                 text: "The reason you can see me right now is beacuse I am projecting myself using a special technology.",
                 faceHero: "nicole",
+                who: "nicole",
               },
             ],
           },
@@ -864,11 +915,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Sonic my boy! How was your last adventure? I've been in the shop the past few hours helping Tails diagnose the bots.",
                 faceHero: "uncleChuck",
+                who: "Uncle Chuck",
               },
               {
                 type: "textMessage",
                 text: "Have you talked to him yet? I'm sure you would be a great help to him!",
                 faceHero: "uncleChuck",
+                who: "Uncle Chuck",
               },
             ],
           },
@@ -886,6 +939,7 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "...",
+                who: "Chaos",
               },
             ],
           },
@@ -925,11 +979,13 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "You've been gone for a few weeks on a mission Sonic. Go speak to your friends and see if they need any help.",
                 faceHero: "omachao",
+                who: "omachao",
               },
               {
                 type: "textMessage",
                 text: "Amy is in the chao garden. Knuckles is across the southern bridge. Tails is near your house. Sally is to the east.",
                 faceHero: "omachao",
+                who: "omachao",
               },
             ],
           },
@@ -948,6 +1004,7 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Chao chao chao.",
                 faceHero: "cheese",
+                who: "cheese",
               },
             ],
           },
@@ -2053,6 +2110,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I can't leave yet, I just got here!",
+              who: "Sonic",
             },
             { type: "walk", who: "hero", direction: "down" },
           ],
@@ -2064,6 +2122,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I can't leave yet, I just got here!",
+              who: "Sonic",
             },
             { type: "walk", who: "hero", direction: "down" },
           ],
@@ -2075,6 +2134,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I can't leave yet, I just got here!",
+              who: "Sonic",
             },
             { type: "walk", who: "hero", direction: "down" },
           ],
@@ -2086,6 +2146,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I can't leave yet, I just got here!",
+              who: "Sonic",
             },
             { type: "walk", who: "hero", direction: "down" },
           ],
@@ -2097,6 +2158,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I can't leave yet, I just got here!",
+              who: "Sonic",
             },
             { type: "walk", who: "hero", direction: "down" },
           ],
@@ -2130,10 +2192,12 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "Knuckles, I can't stand around when the master emerald is gone!",
+              who: "Lara-Su",
             },
             {
               type: "textMessage",
               text: "Let me help! You're not alone anymore.",
+              who: "Lara-Su",
             },
 
             { type: "walk", who: "chao32", direction: "left" },
@@ -2148,6 +2212,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I won't go alone. Now that Sonic is here, we can go together.",
+              who: "Knuckles",
             },
 
             { type: "walk", who: "laraSu", direction: "down" },
@@ -2178,10 +2243,12 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "Knuckles, I can't stand around when the master emerald is gone!",
+              who: "Lara-Su",
             },
             {
               type: "textMessage",
               text: "Let me help! You're not alone anymore.",
+              who: "Lara-Su",
             },
 
             { type: "walk", who: "chao32", direction: "left" },
@@ -2195,6 +2262,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I won't go alone. Now that Sonic is here, we can go together.",
+              who: "Knuckles",
             },
 
             { type: "walk", who: "laraSu", direction: "down" },
@@ -2223,10 +2291,12 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "Knuckles, I can't stand around when the master emerald is gone!",
+              who: "Lara-Su",
             },
             {
               type: "textMessage",
               text: "Let me help! You're not alone anymore.",
+              who: "Lara-Su",
             },
 
             { type: "walk", who: "chao32", direction: "left" },
@@ -2240,6 +2310,7 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "I won't go alone. Now that Sonic is here, we can go together.",
+              who: "Knuckles",
             },
 
             { type: "walk", who: "laraSu", direction: "down" },
@@ -2834,6 +2905,7 @@ window.OverworldMaps = {
     id: "Home",
     lowerSrc: "assets/maps/homeLower.png",
     upperSrc: "assets/maps/homeUpper.png",
+    backgroundMusic: "assets/audios/knothole.mp3",
     configObjects: {
       hero: {
         type: "Person",

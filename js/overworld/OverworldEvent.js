@@ -62,6 +62,7 @@ class OverworldEvent {
 
     const message = new TextMessage({
       text: this.event.text,
+      who: this.event.who,
       onComplete: () => resolve(),
     });
     message.init(document.querySelector(".game-container"));

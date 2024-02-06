@@ -46,3 +46,6 @@ sonic game: https://github.com/PlopesK/Sonic-R?tab=readme-ov-file
 knuckles game knuckles: https://www.spriters-resource.com/custom_edited/sonicthehedgehogcustoms/sheet/77456/
 
 Chao garden: https://www.deviantart.com/ultimanumber255/art/Tiny-Chao-Garden-Spritesheet-792348615
+
+knothole music: https://downloads.khinsider.com/game-soundtracks/album/drawn-to-life-nintendo-ds/65_Village.mp3
+text: https://noproblo.dayjo.org/ZeldaSounds/QuickSearch.php?q=text&sa=Search+%28under+construction%29

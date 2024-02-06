@@ -9,6 +9,22 @@
   border-top: 1px solid var(--menu-border-color);
   color: var(--menu-font-color);
 }
+.TextMessage_speaker {
+  position: absolute;
+  margin: 0;
+  left: 0;
+  bottom: 35px;
+  height: 15px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: var(--menu-background);
+  border-top: 1px solid var(--menu-border-color);
+  border-right: 1px solid var(--menu-border-color);
+  color: var(--menu-font-color);
+  font-size: 12px;
+}
 .TextMessage_p {
   margin: 0;
   font-size: 10px;
@@ -22,11 +38,11 @@
 
 .TextMessage_button {
   margin: 0;
-  font-size: 8px;  
-  padding:0;
+  font-size: 8px;
+  padding: 0;
   -webkit-appearance: none;
-  background:none;
-  border:0;
+  background: none;
+  border: 0;
   font-family: inherit;
   cursor: pointer;
 

@@ -91,6 +91,7 @@ class Overworld {
     this.map = new OverworldMap(mapConfig);
     this.map.overworld = this;
     this.map.mountObjects();
+    this.map.startMusic();
 
     if (heroInitialState) {
       const { hero } = this.map.gameObjects;
@@ -156,10 +157,12 @@ class Overworld {
       {
         type: "textMessage",
         text: "It  feels good to be back in Knothole after fighting Dr.Robotnik for so long.",
+        who: "Sonic",
       },
       {
         type: "textMessage",
         text: "I wonder how everyone is doing.",
+        who: "Sonic",
       },
 
       // { type: "walk", who: "Amy", direction: "right" },

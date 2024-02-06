@@ -58,3 +58,13 @@ body {
 .treasure {
   transform: scale(0.3) translateY(50%);
 }
+
+.toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: black;
+  /* width: 50px;
+  height: 10px; */
+  /* font-size: 5px; */
+}
