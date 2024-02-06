@@ -2904,7 +2904,7 @@ window.OverworldMaps = {
     id: "Home",
     lowerSrc: "assets/maps/homeLower.png",
     upperSrc: "assets/maps/homeUpper.png",
-    backgroundMusic: "assets/audios/knothole.mp3",
+    backgroundMusic: "assets/audios/Knothole.mp3",
     configObjects: {
       hero: {
         type: "Person",
