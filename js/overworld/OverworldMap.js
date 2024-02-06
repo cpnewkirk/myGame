@@ -20,7 +20,6 @@ class OverworldMap {
 
   startMusic() {
     // Create music toggle
-    // const container = document.querySelector(".game-container");
     this.element = document.createElement("button");
     this.element.classList.add("toggle");
 
@@ -30,16 +29,12 @@ class OverworldMap {
     background.muted = false;
     background.play();
 
-    // this.element.innerHTML = `<button onclick= "this.handleToggle()">Mute/Unmute</button>`;
     this.element.textContent = "Mute/Unmute";
-    this.element.onclick = this.handleToggle();
+    this.element.onclick = (event) => {
+      background.muted = !background.muted;
+    };
 
     document.querySelector(".game-container").appendChild(this.element);
-  }
-
-  handleToggle() {
-    console.log("here");
-    // this.background.muted = !this.background.muted;
   }
 
   drawLowerImage(ctx, cameraPerson) {

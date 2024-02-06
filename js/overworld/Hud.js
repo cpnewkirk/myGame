@@ -33,6 +33,7 @@ class Hud {
       this.scoreboards.push(scoreboard);
       this.element.appendChild(scoreboard.hudElement);
     });
+
     this.update();
   }
 
