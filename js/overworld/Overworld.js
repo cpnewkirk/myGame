@@ -87,6 +87,81 @@ class Overworld {
     });
   }
 
+  createController() {
+    this.controllerUp = document.createElement("button");
+    this.controllerUp.classList.add("controllerUp");
+    this.controllerUp.textContent = "Up";
+    this.controllerUp.addEventListener("pointerdown", (e) => {
+      const dir = this.directionInput.map["ArrowUp"];
+      if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
+        this.directionInput.heldDirections.unshift(dir);
+      }
+    });
+    this.controllerUp.addEventListener("pointerup", (e) => {
+      console.log(event);
+      const dir = this.directionInput.map["ArrowUp"];
+      const index = this.directionInput.heldDirections.indexOf(dir);
+      if (index > -1) {
+        this.directionInput.heldDirections.splice(index, 1);
+      }
+    });
+    document.querySelector(".game-container").appendChild(this.controllerUp);
+
+    this.controllerRight = document.createElement("button");
+    this.controllerRight.classList.add("controllerRight");
+    this.controllerRight.textContent = "Right";
+    this.controllerRight.addEventListener("pointerdown", (e) => {
+      const dir = this.directionInput.map["ArrowRight"];
+      if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
+        this.directionInput.heldDirections.unshift(dir);
+      }
+    });
+    this.controllerRight.addEventListener("pointerup", (e) => {
+      const dir = this.directionInput.map["ArrowRight"];
+      const index = this.directionInput.heldDirections.indexOf(dir);
+      if (index > -1) {
+        this.directionInput.heldDirections.splice(index, 1);
+      }
+    });
+    document.querySelector(".game-container").appendChild(this.controllerRight);
+
+    this.controllerDown = document.createElement("button");
+    this.controllerDown.classList.add("controllerDown");
+    this.controllerDown.textContent = "Down";
+    this.controllerDown.addEventListener("pointerdown", (e) => {
+      const dir = this.directionInput.map["ArrowDown"];
+      if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
+        this.directionInput.heldDirections.unshift(dir);
+      }
+    });
+    this.controllerDown.addEventListener("pointerup", (e) => {
+      const dir = this.directionInput.map["ArrowDown"];
+      const index = this.directionInput.heldDirections.indexOf(dir);
+      if (index > -1) {
+        this.directionInput.heldDirections.splice(index, 1);
+      }
+    });
+    document.querySelector(".game-container").appendChild(this.controllerDown);
+
+    this.controllerLeft = document.createElement("button");
+    this.controllerLeft.classList.add("controllerLeft");
+    this.controllerLeft.textContent = "Left";
+    this.controllerLeft.addEventListener("pointerdown", (e) => {
+      const dir = this.directionInput.map["ArrowLeft"];
+      if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
+        this.directionInput.heldDirections.unshift(dir);
+      }
+    });
+    this.controllerLeft.addEventListener("pointerup", (e) => {
+      const dir = this.directionInput.map["ArrowLeft"];
+      const index = this.directionInput.heldDirections.indexOf(dir);
+      if (index > -1) {
+        this.directionInput.heldDirections.splice(index, 1);
+      }
+    });
+    document.querySelector(".game-container").appendChild(this.controllerLeft);
+  }
+
   startMap(mapConfig, heroInitialState = null) {
     this.map = new OverworldMap(mapConfig);
     this.map.overworld = this;
@@ -139,9 +214,9 @@ class Overworld {
       this.element.classList.add("escMenu");
       this.element.textContent = "Menu";
       this.element.onclick = (event) => {
-        if (!this.map.isCutscenePlaying) {
-          this.map.startCutscene([{ type: "pause" }]);
-        }
+        // if (!this.map.isCutscenePlaying) {
+        this.map.startCutscene([{ type: "pause" }]);
+        // }
       };
       container.appendChild(this.element);
     }
@@ -172,6 +247,11 @@ class Overworld {
 
     this.directionInput = new DirectionInput();
     this.directionInput.init();
+
+    // Make touch controller
+    if (screen.width < 768) {
+      this.createController();
+    }
 
     //Kick off the game!
     this.startGameLoop();

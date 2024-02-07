@@ -1,7 +1,7 @@
 .overlayMenu {
   position: absolute;
   left: 4.5em;
-  top: 1em;
+  top: 7em;
   right: 4.5em;
   background: var(--menu-background);
   color: var(--menu-font-color);

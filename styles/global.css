@@ -83,3 +83,44 @@ body {
 /* a:fullscreen {
   transform: scale(3);
 } */
+
+.dullOut {
+  opacity: 0.5;
+}
+
+.controllerUp {
+  position: absolute;
+  opacity: 0.5;
+  top: 60%;
+  right: 15%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+.controllerRight {
+  position: absolute;
+  opacity: 0.5;
+  top: 65%;
+  right: 10%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+.controllerDown {
+  position: absolute;
+  opacity: 0.5;
+  top: 70%;
+  right: 15%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}
+.controllerLeft {
+  position: absolute;
+  opacity: 0.5;
+  top: 65%;
+  right: 20%;
+  width: 50px;
+  height: 50px;
+  border-radius: 20px;
+}

@@ -88,6 +88,13 @@ class PauseMenu {
     this.element = document.createElement("div");
     this.element.classList.add("PauseMenu");
     this.element.classList.add("overlayMenu");
+    document.querySelector(".game-canvas").classList.add("dullOut");
+    if (document.querySelector(".escMenu")) {
+      document.querySelector(".escMenu").hidden = true;
+    }
+    if (document.querySelector(".TextMessage")) {
+      document.querySelector(".TextMessage").hidden = true;
+    }
     this.element.innerHTML = `
       <h2>Pause Menu</h2>
     `;
@@ -97,6 +104,13 @@ class PauseMenu {
     this.esc?.unbind();
     this.keyboardMenu.end();
     this.element.remove();
+    document.querySelector(".game-canvas").classList.remove("dullOut");
+    if (document.querySelector(".escMenu")) {
+      document.querySelector(".escMenu").hidden = false;
+    }
+    if (document.querySelector(".TextMessage")) {
+      document.querySelector(".TextMessage").hidden = false;
+    }
     this.onComplete();
   }
 

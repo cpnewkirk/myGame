@@ -39,6 +39,7 @@
   position: absolute;
   left: -11px;
   bottom: -7px;
+  /* image-rendering: pixelated; */
 }
 .Battle .Combatant_character_crop {
   display: none;
@@ -46,12 +47,12 @@
 
 .Combatant_name {
   position: absolute;
-  left: -2px;
-  top: -8px;
+  left: -4px;
+  top: -9px;
   white-space: nowrap;
   background: var(--menu-font-color);
   color: #fff;
-  font-size: 5px; /*This is only so small because the component is scaled 2x in battle which is weird */
+  font-size: 8px; /*This is only so small because the component is scaled 2x in battle which is weird */
   padding-left: 2px;
   padding-right: 2px;
   margin: 0;
