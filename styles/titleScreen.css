@@ -11,16 +11,23 @@
   display: block;
   margin: 0 auto;
   width: 128px;
-  image-rendering: pixelated;
+  /* height: 2rem; */
+  /* image-rendering: pixelated; */
+
+  transform: scale(2.5) translateY(40%);
 }
 
 .TitleScreen .KeyboardMenu {
   position: relative;
-  width: 100px;
+  width: 400px;
   margin: 0 auto;
   background: transparent;
   border: 0;
+
+  top: 45%;
+  padding: 20px;
 }
+
 .TitleScreen button {
   color: #fff;
   justify-content: center;

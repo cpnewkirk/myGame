@@ -11,7 +11,6 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   background: #333;
   padding: 0;
@@ -30,41 +29,44 @@ body {
 }
 
 .game-container {
-  position: relative;
-  background: #9ae2ff;
-  width: 352px;
-  height: 198px;
-  margin: 0 auto;
-  outline: 1px solid #fff;
+  /* position: relative; */
+  /* background: #9ae2ff; */
+  /* width: 352px; */
+  /* height: 198px; */
+  /* margin: 0 auto; */
+  /* border: 10px solid #fff; */
 
-  transform: scale(3) translateY(50%);
+  /* transform: scale(3) translateY(50%); */
 
-  /* @media (min-width: 1100px) { */
-  padding: 0;
-  max-width: 100%;
-  max-height: 100%;
-  /* } */
-
-  /* position: absolute;
+  position: absolute;
+  /* margin: 0; */
+  /* transform: translateY(50%); */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transform: scale(3) translate(-50%, -50%); */
+  width: 100%;
+  /* height: 100%; */
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .game-container canvas {
   image-rendering: pixelated;
+  width: 100%;
+  /* height: 100%; */
 }
 
 .treasure {
-  transform: scale(0.3) translateY(50%);
+  /* transform: scale(0.3) translateY(50%); */
 }
 
 .toggle {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 4%;
+  right: 6%;
   color: black;
-  /* width: 50px; */
-  /* height: 10px; */
   font-size: 5px;
+
+  transform: scale(3);
 }

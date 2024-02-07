@@ -2,32 +2,34 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 36px;
-  padding: 4px;
+  bottom: 5px;
+  height: 108px;
+  padding: 12px;
   background: var(--menu-background);
-  border-top: 1px solid var(--menu-border-color);
+  border-top: 3px solid var(--menu-border-color);
   color: var(--menu-font-color);
+
+  /* outline: 1px solid; */
 }
 .TextMessage_speaker {
   position: absolute;
   margin: 0;
   left: 0;
-  bottom: 35px;
-  height: 15px;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  bottom: 105px;
+  height: 45px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
   background: var(--menu-background);
-  border-top: 1px solid var(--menu-border-color);
-  border-right: 1px solid var(--menu-border-color);
+  border-top: 3px solid var(--menu-border-color);
+  border-right: 3px solid var(--menu-border-color);
   color: var(--menu-font-color);
-  font-size: 12px;
+  font-size: 36px;
 }
 .TextMessage_p {
   margin: 0;
-  font-size: 10px;
+  font-size: 30px;
 }
 .TextMessage span {
   opacity: 0;
@@ -37,9 +39,9 @@
 }
 
 .TextMessage_button {
-  margin: 0;
-  font-size: 8px;
-  padding: 0;
+  margin: 5px;
+  font-size: 20px;
+  padding: 5px;
   -webkit-appearance: none;
   background: none;
   border: 0;
