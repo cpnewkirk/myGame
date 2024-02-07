@@ -134,6 +134,32 @@ class Overworld {
     this.hud = new Hud();
     this.hud.init(container);
 
+    if (screen.width < 768) {
+      this.element = document.createElement("button");
+      this.element.classList.add("escMenu");
+      this.element.textContent = "Menu";
+      this.element.onclick = (event) => {
+        if (!this.map.isCutscenePlaying) {
+          this.map.startCutscene([{ type: "pause" }]);
+        }
+      };
+      container.appendChild(this.element);
+    }
+
+    this.fullscreenButton = document.createElement("button");
+    this.fullscreenButton.classList.add("fullscreen");
+    this.fullscreenButton.textContent = "Toggle Fullscreen";
+    this.fullscreenButton.onclick = (event) => {
+      if (!document.fullscreenElement) {
+        this.canvas.requestFullscreen().catch((err) => {
+          alert(`Error, can't enable full-screen mode: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    };
+    container.appendChild(this.fullscreenButton);
+
     //Start the first map
     this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
 
@@ -165,10 +191,10 @@ class Overworld {
         who: "Sonic",
       },
 
-      // { type: "walk", who: "Amy", direction: "right" },
+      // { type: "walk", who: "amy", direction: "right" },
       // {
       //   type: "stand",
-      //   who: "kitchenNpcA",
+      //   who: "amy",
       //   direction: "right",
       //   time: 200,
       // },

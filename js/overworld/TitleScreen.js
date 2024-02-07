@@ -18,6 +18,7 @@ class TitleScreen {
         ? {
             label: "Continue Game",
             description: "Resume your adventure",
+            disabled: true,
             handler: () => {
               this.close();
               resolve(safeFile);

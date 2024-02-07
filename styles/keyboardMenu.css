@@ -22,10 +22,15 @@
   background: var(--menu-selected-background);
   outline: 0;
 }
-
+.KeyboardMenu button:disabled,
+.KeyboardMenu button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
 .KeyboardMenu .option {
   position: relative;
-  /* margin: 5px; */
+  margin: 30px;
 }
 .KeyboardMenu .option .right {
   position: absolute;
