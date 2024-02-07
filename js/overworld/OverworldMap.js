@@ -138,8 +138,31 @@ class OverworldMap {
   checkForFootstepCutscene() {
     const hero = this.gameObjects["hero"];
     const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
+
     if (!this.isCutscenePlaying && match) {
-      this.startCutscene(match[0].events);
+      let relevantScenario = match.find((scenario) => {
+        //Validate that we don't have any bypassers
+        if (scenario.bypass) {
+          for (let i = 0; i <= scenario.bypass.length; i++) {
+            if (playerState.storyFlags[scenario.bypass[i]]) {
+              return false;
+            }
+          }
+        }
+
+        //Validate that we have all of required
+        if (scenario.required) {
+          return (scenario.required || []).every(
+            (entry) => playerState.storyFlags[entry]
+          );
+        }
+
+        // if (!scenario.bypass && !scenario.required) {
+        return true;
+        // }
+      });
+
+      relevantScenario && this.startCutscene(match[0].events);
     }
   }
 }
@@ -165,10 +188,26 @@ window.OverworldMaps = {
         src: "assets/characters/people/amy.png",
         talking: [
           {
+            required: ["CHAO_COMPLETE"],
             events: [
               {
                 type: "textMessage",
                 text: "The chao have been so excited ever since you came back!",
+                faceHero: "amy",
+                who: "amy",
+              },
+              {
+                type: "stand",
+                who: "amy",
+                direction: "up",
+              },
+            ],
+          },
+          {
+            events: [
+              {
+                type: "textMessage",
+                text: "Sonic, are you ready to help raise some chao?",
                 faceHero: "amy",
                 who: "amy",
               },
@@ -197,6 +236,11 @@ window.OverworldMaps = {
                 faceHero: "antoine",
                 who: "antoine",
               },
+              {
+                type: "stand",
+                who: "antoine",
+                direction: "right",
+              },
             ],
           },
         ],
@@ -208,6 +252,22 @@ window.OverworldMaps = {
         direction: "right",
         src: "assets/characters/people/bunnie.png",
         talking: [
+          {
+            required: ["CHAO_COMPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "Didn't knwo you were such a family hedgehog!",
+                faceHero: "bunnie",
+                who: "bunnie",
+              },
+              {
+                type: "stand",
+                who: "bunnie",
+                direction: "right",
+              },
+            ],
+          },
           {
             events: [
               {
@@ -222,6 +282,11 @@ window.OverworldMaps = {
                 faceHero: "bunnie",
                 who: "bunnie",
               },
+              {
+                type: "stand",
+                who: "bunnie",
+                direction: "right",
+              },
             ],
           },
         ],
@@ -233,6 +298,23 @@ window.OverworldMaps = {
         direction: "down",
         src: "assets/characters/people/dulce.png",
         talking: [
+          {
+            required: ["TROUBLE_COPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "I'm glad you were able to help Sally!",
+                faceHero: "dulce",
+                who: "dulce",
+              },
+              {
+                type: "textMessage",
+                text: "The freedom fighters will always come out on top!",
+                faceHero: "dulce",
+                who: "dulce",
+              },
+            ],
+          },
           {
             events: [
               {
@@ -280,6 +362,22 @@ window.OverworldMaps = {
         src: "assets/characters/people/knuckles.png",
         talking: [
           {
+            required: ["ECHIDNA_COMPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "Thanks for the help Sonic. Next time you're up for an adventuer let me know.",
+                faceHero: "knuckles",
+                who: "knuckles",
+              },
+              {
+                type: "stand",
+                who: "knuckles",
+                direction: "down",
+              },
+            ],
+          },
+          {
             events: [
               {
                 type: "textMessage",
@@ -305,6 +403,11 @@ window.OverworldMaps = {
                 text: "Sonic! Aren't the chao so beautiful! We don't have them in the Sol Zone.",
                 faceHero: "marine",
                 who: "marine",
+              },
+              {
+                type: "stand",
+                who: "marine",
+                direction: "left",
               },
             ],
           },
@@ -466,6 +569,11 @@ window.OverworldMaps = {
                 text: "I heard knuckles is looking for the master emerald again. G.U.N. has their eyes on that jewel.",
                 who: "rouge",
               },
+              {
+                type: "stand",
+                who: "rouge",
+                direction: "up",
+              },
             ],
           },
         ],
@@ -483,6 +591,12 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "This world is a lot to wrap my head around, but I'm glad I have you all to help.",
                 who: "shade",
+                faceHero: "shade",
+              },
+              {
+                type: "stand",
+                who: "shade",
+                direction: "up",
               },
             ],
           },
@@ -503,6 +617,11 @@ window.OverworldMaps = {
                 faceHero: "shadow",
                 who: "shadow",
               },
+              {
+                type: "stand",
+                who: "shadow",
+                direction: "down",
+              },
             ],
           },
         ],
@@ -515,6 +634,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/tails.png",
         talking: [
           {
+            required: ["WORKSHOP_COPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -525,6 +645,16 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "I don't remember where all of the parts went though. Can you help me?",
+                faceHero: "tails",
+                who: "tails",
+              },
+            ],
+          },
+          {
+            events: [
+              {
+                type: "textMessage",
+                text: "Thanks for the help Sonic! I can always count on you.",
                 faceHero: "tails",
                 who: "tails",
               },
@@ -737,6 +867,11 @@ window.OverworldMaps = {
                 faceHero: "saffron",
                 who: "saffron",
               },
+              {
+                type: "stand",
+                who: "saffron",
+                direction: "right",
+              },
             ],
           },
         ],
@@ -756,6 +891,11 @@ window.OverworldMaps = {
                 faceHero: "mighty",
                 who: "mighty",
               },
+              {
+                type: "stand",
+                who: "mighty",
+                direction: "left",
+              },
             ],
           },
         ],
@@ -767,6 +907,22 @@ window.OverworldMaps = {
         direction: "right",
         src: "assets/characters/people/sally.png",
         talking: [
+          {
+            required: ["TROUBLE_COMPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "Thanks for the help earlier Sonic. You're always one to impress. Don't miss our meeting for chili dogs again.",
+                faceHero: "sally",
+                who: "sally",
+              },
+              {
+                type: "stand",
+                who: "sally",
+                direction: "right",
+              },
+            ],
+          },
           {
             events: [
               {
@@ -786,6 +942,11 @@ window.OverworldMaps = {
                 faceHero: "sally",
                 who: "sally",
               },
+              {
+                type: "stand",
+                who: "sally",
+                direction: "right",
+              },
             ],
           },
         ],
@@ -804,6 +965,11 @@ window.OverworldMaps = {
                 text: "Knuckles is so stubborn.",
                 faceHero: "laraSu",
                 who: "laraSu",
+              },
+              {
+                type: "stand",
+                who: "laraSu",
+                direction: "right",
               },
             ],
           },
@@ -887,6 +1053,22 @@ window.OverworldMaps = {
         src: "assets/characters/people/nicole.png",
         talking: [
           {
+            required: ["TROUBLE_COMPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "The reason you can see me right now is beacuse I am projecting myself using a special technology.",
+                faceHero: "nicole",
+                who: "nicole",
+              },
+              {
+                type: "stand",
+                who: "nicole",
+                direction: "down",
+              },
+            ],
+          },
+          {
             events: [
               {
                 type: "textMessage",
@@ -899,6 +1081,11 @@ window.OverworldMaps = {
                 text: "The reason you can see me right now is beacuse I am projecting myself using a special technology.",
                 faceHero: "nicole",
                 who: "nicole",
+              },
+              {
+                type: "stand",
+                who: "nicole",
+                direction: "down",
               },
             ],
           },
@@ -919,6 +1106,22 @@ window.OverworldMaps = {
         direction: "down",
         src: "assets/characters/people/uncle-chuck.png",
         talking: [
+          {
+            required: ["WORKSHOP_SCENE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "I'm glad you stopped by and talked to Tails He's been working non-stop on the bots.",
+                faceHero: "uncleChuck",
+                who: "Uncle Chuck",
+              },
+              {
+                type: "stand",
+                who: "uncleChuck",
+                direction: "down",
+              },
+            ],
+          },
           {
             events: [
               {
@@ -958,22 +1161,22 @@ window.OverworldMaps = {
       tPup: {
         type: "Person",
         x: utils.withGrid(38),
-        y: utils.withGrid(28),
+        y: utils.withGrid(29),
         direction: "left",
         src: "assets/characters/people/t-pup-sky.png",
         behaviorLoop: [
-          { type: "walk", direction: "down" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
-          { type: "walk", direction: "right" },
-          { type: "walk", direction: "right" },
-          { type: "walk", direction: "right" },
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
+          { type: "walk", direction: "down" },
+          { type: "walk", direction: "right" },
+          { type: "walk", direction: "right" },
+          { type: "walk", direction: "right" },
         ],
       },
       omachao: {
@@ -983,6 +1186,22 @@ window.OverworldMaps = {
         direction: "right",
         src: "assets/characters/people/omachao.png",
         talking: [
+          {
+            required: [
+              "CHAO_COMPLETE",
+              "WORKSHOP_COMPLETE",
+              "ECHIDNA_COMPLETE",
+              "TROUBLE_COMPLETE",
+            ],
+            events: [
+              {
+                type: "textMessage",
+                text: "You've helped all of your friends for the day. Have you tried heading back to your house for a nap?",
+                faceHero: "omachao",
+                who: "omachao",
+              },
+            ],
+          },
           {
             events: [
               {
@@ -2089,6 +2308,12 @@ window.OverworldMaps = {
     cutsceneSpaces: {
       [utils.asGridCoord(40, 24)]: [
         {
+          required: [
+            "CHAO_COMPLETE",
+            "WORKSHOP_COMPLETE",
+            "ECHIDNA_COMPLETE",
+            "TROUBLE_COMPLETE",
+          ],
           events: [
             {
               type: "changeMap",
@@ -2099,9 +2324,25 @@ window.OverworldMaps = {
             },
           ],
         },
+        {
+          events: [
+            {
+              type: "textMessage",
+              text: "I can't go to bed yet, my friends need my help!",
+              who: "Sonic",
+            },
+            { type: "walk", who: "hero", direction: "down" },
+          ],
+        },
       ],
       [utils.asGridCoord(41, 24)]: [
         {
+          required: [
+            "CHAO_COMPLETE",
+            "WORKSHOP_COMPLETE",
+            "ECHIDNA_COMPLETE",
+            "TROUBLE_COMPLETE",
+          ],
           events: [
             {
               type: "changeMap",
@@ -2110,6 +2351,16 @@ window.OverworldMaps = {
               y: utils.withGrid(0),
               direction: "up",
             },
+          ],
+        },
+        {
+          events: [
+            {
+              type: "textMessage",
+              text: "I can't go to bed yet, my friends need my help!",
+              who: "Sonic",
+            },
+            { type: "walk", who: "hero", direction: "down" },
           ],
         },
       ],
@@ -2190,7 +2441,7 @@ window.OverworldMaps = {
 
       [utils.asGridCoord(7, 37)]: [
         {
-          disqualify: ["ECHIDNA_SCENE"],
+          bypass: ["ECHIDNA_SCENE"],
           events: [
             { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
 
@@ -2234,14 +2485,13 @@ window.OverworldMaps = {
             { type: "walk", who: "knuckles", direction: "right" },
             { type: "walk", who: "knuckles", direction: "up" },
             { type: "stand", who: "laraSu", direction: "down" },
-
             { type: "stand", who: "knuckles", direction: "down" },
           ],
         },
       ],
       [utils.asGridCoord(7, 38)]: [
         {
-          disqualify: ["ECHIDNA_SCENE"],
+          bypass: ["ECHIDNA_SCENE"],
           events: [
             { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
 
@@ -2284,12 +2534,13 @@ window.OverworldMaps = {
             { type: "walk", who: "knuckles", direction: "right" },
             { type: "walk", who: "knuckles", direction: "up" },
             { type: "stand", who: "laraSu", direction: "down" },
+            { type: "stand", who: "knuckles", direction: "down" },
           ],
         },
       ],
       [utils.asGridCoord(7, 39)]: [
         {
-          disqualify: ["ECHIDNA_SCENE"],
+          bypass: ["ECHIDNA_SCENE"],
           events: [
             { type: "addStoryFlag", flag: "ECHIDNA_SCENE" },
 
@@ -2332,6 +2583,788 @@ window.OverworldMaps = {
             { type: "walk", who: "knuckles", direction: "right" },
             { type: "walk", who: "knuckles", direction: "up" },
             { type: "stand", who: "laraSu", direction: "down" },
+            { type: "stand", who: "knuckles", direction: "down" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(40, 28)]: [
+        {
+          bypass: ["WORKSHOP_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "WORKSHOP_SCENE" },
+
+            { type: "stand", who: "hero", direction: "left" },
+
+            {
+              type: "textMessage",
+              text: "I hope Sonic gets back soon, I don't know what I'd do wi...",
+              who: "tails",
+            },
+            {
+              type: "textMessage",
+              text: "Hey Tails! Had any chili dogs lately?",
+              who: "sonic",
+            },
+            { type: "stand", who: "tails", direction: "right" },
+            {
+              type: "textMessage",
+              text: "Sonic!!! I'm so glad to see you! There's so much to catch up on, but right now my hands are full with this roboOOOOOOOT...",
+              who: "tails",
+            },
+            { type: "walk", who: "gamma4", direction: "up" },
+
+            { type: "stand", who: "gamma4", direction: "right", time: 500 },
+            { type: "stand", who: "gamma4", direction: "left", time: 500 },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "right" },
+
+            { type: "walk", who: "gamma4", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "BzZzzZz prio zzZZZzZz one zzZZzZzzZzZzz get zZzz at zzZz EDGEHOGGGG.",
+              who: "e-1000",
+            },
+
+            { type: "walk", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "Sonic are you ok? The e-1000s have been acting up ever since the other day.",
+              who: "tails",
+            },
+
+            { type: "walk", who: "tails", direction: "up" },
+            { type: "stand", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "E-1000 unit, walk back.",
+              who: "tails",
+            },
+            { type: "walk", who: "tails", direction: "left" },
+            { type: "walk", who: "tails", direction: "down" },
+            { type: "stand", who: "tails", direction: "right" },
+
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+
+            { type: "stand", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "Sonic, can you come over and lend me a hand?",
+              who: "tails",
+            },
+            { type: "stand", who: "tails", direction: "up" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(41, 28)]: [
+        {
+          bypass: ["WORKSHOP_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "WORKSHOP_SCENE" },
+
+            { type: "stand", who: "hero", direction: "left" },
+
+            {
+              type: "textMessage",
+              text: "I hope Sonic gets back soon, I don't know what I'd do wi...",
+              who: "tails",
+            },
+            {
+              type: "textMessage",
+              text: "Hey Tails! Had any chili dogs lately?",
+              who: "sonic",
+            },
+            { type: "stand", who: "tails", direction: "right" },
+            {
+              type: "textMessage",
+              text: "Sonic!!! I'm so glad to see you! There's so much to catch up on, but right now my hands are full with this roboOOOOOOOT...",
+              who: "tails",
+            },
+            { type: "walk", who: "gamma4", direction: "up" },
+
+            { type: "stand", who: "gamma4", direction: "right", time: 500 },
+            { type: "stand", who: "gamma4", direction: "left", time: 500 },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "right" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "right" },
+
+            { type: "walk", who: "gamma4", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "BzZzzZz prio zzZZZzZz one zzZZzZzzZzZzz get zZzz at zzZz EDGEHOGGGG.",
+              who: "e-1000",
+            },
+
+            { type: "walk", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "Sonic are you ok? The e-1000s have been acting up ever since the other day.",
+              who: "tails",
+            },
+
+            { type: "walk", who: "tails", direction: "up" },
+            { type: "stand", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "E-1000 unit, walk back.",
+              who: "tails",
+            },
+            { type: "walk", who: "tails", direction: "left" },
+            { type: "walk", who: "tails", direction: "down" },
+            { type: "stand", who: "tails", direction: "right" },
+
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+            { type: "walk", who: "gamma4", direction: "left" },
+
+            { type: "stand", who: "tails", direction: "right" },
+
+            {
+              type: "textMessage",
+              text: "Sonic, can you come over and lend me a hand?",
+              who: "tails",
+            },
+            { type: "stand", who: "tails", direction: "up" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(5, 14)]: [
+        {
+          bypass: ["CHAO_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "CHAO_SCENE" },
+
+            { type: "walk", who: "amy", direction: "up" },
+            { type: "walk", who: "amy", direction: "left" },
+            { type: "walk", who: "amy", direction: "up" },
+            { type: "walk", who: "amy", direction: "up" },
+            { type: "walk", who: "amy", direction: "left" },
+            { type: "walk", who: "amy", direction: "left" },
+            { type: "stand", who: "amy", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "SONICCCCCCCCCCCCC",
+              who: "amy",
+            },
+            {
+              type: "textMessage",
+              text: "Thank goodness you're here! I can't get any of the chao to grow and I don't know what to do.",
+              who: "amy",
+            },
+
+            { type: "walk", who: "bunnie", direction: "up" },
+            { type: "walk", who: "bunnie", direction: "left" },
+            { type: "walk", who: "bunnie", direction: "up" },
+            { type: "walk", who: "bunnie", direction: "up" },
+            { type: "walk", who: "bunnie", direction: "up" },
+            { type: "walk", who: "bunnie", direction: "up" },
+            { type: "walk", who: "bunnie", direction: "right" },
+            { type: "stand", who: "amy", direction: "left" },
+
+            {
+              type: "textMessage",
+              text: "Welcome back Sugarh! I was tellin Amy not to worry her pretty head about it.",
+              who: "bunnie",
+            },
+            {
+              type: "textMessage",
+              text: "Sonic has our back and the chao love him! He'll help us I'm sure of it. ",
+              who: "bunnie",
+            },
+            { type: "stand", who: "amy", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "Alight then, I'm counting on you Sonic!",
+              who: "amy",
+            },
+
+            { type: "walk", who: "amy", direction: "right" },
+            { type: "walk", who: "amy", direction: "right" },
+            { type: "walk", who: "amy", direction: "down" },
+            { type: "walk", who: "amy", direction: "right" },
+            { type: "walk", who: "amy", direction: "down" },
+            { type: "walk", who: "amy", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "You'll be fine, go talk to Amy when you're ready.",
+              who: "Bunnie",
+            },
+
+            { type: "walk", who: "bunnie", direction: "left" },
+            { type: "walk", who: "bunnie", direction: "down" },
+            { type: "walk", who: "bunnie", direction: "down" },
+            { type: "walk", who: "bunnie", direction: "down" },
+            { type: "walk", who: "bunnie", direction: "down" },
+            { type: "walk", who: "bunnie", direction: "right" },
+            { type: "walk", who: "bunnie", direction: "down" },
+            { type: "stand", who: "bunnie", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 4)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 5)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 6)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 7)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 8)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 9)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 10)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 11)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(54, 12)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(55, 12)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
+          ],
+        },
+      ],
+      [utils.asGridCoord(56, 12)]: [
+        {
+          bypass: ["TROUBLE_SCENE"],
+          events: [
+            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+
+            { type: "stand", who: "nicole", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "What could be wrong with them? They were working fine until the other day.",
+              who: "sally",
+            },
+
+            { type: "walk", who: "sally", direction: "down" },
+            { type: "walk", who: "sally", direction: "down" },
+
+            {
+              type: "textMessage",
+              text: "So far Tails and Chuck haven't had any luck figuring it out either.",
+              who: "sally",
+            },
+            {
+              type: "textMessage",
+              text: "I'm not sure what to do Nicole.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "We'll figure out a way Sally. There is nothing we can't accomplish together!",
+              who: "nicole",
+            },
+
+            { type: "walk", who: "sally", direction: "up" },
+            { type: "walk", who: "sally", direction: "up" },
+
+            {
+              type: "textMessage",
+              text: "You're right. I'm sure we'll figure out a way forward. I'm just worried about everyone. I'll try to relax more.",
+              who: "sally",
+            },
+
+            { type: "stand", who: "sally", direction: "right" },
           ],
         },
       ],
@@ -2927,12 +3960,12 @@ window.OverworldMaps = {
     cutsceneSpaces: {
       [utils.asGridCoord(10, 6)]: [
         {
-          disqualify: ["BEAT_GAME"],
+          bypass: ["BEAT_GAME"],
           events: [
             { type: "addStoryFlag", flag: "BEAT_GAME" },
             {
               type: "textMessage",
-              text: "* You are chopping ingredients on your first day as a Pizza Chef at a famed establishment in town. *",
+              text: "* You've had a long day helping your friends. Sweet dreams Sonic. *",
             },
           ],
         },

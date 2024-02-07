@@ -1,7 +1,7 @@
 class TextMessage {
   constructor({ text, who, onComplete }) {
     this.text = text;
-    this.who = who || "...";
+    this.who = who || undefined;
     this.onComplete = onComplete;
     this.element = null;
   }
@@ -11,12 +11,16 @@ class TextMessage {
     this.element = document.createElement("div");
     this.element.classList.add("TextMessage");
     this.element.innerHTML = `
-      <p class="TextMessage_speaker">${this.who.toUpperCase()}</p>
-
       <p class="TextMessage_p"></p>
       <button class="TextMessage_button">Next</button>
     `;
 
+    if (this.who) {
+      this.message = document.createElement("p");
+      this.message.classList.add("TextMessage_speaker");
+      this.message.innerText = `${this.who.toUpperCase()}`;
+      this.element.prepend(this.message);
+    }
     //Init the typewriter effect
     this.revealingText = new RevealingText({
       element: this.element.querySelector(".TextMessage_p"),
