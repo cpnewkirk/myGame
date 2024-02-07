@@ -71,7 +71,7 @@ body {
   } */
 }
 
-.fullscreen {
+.fullscreenButton {
   position: absolute;
   top: 12%;
   right: 6%;
@@ -79,3 +79,7 @@ body {
   font-size: 5px;
   transform: scale(3);
 }
+
+/* a:fullscreen {
+  transform: scale(3);
+} */

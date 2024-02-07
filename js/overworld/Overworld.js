@@ -147,13 +147,16 @@ class Overworld {
     }
 
     this.fullscreenButton = document.createElement("button");
-    this.fullscreenButton.classList.add("fullscreen");
+    this.fullscreenButton.classList.add("fullscreenButton");
     this.fullscreenButton.textContent = "Toggle Fullscreen";
     this.fullscreenButton.onclick = (event) => {
       if (!document.fullscreenElement) {
-        this.canvas.requestFullscreen().catch((err) => {
-          alert(`Error, can't enable full-screen mode: ${err.message}`);
-        });
+        document
+          .querySelector(".game-container")
+          .requestFullscreen()
+          .catch((err) => {
+            alert(`Error, can't enable full-screen mode: ${err.message}`);
+          });
       } else {
         document.exitFullscreen();
       }
