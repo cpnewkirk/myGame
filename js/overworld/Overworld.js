@@ -251,6 +251,10 @@ class Overworld {
     // Make touch controller
     if (screen.width < 768) {
       this.createController();
+
+      document.addEventListener("touchstart", (e) => {
+        this.map.checkForActionCutscene();
+      });
     }
 
     //Kick off the game!
