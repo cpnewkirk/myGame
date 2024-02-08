@@ -303,18 +303,6 @@ class Overworld {
         text: "I wonder how everyone is doing.",
         who: "Sonic",
       },
-
-      // { type: "walk", who: "amy", direction: "right" },
-      // {
-      //   type: "stand",
-      //   who: "amy",
-      //   direction: "right",
-      //   time: 200,
-      // },
-      // { type: "stand", who: "hero", direction: "left", time: 200 },
-      // { type: "walk", who: "kitchenNpcA", direction: "up" },
-      // { type: "stand", who: "kitchenNpcA", direction: "up", time: 300 },
-      // { type: "stand", who: "hero", direction: "down", time: 400 },
     ]);
   }
 }

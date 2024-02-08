@@ -24,7 +24,7 @@ function grow() {
   if (myTamagotchi.age < 1) {
     hatch();
   } else {
-    $("img:eq(1)").replaceWith(
+    $(".tamagotchi img").replaceWith(
       "<img src='../assets/tamagotchi/tamagotchi-bunny-2.png'>"
     );
     incrementAge();
@@ -87,6 +87,9 @@ function incrementBoredom() {
 function incrementAge() {
   let timeoutID = window.setTimeout(function () {
     myTamagotchi.age += 1;
+    if (myTamagotchi.age === 4) {
+      setTimeout(end, 1000);
+    }
     $("#age").replaceWith(`<p id='age'>Age: ${myTamagotchi.age}</p>`);
     if (myTamagotchi.age < 10) {
       incrementAge();
@@ -124,12 +127,12 @@ function play() {
 }
 
 function bedtime(time) {
-  $("img:eq(0)").replaceWith(
+  $(".home img").replaceWith(
     "<img src='../assets/tamagotchi/tamagotchi-home-night.png'>"
   );
   let timeoutID = window.setTimeout(function () {
     myTamagotchi.sleepiness = 0;
-    $("img:eq(0)").replaceWith(
+    $(".home img").replaceWith(
       "<img src='../assets/tamagotchi/tamagotchi-home.png'>"
     );
     $("#sleepiness").replaceWith(
@@ -141,22 +144,29 @@ function bedtime(time) {
 // create functions for die and to restart game
 function die() {
   alive = false;
-  $("img:eq(1)").replaceWith(
+  $(".tamagotchi img").replaceWith(
     "<img src='../assets/tamagotchi/tamagotchi-dead.png'>"
   );
   $("#sleep").hide();
   $("#play").hide();
   $("#feed").hide();
-  $("#restart").show();
+  // $("#restart").show();
   $("#actions").after(
     "<h2>Your tomodatchi died due to your negligence. Shame! Shame! Shame!</h2>"
   );
+  setTimeout(end, 1000);
+}
+
+function end() {
+  document.querySelector(`.overworld`).style.visibility = "visible";
+  document.querySelector(`.overworld`).style.display = "block";
+  document.querySelector(`.amy-game`).style.visibility = "hidden";
 }
 
 function restart() {
   let alive = true;
   $("#restart").hide();
-  $("img:eq(1)").replaceWith(
+  $(".tamagotchi img").replaceWith(
     "<img src='../assets/tamagotchi/tamagotchi-egg.png'>"
   );
   myTamagotchi.sleepiness = 0;
@@ -199,8 +209,3 @@ startGame();
 if (myTamagotchi.sleep > 10) {
   die();
 }
-
-// while(true) {
-// 	// Event Loop
-// 	if(gameOver) break;
-// }

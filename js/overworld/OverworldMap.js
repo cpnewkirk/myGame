@@ -248,6 +248,10 @@ window.OverworldMaps = {
                 faceHero: "amy",
                 who: "amy",
               },
+              {
+                type: "helpMenu",
+                who: "amy",
+              },
             ],
           },
         ],
@@ -294,7 +298,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "textMessage",
-                text: "Didn't knwo you were such a family hedgehog!",
+                text: "Didn't know you were such a family hedgehog!",
                 faceHero: "bunnie",
                 who: "bunnie",
               },
@@ -336,7 +340,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/dulce.png",
         talking: [
           {
-            required: ["TROUBLE_COPLETE"],
+            required: ["TROUBLE_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -420,6 +424,10 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Hey. You up for a treasure hunting adventure?",
                 faceHero: "knuckles",
+                who: "knuckles",
+              },
+              {
+                type: "helpMenu",
                 who: "knuckles",
               },
             ],
@@ -671,7 +679,17 @@ window.OverworldMaps = {
         src: "assets/characters/people/tails.png",
         talking: [
           {
-            required: ["WORKSHOP_COPLETE"],
+            required: ["WORKSHOP_COMPLETE"],
+            events: [
+              {
+                type: "textMessage",
+                text: "Thanks for the help Sonic! I can always count on you.",
+                faceHero: "tails",
+                who: "tails",
+              },
+            ],
+          },
+          {
             events: [
               {
                 type: "textMessage",
@@ -685,14 +703,8 @@ window.OverworldMaps = {
                 faceHero: "tails",
                 who: "tails",
               },
-            ],
-          },
-          {
-            events: [
               {
-                type: "textMessage",
-                text: "Thanks for the help Sonic! I can always count on you.",
-                faceHero: "tails",
+                type: "helpMenu",
                 who: "tails",
               },
             ],
@@ -977,6 +989,10 @@ window.OverworldMaps = {
                 type: "textMessage",
                 text: "Can you run and get me something? Let's do it to it!",
                 faceHero: "sally",
+                who: "sally",
+              },
+              {
+                type: "helpMenu",
                 who: "sally",
               },
               {
@@ -2642,6 +2658,15 @@ window.OverworldMaps = {
               text: "Sonic!!! I'm so glad to see you! There's so much to catch up on, but right now my hands are full with this roboOOOOOOOT...",
               who: "tails",
             },
+            { type: "stand", who: "tails", direction: "up", time: 100 },
+            { type: "stand", who: "tails", direction: "left", time: 100 },
+            { type: "stand", who: "tails", direction: "down", time: 100 },
+            { type: "stand", who: "tails", direction: "right", time: 100 },
+            { type: "stand", who: "tails", direction: "up", time: 100 },
+            { type: "stand", who: "tails", direction: "left", time: 100 },
+            { type: "stand", who: "tails", direction: "down", time: 100 },
+            { type: "stand", who: "tails", direction: "right", time: 100 },
+
             { type: "walk", who: "gamma4", direction: "up" },
 
             { type: "stand", who: "gamma4", direction: "right", time: 500 },
@@ -2657,6 +2682,7 @@ window.OverworldMaps = {
             { type: "walk", who: "gamma4", direction: "right" },
 
             { type: "walk", who: "gamma4", direction: "down" },
+            { type: "stand", who: "hero", direction: "up" },
 
             {
               type: "textMessage",
@@ -2665,6 +2691,7 @@ window.OverworldMaps = {
             },
 
             { type: "walk", who: "tails", direction: "right" },
+            { type: "stand", who: "hero", direction: "left" },
 
             {
               type: "textMessage",
@@ -2689,6 +2716,7 @@ window.OverworldMaps = {
             { type: "walk", who: "gamma4", direction: "left" },
             { type: "walk", who: "gamma4", direction: "left" },
             { type: "walk", who: "gamma4", direction: "left" },
+            { type: "stand", who: "gamma4", direction: "down" },
 
             { type: "stand", who: "tails", direction: "right" },
 
@@ -2725,6 +2753,16 @@ window.OverworldMaps = {
               text: "Sonic!!! I'm so glad to see you! There's so much to catch up on, but right now my hands are full with this roboOOOOOOOT...",
               who: "tails",
             },
+
+            { type: "stand", who: "tails", direction: "up", time: 100 },
+            { type: "stand", who: "tails", direction: "left", time: 100 },
+            { type: "stand", who: "tails", direction: "down", time: 100 },
+            { type: "stand", who: "tails", direction: "right", time: 100 },
+            { type: "stand", who: "tails", direction: "up", time: 100 },
+            { type: "stand", who: "tails", direction: "left", time: 100 },
+            { type: "stand", who: "tails", direction: "down", time: 100 },
+            { type: "stand", who: "tails", direction: "right", time: 100 },
+
             { type: "walk", who: "gamma4", direction: "up" },
 
             { type: "stand", who: "gamma4", direction: "right", time: 500 },
@@ -2740,6 +2778,7 @@ window.OverworldMaps = {
             { type: "walk", who: "gamma4", direction: "right" },
 
             { type: "walk", who: "gamma4", direction: "down" },
+            { type: "stand", who: "hero", direction: "up" },
 
             {
               type: "textMessage",
@@ -2747,6 +2786,7 @@ window.OverworldMaps = {
               who: "e-1000",
             },
 
+            { type: "stand", who: "hero", direction: "left" },
             { type: "walk", who: "tails", direction: "right" },
 
             {
@@ -2772,6 +2812,7 @@ window.OverworldMaps = {
             { type: "walk", who: "gamma4", direction: "left" },
             { type: "walk", who: "gamma4", direction: "left" },
             { type: "walk", who: "gamma4", direction: "left" },
+            { type: "stand", who: "gamma4", direction: "down" },
 
             { type: "stand", who: "tails", direction: "right" },
 

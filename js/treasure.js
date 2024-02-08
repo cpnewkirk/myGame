@@ -1,4 +1,4 @@
-const canvas = document.querySelector("canvas");
+const canvas = document.querySelector(".treasure-canvas");
 const c = canvas.getContext("2d");
 
 canvas.classList.add("treasure");
@@ -44,13 +44,19 @@ const player = new Player({
       loop: false,
       imageSrc: "assets/treasure-hunt/player/enterDoor.png",
       onComplete: () => {
-        console.log("completed animation");
+        // console.log("completed animation");
         gsap.to(overlay, {
           opacity: 1,
           onComplete: () => {
             level++;
 
-            if (level === 4) level = 1;
+            if (level === 4) {
+              document.querySelector(`.overworld`).style.visibility = "visible";
+              document.querySelector(`.overworld`).style.display = "block";
+              document.querySelector(`.knuckles-game`).style.visibility =
+                "hidden";
+              level = 1;
+            }
             levels[level].init();
             player.switchSprite("idleRight");
             player.preventInput = false;
@@ -64,7 +70,7 @@ const player = new Player({
   },
 });
 
-let level = 3;
+let level = 1;
 let levels = {
   1: {
     init: () => {

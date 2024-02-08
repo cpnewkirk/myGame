@@ -128,6 +128,20 @@ class OverworldEvent {
     menu.init(document.querySelector(".game-container"));
   }
 
+  helpMenu(resolve) {
+    this.map.isPaused = true;
+
+    const helpMenu = new HelpMenu({
+      who: this.map.gameObjects[this.event.who],
+      onComplete: () => {
+        resolve();
+        this.map.isPaused = false;
+        this.map.overworld.startGameLoop();
+      },
+    });
+    helpMenu.init(document.querySelector(".game-container"));
+  }
+
   init() {
     return new Promise((resolve) => {
       this[this.event.type](resolve);
