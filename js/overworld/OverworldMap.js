@@ -2339,18 +2339,18 @@ window.OverworldMaps = {
     cutsceneSpaces: {
       [utils.asGridCoord(40, 24)]: [
         {
-          required: [
-            "CHAO_COMPLETE",
-            "WORKSHOP_COMPLETE",
-            "ECHIDNA_COMPLETE",
-            "TROUBLE_COMPLETE",
-          ],
+          // required: [
+          //   "CHAO_COMPLETE",
+          //   "WORKSHOP_COMPLETE",
+          //   "ECHIDNA_COMPLETE",
+          //   "TROUBLE_COMPLETE",
+          // ],
           events: [
             {
               type: "changeMap",
               map: "Home",
-              x: utils.withGrid(0),
-              y: utils.withGrid(0),
+              x: utils.withGrid(6),
+              y: utils.withGrid(9),
               direction: "up",
             },
           ],
@@ -2378,8 +2378,8 @@ window.OverworldMaps = {
             {
               type: "changeMap",
               map: "Home",
-              x: utils.withGrid(0),
-              y: utils.withGrid(0),
+              x: utils.withGrid(6),
+              y: utils.withGrid(9),
               direction: "up",
             },
           ],
@@ -4016,31 +4016,44 @@ window.OverworldMaps = {
     id: "Home",
     lowerSrc: "assets/maps/homeLower.png",
     upperSrc: "assets/maps/homeUpper.png",
-    backgroundMusic: "assets/audios/Knothole.mp3",
+    backgroundMusic: "assets/audios/Home.mp3",
     configObjects: {
       hero: {
         type: "Person",
         isPlayerControlled: true,
-        x: utils.withGrid(3),
+        x: utils.withGrid(6),
         y: utils.withGrid(9),
       },
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(10, 6)]: [
+      [utils.asGridCoord(6, 8)]: [
         {
           bypass: ["BEAT_GAME"],
           events: [
             { type: "addStoryFlag", flag: "BEAT_GAME" },
+
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "up" },
+            { type: "walk", who: "hero", direction: "left" },
+            { type: "walk", who: "hero", direction: "left" },
+            { type: "stand", who: "hero", direction: "right" },
+
             {
               type: "textMessage",
-              text: "* You've had a long day helping your friends. Sweet dreams Sonic. *",
+              text: "You've had a long day helping your friends. Sweet dreams Sonic.",
             },
           ],
         },
       ],
     },
     walls: {
-      [utils.asGridCoord(0, 5)]: true,
+      [utils.asGridCoord(5, 9)]: true,
+      [utils.asGridCoord(6, 10)]: true,
+      [utils.asGridCoord(7, 9)]: true,
     },
   },
 };

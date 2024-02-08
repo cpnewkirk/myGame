@@ -39,9 +39,9 @@ class TextMessage {
       this.done();
     });
 
-    // document.addEventListener("touchstart", (e) => {
-    //   this.done();
-    // )};
+    document.addEventListener("touchstart", (e) => {
+      this.done();
+    });
   }
 
   done() {
