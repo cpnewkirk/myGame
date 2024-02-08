@@ -2339,12 +2339,12 @@ window.OverworldMaps = {
     cutsceneSpaces: {
       [utils.asGridCoord(40, 24)]: [
         {
-          // required: [
-          //   "CHAO_COMPLETE",
-          //   "WORKSHOP_COMPLETE",
-          //   "ECHIDNA_COMPLETE",
-          //   "TROUBLE_COMPLETE",
-          // ],
+          required: [
+            "CHAO_COMPLETE",
+            "WORKSHOP_COMPLETE",
+            "ECHIDNA_COMPLETE",
+            "TROUBLE_COMPLETE",
+          ],
           events: [
             {
               type: "changeMap",
