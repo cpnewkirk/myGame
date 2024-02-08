@@ -15,7 +15,8 @@ class OverworldMap {
     this.isCutscenePlaying = false;
     this.isPaused = false;
 
-    this.backgroundMusic = config.backgroundMusic;
+    this.backgroundMusic = new Audio();
+    this.backgroundMusic.src = config.backgroundMusic;
   }
 
   startMusic() {
@@ -23,11 +24,10 @@ class OverworldMap {
     this.element = document.createElement("button");
     this.element.classList.add("toggle");
 
-    const background = new Audio(this.backgroundMusic);
-    background.loop = true;
-    background.volume = 0.5;
-    background.muted = false;
-    const playPromise = background.play();
+    this.backgroundMusic.loop = true;
+    this.backgroundMusic.volume = 0.5;
+    this.backgroundMusic.muted = false;
+    const playPromise = this.backgroundMusic.play();
 
     if (playPromise !== undefined) {
       playPromise
@@ -42,7 +42,7 @@ class OverworldMap {
 
     this.element.textContent = "Mute/Unmute";
     this.element.onclick = (event) => {
-      background.muted = !background.muted;
+      this.backgroundMusic.muted = !this.backgroundMusic.muted;
     };
 
     document.querySelector(".game-container").appendChild(this.element);

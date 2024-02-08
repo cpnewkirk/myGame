@@ -69,6 +69,9 @@ class OverworldEvent {
   }
 
   changeMap(resolve) {
+    // Stop music
+    this.map.backgroundMusic.pause();
+
     //Stop all Person things
     Object.values(this.map.gameObjects).forEach((obj) => {
       obj.isMounted = false;
