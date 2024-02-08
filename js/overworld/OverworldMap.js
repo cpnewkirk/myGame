@@ -120,7 +120,7 @@ class OverworldMap {
     if (document.querySelector(".controller")) {
       let x = document.getElementsByClassName("controller");
       for (let i = 0; i < x.length; i++) {
-        x[i].classList.addstyle.animation = "fadeOut 0.5s forwards";
+        x[i].style.animation = "fadeOut 0.5s forwards";
       }
     }
 
@@ -150,7 +150,7 @@ class OverworldMap {
     if (document.querySelector(".controller")) {
       let x = document.getElementsByClassName("controller");
       for (let i = 0; i < x.length; i++) {
-        x[i].classList.style.animation = "fadeIn 0.5s";
+        x[i].style.animation = "fadeIn 0.5s";
       }
     }
     this.isCutscenePlaying = false;
