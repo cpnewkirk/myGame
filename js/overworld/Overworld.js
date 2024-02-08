@@ -104,7 +104,7 @@ class Overworld {
     this.controllerUp = document.createElement("button");
     this.controllerUp.classList.add("controllerUp");
     this.controllerUp.classList.add("controller");
-    this.controllerUp.textContent = "Up";
+    // this.controllerUp.textContent = "Up";
     this.controllerUp.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowUp"];
       if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
@@ -112,7 +112,6 @@ class Overworld {
       }
     });
     this.controllerUp.addEventListener("pointerup", (e) => {
-      console.log(event);
       const dir = this.directionInput.map["ArrowUp"];
       const index = this.directionInput.heldDirections.indexOf(dir);
       if (index > -1) {
@@ -124,7 +123,7 @@ class Overworld {
     this.controllerRight = document.createElement("button");
     this.controllerRight.classList.add("controllerRight");
     this.controllerRight.classList.add("controller");
-    this.controllerRight.textContent = "Right";
+    // this.controllerRight.textContent = "Right";
     this.controllerRight.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowRight"];
       if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
@@ -143,7 +142,7 @@ class Overworld {
     this.controllerDown = document.createElement("button");
     this.controllerDown.classList.add("controllerDown");
     this.controllerDown.classList.add("controller");
-    this.controllerDown.textContent = "Down";
+    // this.controllerDown.textContent = "Down";
     this.controllerDown.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowDown"];
       if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
@@ -162,7 +161,7 @@ class Overworld {
     this.controllerLeft = document.createElement("button");
     this.controllerLeft.classList.add("controllerLeft");
     this.controllerLeft.classList.add("controller");
-    this.controllerLeft.textContent = "Left";
+    // this.controllerLeft.textContent = "Left";
     this.controllerLeft.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowLeft"];
       if (dir && this.directionInput.heldDirections.indexOf(dir) === -1) {
@@ -269,9 +268,9 @@ class Overworld {
     if (screen.width < 768) {
       this.createController();
 
-      document.addEventListener("touchstart", (e) => {
-        this.map.checkForActionCutscene();
-      });
+      // document.addEventListener("touchstart", (e) => {
+      //   this.map.checkForActionCutscene();
+      // });
     }
 
     //Kick off the game!
