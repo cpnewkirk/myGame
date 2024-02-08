@@ -106,14 +106,51 @@ class OverworldMap {
   async startCutscene(events) {
     this.isCutscenePlaying = true;
 
+    if (document.querySelector(".escMenu")) {
+      document.querySelector(".escMenu").style.animation =
+        "fadeOut 0.5s forwards";
+    }
+    if (document.querySelector(".fullscreenButton")) {
+      document.querySelector(".fullscreenButton").style.animation =
+        "fadeOut 0.5s forwards";
+    }
+    if (document.querySelector(".Hud")) {
+      document.querySelector(".Hud").style.animation = "fadeOut 0.5s forwards";
+    }
+    if (document.querySelector(".controller")) {
+      let x = document.getElementsByClassName("controller");
+      for (let i = 0; i < x.length; i++) {
+        x[i].classList.addstyle.animation = "fadeOut 0.5s forwards";
+      }
+    }
+
     for (let i = 0; i < events.length; i++) {
       const eventHandler = new OverworldEvent({
         event: events[i],
         map: this,
       });
       const result = await eventHandler.init();
-      if (result === "LOST_BATTLE") {
+      if (result === "LOST_GAME") {
         break;
+      }
+    }
+
+    if (document.querySelector(".escMenu")) {
+      document.querySelector(".escMenu").style.animation = "fadeIn 0.5s";
+    }
+
+    if (document.querySelector(".fullscreenButton")) {
+      document.querySelector(".fullscreenButton").style.animation =
+        "fadeIn 0.5s";
+    }
+
+    if (document.querySelector(".Hud")) {
+      document.querySelector(".Hud").style.animation = "fadeIn 0.5s";
+    }
+    if (document.querySelector(".controller")) {
+      let x = document.getElementsByClassName("controller");
+      for (let i = 0; i < x.length; i++) {
+        x[i].classList.style.animation = "fadeIn 0.5s";
       }
     }
     this.isCutscenePlaying = false;
@@ -1073,12 +1110,6 @@ window.OverworldMaps = {
               {
                 type: "textMessage",
                 text: "I'm helping Sally diagnose the e-1000 robots with my nanites. I can't interface with them right now for some reason.",
-                faceHero: "nicole",
-                who: "nicole",
-              },
-              {
-                type: "textMessage",
-                text: "The reason you can see me right now is beacuse I am projecting myself using a special technology.",
                 faceHero: "nicole",
                 who: "nicole",
               },
@@ -3584,14 +3615,16 @@ window.OverworldMaps = {
       [utils.asGridCoord(21, 9)]: true,
       [utils.asGridCoord(21, 8)]: true,
       [utils.asGridCoord(22, 8)]: true,
-      [utils.asGridCoord(23, 7)]: true,
-      [utils.asGridCoord(24, 7)]: true,
-      [utils.asGridCoord(25, 7)]: true,
-      [utils.asGridCoord(26, 7)]: true,
+      [utils.asGridCoord(23, 8)]: true,
+      [utils.asGridCoord(24, 8)]: true,
+      [utils.asGridCoord(25, 8)]: true,
       [utils.asGridCoord(26, 8)]: true,
       [utils.asGridCoord(26, 9)]: true,
-      [utils.asGridCoord(27, 10)]: true,
-      [utils.asGridCoord(28, 10)]: true,
+
+      // Tree overhang
+      [utils.asGridCoord(26, 10)]: true,
+      [utils.asGridCoord(27, 11)]: true,
+
       [utils.asGridCoord(28, 11)]: true,
       [utils.asGridCoord(28, 12)]: true,
       [utils.asGridCoord(28, 13)]: true,
@@ -3618,12 +3651,15 @@ window.OverworldMaps = {
       [utils.asGridCoord(24, 27)]: true,
 
       // Start of tree below extra grass
-      [utils.asGridCoord(25, 31)]: true,
-      [utils.asGridCoord(26, 31)]: true,
-      [utils.asGridCoord(27, 31)]: true,
+      [utils.asGridCoord(25, 32)]: true,
+      [utils.asGridCoord(26, 32)]: true,
+      [utils.asGridCoord(24, 31)]: true,
       [utils.asGridCoord(27, 32)]: true,
       [utils.asGridCoord(27, 33)]: true,
-      [utils.asGridCoord(28, 34)]: true,
+
+      // Tree
+      [utils.asGridCoord(27, 34)]: true,
+
       [utils.asGridCoord(28, 35)]: true,
       [utils.asGridCoord(28, 36)]: true,
       [utils.asGridCoord(28, 37)]: true,
@@ -3743,16 +3779,19 @@ window.OverworldMaps = {
       [utils.asGridCoord(41, 39)]: true,
       [utils.asGridCoord(41, 38)]: true,
       [utils.asGridCoord(42, 38)]: true,
-      [utils.asGridCoord(43, 37)]: true,
-      [utils.asGridCoord(44, 37)]: true,
-      [utils.asGridCoord(45, 37)]: true,
-      [utils.asGridCoord(46, 37)]: true,
-      [utils.asGridCoord(47, 37)]: true,
-      [utils.asGridCoord(48, 37)]: true,
-      [utils.asGridCoord(49, 37)]: true,
-      [utils.asGridCoord(50, 37)]: true,
-      [utils.asGridCoord(51, 37)]: true,
-      [utils.asGridCoord(52, 37)]: true,
+
+      // Beg of trees
+      // [utils.asGridCoord(43, 37)]: true,
+      [utils.asGridCoord(44, 38)]: true,
+      [utils.asGridCoord(45, 38)]: true,
+      [utils.asGridCoord(46, 38)]: true,
+      [utils.asGridCoord(47, 38)]: true,
+      [utils.asGridCoord(48, 38)]: true,
+      [utils.asGridCoord(49, 38)]: true,
+      [utils.asGridCoord(50, 38)]: true,
+      [utils.asGridCoord(51, 38)]: true,
+      // [utils.asGridCoord(52, 37)]: true,
+
       [utils.asGridCoord(52, 38)]: true,
       [utils.asGridCoord(52, 39)]: true,
       [utils.asGridCoord(53, 40)]: true,
@@ -3771,10 +3810,13 @@ window.OverworldMaps = {
       [utils.asGridCoord(56, 34)]: true,
       [utils.asGridCoord(56, 33)]: true,
       [utils.asGridCoord(56, 32)]: true,
-      [utils.asGridCoord(56, 31)]: true,
-      [utils.asGridCoord(57, 31)]: true,
-      [utils.asGridCoord(58, 31)]: true,
-      [utils.asGridCoord(59, 31)]: true,
+
+      // Tree
+      // [utils.asGridCoord(56, 31)]: true,
+      [utils.asGridCoord(57, 32)]: true,
+      [utils.asGridCoord(58, 32)]: true,
+      // [utils.asGridCoord(59, 31)]: true,
+
       [utils.asGridCoord(59, 32)]: true,
       [utils.asGridCoord(59, 33)]: true,
 
@@ -3803,7 +3845,16 @@ window.OverworldMaps = {
       [utils.asGridCoord(57, 15)]: true,
       [utils.asGridCoord(57, 14)]: true,
       [utils.asGridCoord(57, 13)]: true,
-      [utils.asGridCoord(58, 12)]: true,
+
+      // Tree
+      [utils.asGridCoord(58, 13)]: true,
+      [utils.asGridCoord(59, 13)]: true,
+      [utils.asGridCoord(60, 13)]: true,
+      [utils.asGridCoord(61, 13)]: true,
+      [utils.asGridCoord(62, 12)]: true,
+      [utils.asGridCoord(61, 11)]: true,
+      [utils.asGridCoord(60, 11)]: true,
+
       [utils.asGridCoord(59, 11)]: true,
       [utils.asGridCoord(60, 10)]: true,
       [utils.asGridCoord(61, 9)]: true,
@@ -3829,8 +3880,11 @@ window.OverworldMaps = {
       [utils.asGridCoord(51, 31)]: true,
       [utils.asGridCoord(51, 30)]: true,
       [utils.asGridCoord(51, 29)]: true,
-      [utils.asGridCoord(51, 28)]: true,
-      [utils.asGridCoord(50, 28)]: true,
+
+      // Tree
+      [utils.asGridCoord(50, 29)]: true,
+      [utils.asGridCoord(49, 28)]: true,
+
       [utils.asGridCoord(49, 27)]: true,
       [utils.asGridCoord(50, 26)]: true,
       [utils.asGridCoord(49, 25)]: true,
@@ -3864,30 +3918,44 @@ window.OverworldMaps = {
 
       // Top right
       [utils.asGridCoord(52, 11)]: true,
-      [utils.asGridCoord(52, 10)]: true,
-      [utils.asGridCoord(51, 10)]: true,
-      [utils.asGridCoord(50, 10)]: true,
-      [utils.asGridCoord(49, 10)]: true,
-      [utils.asGridCoord(48, 10)]: true,
-      [utils.asGridCoord(47, 10)]: true,
-      [utils.asGridCoord(46, 10)]: true,
-      [utils.asGridCoord(45, 10)]: true,
+
+      // Tree cover starts
+      // [utils.asGridCoord(52, 10)]: true,
+      [utils.asGridCoord(51, 11)]: true,
+      [utils.asGridCoord(50, 11)]: true,
+      [utils.asGridCoord(49, 11)]: true,
+      [utils.asGridCoord(48, 11)]: true,
+      [utils.asGridCoord(47, 11)]: true,
+      [utils.asGridCoord(46, 11)]: true,
+      [utils.asGridCoord(45, 11)]: true,
+
       [utils.asGridCoord(44, 9)]: true,
-      [utils.asGridCoord(43, 10)]: true,
+      [utils.asGridCoord(44, 11)]: true,
+
+      [utils.asGridCoord(43, 11)]: true,
+
       [utils.asGridCoord(42, 9)]: true,
+      [utils.asGridCoord(42, 11)]: true,
+
       [utils.asGridCoord(41, 9)]: true,
+      [utils.asGridCoord(41, 11)]: true,
+
+      [utils.asGridCoord(40, 11)]: true,
+      [utils.asGridCoord(39, 10)]: true,
+      [utils.asGridCoord(40, 9)]: true,
 
       // Top of tree
       [utils.asGridCoord(40, 8)]: true,
-      [utils.asGridCoord(39, 7)]: true,
-      [utils.asGridCoord(38, 7)]: true,
-      [utils.asGridCoord(37, 7)]: true,
-      [utils.asGridCoord(36, 7)]: true,
+      // [utils.asGridCoord(39, 7)]: true,
+      [utils.asGridCoord(38, 8)]: true,
+      [utils.asGridCoord(37, 8)]: true,
+      // [utils.asGridCoord(36, 7)]: true,
       [utils.asGridCoord(36, 8)]: true,
       [utils.asGridCoord(36, 9)]: true,
 
-      [utils.asGridCoord(35, 10)]: true,
-      [utils.asGridCoord(34, 10)]: true,
+      [utils.asGridCoord(36, 10)]: true,
+      [utils.asGridCoord(35, 11)]: true,
+
       [utils.asGridCoord(34, 11)]: true,
       [utils.asGridCoord(34, 12)]: true,
       [utils.asGridCoord(34, 13)]: true,

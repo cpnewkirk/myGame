@@ -91,7 +91,7 @@ class OverworldEvent {
       enemy: Enemies[this.event.enemyId],
       arena: this.event.arena || null,
       onComplete: (didWin) => {
-        resolve(didWin ? "WON_BATTLE" : "LOST_BATTLE");
+        resolve(didWin ? "WON_GAME" : "LOST_GAME");
       },
     });
     battle.init(document.querySelector(".game-container"));

@@ -13,6 +13,19 @@ class Overworld {
     //Establish the camera person
     const cameraPerson = this.map.gameObjects.hero;
 
+    // console.log(cameraPerson.y);
+    // if (cameraPerson.x < 176) {
+    //   cameraPerson.x = 176;
+    // } else if (cameraPerson.x > 816) {
+    //   cameraPerson.x = 816;
+    // }
+
+    // if (cameraPerson.y < 102) {
+    //   cameraPerson.y = 102;
+    // } else if (cameraPerson.y > 582) {
+    //   cameraPerson.y = 582;
+    // }
+
     //Update all objects
     Object.values(this.map.gameObjects).forEach((object) => {
       object.update({
@@ -90,6 +103,7 @@ class Overworld {
   createController() {
     this.controllerUp = document.createElement("button");
     this.controllerUp.classList.add("controllerUp");
+    this.controllerUp.classList.add("controller");
     this.controllerUp.textContent = "Up";
     this.controllerUp.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowUp"];
@@ -109,6 +123,7 @@ class Overworld {
 
     this.controllerRight = document.createElement("button");
     this.controllerRight.classList.add("controllerRight");
+    this.controllerRight.classList.add("controller");
     this.controllerRight.textContent = "Right";
     this.controllerRight.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowRight"];
@@ -127,6 +142,7 @@ class Overworld {
 
     this.controllerDown = document.createElement("button");
     this.controllerDown.classList.add("controllerDown");
+    this.controllerDown.classList.add("controller");
     this.controllerDown.textContent = "Down";
     this.controllerDown.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowDown"];
@@ -145,6 +161,7 @@ class Overworld {
 
     this.controllerLeft = document.createElement("button");
     this.controllerLeft.classList.add("controllerLeft");
+    this.controllerLeft.classList.add("controller");
     this.controllerLeft.textContent = "Left";
     this.controllerLeft.addEventListener("pointerdown", (e) => {
       const dir = this.directionInput.map["ArrowLeft"];
