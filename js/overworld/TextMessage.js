@@ -35,6 +35,13 @@ class TextMessage {
     this.actionListener = new KeyPressListener("Enter", () => {
       this.done();
     });
+    this.actionListener = new KeyPressListener("Space", () => {
+      this.done();
+    });
+
+    // document.addEventListener("touchstart", (e) => {
+    //   this.done();
+    // )};
   }
 
   done() {

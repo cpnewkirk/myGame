@@ -84,6 +84,10 @@ class Overworld {
       //Is there a person here to talk to?
       this.map.checkForActionCutscene();
     });
+    new KeyPressListener("Space", () => {
+      //Is there a person here to talk to?
+      this.map.checkForActionCutscene();
+    });
     new KeyPressListener("Escape", () => {
       if (!this.map.isCutscenePlaying) {
         this.map.startCutscene([{ type: "pause" }]);
@@ -176,6 +180,16 @@ class Overworld {
       }
     });
     document.querySelector(".game-container").appendChild(this.controllerLeft);
+
+    this.controllerEnter = document.createElement("button");
+    this.controllerEnter.classList.add("controllerEnter");
+    this.controllerEnter.classList.add("controller");
+    // this.controllerEnter.textContent = "Enter";
+    this.controllerEnter.addEventListener("pointerdown", (e) => {
+      this.map.checkForActionCutscene();
+    });
+
+    document.querySelector(".game-container").appendChild(this.controllerEnter);
   }
 
   startMap(mapConfig, heroInitialState = null) {
@@ -267,10 +281,6 @@ class Overworld {
     // Make touch controller
     if (screen.width < 768) {
       this.createController();
-
-      // document.addEventListener("touchstart", (e) => {
-      //   this.map.checkForActionCutscene();
-      // });
     }
 
     //Kick off the game!

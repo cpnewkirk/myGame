@@ -8,13 +8,17 @@ class KeyboardMenu {
   }
 
   setOptions(options) {
+    const buttonAudio = new Audio("assets/audios/Button.mp3");
+    buttonAudio.volume = 0.3;
+
     this.options = options;
     this.element.innerHTML = this.options
       .map((option, index) => {
         const disabledAttr = option.disabled ? "disabled" : "";
+        const autoFocusAttr = index === 0 ? "autoFocus" : "";
         return `
         <div class="option">
-          <button ${disabledAttr} data-button="${index}" data-description="${
+          <button ${disabledAttr} ${autoFocusAttr} data-button="${index}" data-description="${
           option.description
         }">
             ${option.label}
@@ -29,6 +33,7 @@ class KeyboardMenu {
       button.addEventListener("click", () => {
         const chosenOption = this.options[Number(button.dataset.button)];
         chosenOption.handler();
+        buttonAudio.play();
       });
       button.addEventListener("mouseenter", () => {
         button.focus();
