@@ -1,6 +1,8 @@
 # Christian P. Newkirk
 
-Welcome to ! Click [here](https://cpnewkirk.github.io/myGame/) to start exploring! This is optimized for most mobile devices as well.
+Welcome to Chao in Space II! This is a sonic fan-game put together as a side project in my spare time. None of the sprites are mine and some of the code is originally from tutorials. Check out the credit below to see where everything is from.
+
+Click [here](https://cpnewkirk.github.io/myGame/) to start exploring! This is loosly-optimized for mobile devices as well, but you get the best expereience on a desktop.
 
 ## Installation
 
@@ -14,7 +16,7 @@ npm open index.html
 
 ## Technologies Used
 
-This project relies on .
+This project relies on Javascript, HTML, and CSS.
 
 ## Implementation
 
@@ -24,9 +26,14 @@ Firsts I .
 
 One of the most .
 
+## Bugs
+
+- On mobile, if you tap a direction button and move to another button then let go, you will be stuck going in that direction unless you tap the button again.
+- Some of the styling for mobile is not correct when full screen is on.
+
 ## Future Work
 
-I want to .
+I want to add a map to the west and the east.
 
 ## Credit
 
