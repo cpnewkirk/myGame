@@ -27,9 +27,9 @@ class EndingScreen {
     finaleAudio.volume = 0.3;
 
     this.element = document.createElement("div");
-    this.element.classList.add("TitleScreen");
+    this.element.classList.add("EndingScreen");
     this.element.innerHTML = `
-      <img class="TitleScreen_logo" src="assets/endingLogo.png" alt="Sonic relaxing on the beach" />
+      <img class="EndingScreen_logo" src="assets/endingLogo.png" alt="Sonic relaxing on the beach" />
       <p class="ending-text">Thanks for playing my game!</p>
     `;
 
@@ -44,7 +44,10 @@ class EndingScreen {
   init(container) {
     return new Promise((resolve) => {
       this.createElement();
-      container.appendChild(this.element);
+      container.insertBefore(
+        this.element,
+        document.querySelector(".EndSceneTransition")
+      );
       this.keyboardMenu = new KeyboardMenu();
       this.keyboardMenu.init(this.element);
       this.keyboardMenu.setOptions(this.getOptions(resolve));
