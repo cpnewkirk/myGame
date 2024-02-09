@@ -55,4 +55,8 @@ knuckles game knuckles: https://www.spriters-resource.com/custom_edited/sonicthe
 Chao garden: https://www.deviantart.com/ultimanumber255/art/Tiny-Chao-Garden-Spritesheet-792348615
 
 knothole music: https://downloads.khinsider.com/game-soundtracks/album/drawn-to-life-nintendo-ds/65_Village.mp3
+chao music: https://chao-island.com/media/music
 text: https://noproblo.dayjo.org/ZeldaSounds/QuickSearch.php?q=text&sa=Search+%28under+construction%29
+sound: https://www.101soundboards.com/boards/11340-sonic-the-hedgehog-sounds-sonic-game-2006#goog_rewarded
+house: https://www.spriters-resource.com/fullview/17384/
+Sonic voice: https://www.sounds-resource.com/gamecube/sadx/sound/1757/

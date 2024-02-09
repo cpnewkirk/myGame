@@ -133,13 +133,48 @@ class OverworldEvent {
 
     const helpMenu = new HelpMenu({
       who: this.map.gameObjects[this.event.who],
-      onComplete: () => {
-        resolve();
+      onComplete: (didWin) => {
+        resolve(didWin ? "WON_GAME" : "LOST_GAME");
         this.map.isPaused = false;
         this.map.overworld.startGameLoop();
       },
     });
     helpMenu.init(document.querySelector(".game-container"));
+  }
+
+  endingScreen(resolve) {
+    this.map.isPaused = true;
+
+    // this.element = document.createElement("div");
+    // this.element.classList.add("EndSceneTransition");
+    // document.querySelector(".game-container").appendChild(this.element);
+    // this.element.addEventListener("animationend", () => {
+    //   const ending = new EndingScreen({
+    //     onComplete: () => {
+    //       resolve();
+    //       this.map.isPaused = false;
+    //       this.map.overworld.startGameLoop();
+    //     },
+    //   });
+    //   ending.init(document.querySelector(".game-container"));
+
+    //   this.element.classList.add("fade-out");
+    //   this.element.remove();
+    // });
+
+    const sceneTransition = new SceneTransition();
+    sceneTransition.init(document.querySelector(".game-container"), () => {
+      const ending = new EndingScreen({
+        onComplete: () => {
+          resolve();
+          this.map.isPaused = false;
+          this.map.overworld.startGameLoop();
+        },
+      });
+      ending.init(document.querySelector(".game-container"));
+      resolve();
+      sceneTransition.fadeOut();
+    });
   }
 
   init() {

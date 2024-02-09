@@ -1,46 +1,39 @@
-class TitleScreen {
+class EndingScreen {
   constructor({ progress }) {
     this.progress = progress;
-
-    this.voice = new Audio();
-    this.voice.src = "assets/audios/GetGoing.wav";
   }
 
   getOptions(resolve) {
-    const safeFile = this.progress.getSaveFile();
     return [
       {
-        label: "New Game",
+        label: "Restart",
         description: "Start a new adventure.",
         handler: () => {
-          this.voice.src = "assets/audios/GetGoing.wav";
-          this.voice.volume = 0.3;
-          this.voice.play();
-
-          this.close();
-          resolve();
+          location.reload();
         },
       },
-      safeFile
-        ? {
-            label: "Continue Game",
-            description: "Resume your adventure",
-            disabled: true,
-            handler: () => {
-              this.close();
-              resolve(safeFile);
-            },
-          }
-        : null,
+      {
+        label: "Exit",
+        description: "Close this tab.",
+        handler: () => {
+          window.close();
+        },
+      },
     ].filter((v) => v);
   }
 
   createElement() {
+    const finaleAudio = new Audio("assets/audios/PlayAgain.wav");
+    finaleAudio.volume = 0.3;
+
     this.element = document.createElement("div");
     this.element.classList.add("TitleScreen");
     this.element.innerHTML = `
-      <img class="TitleScreen_logo" src="assets/logo.png" alt="Sonic Adventure" />
+      <img class="TitleScreen_logo" src="assets/endingLogo.png" alt="Sonic relaxing on the beach" />
+      <p class="ending-text">Thanks for playing my game!</p>
     `;
+
+    finaleAudio.play();
   }
 
   close() {

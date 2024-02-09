@@ -269,7 +269,8 @@ class Overworld {
     container.appendChild(this.fullscreenButton);
 
     //Start the first map
-    this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
+    // this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
+    this.startMap(window.OverworldMaps["Home"], initialHeroState);
 
     //Create controls
     this.bindActionInput();
@@ -287,22 +288,22 @@ class Overworld {
     this.startGameLoop();
 
     this.map.startCutscene([
-      { type: "walk", who: "hero", direction: "down" },
-      { type: "walk", who: "hero", direction: "down" },
-      { type: "walk", who: "hero", direction: "down" },
-      { type: "walk", who: "hero", direction: "down" },
-      { type: "walk", who: "hero", direction: "down" },
-      { type: "walk", who: "hero", direction: "down" },
-      {
-        type: "textMessage",
-        text: "It  feels good to be back in Knothole after fighting Dr.Robotnik for so long.",
-        who: "Sonic",
-      },
-      {
-        type: "textMessage",
-        text: "I wonder how everyone is doing.",
-        who: "Sonic",
-      },
+      // { type: "walk", who: "hero", direction: "down" },
+      // { type: "walk", who: "hero", direction: "down" },
+      // { type: "walk", who: "hero", direction: "down" },
+      // { type: "walk", who: "hero", direction: "down" },
+      // { type: "walk", who: "hero", direction: "down" },
+      // { type: "walk", who: "hero", direction: "down" },
+      // {
+      //   type: "textMessage",
+      //   text: "It  feels good to be back in Knothole after fighting Dr.Robotnik for so long.",
+      //   who: "Sonic",
+      // },
+      // {
+      //   type: "textMessage",
+      //   text: "I wonder how everyone is doing.",
+      //   who: "Sonic",
+      // },
     ]);
   }
 }

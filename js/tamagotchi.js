@@ -88,6 +88,7 @@ function incrementAge() {
   let timeoutID = window.setTimeout(function () {
     myTamagotchi.age += 1;
     if (myTamagotchi.age === 4) {
+      // End the minigame
       setTimeout(end, 1000);
     }
     $("#age").replaceWith(`<p id='age'>Age: ${myTamagotchi.age}</p>`);
@@ -204,7 +205,10 @@ $("#restart").click(function () {
   restart();
 });
 
-startGame();
+$("#start").click(function () {
+  $("#start").hide();
+  startGame();
+});
 
 if (myTamagotchi.sleep > 10) {
   die();

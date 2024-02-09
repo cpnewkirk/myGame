@@ -51,16 +51,16 @@ class OverworldMap {
   drawLowerImage(ctx, cameraPerson) {
     ctx.drawImage(
       this.lowerImage,
-      utils.withGrid(10.5) - cameraPerson.x,
-      utils.withGrid(6) - cameraPerson.y
+      utils.withGrid(10.5) - cameraPerson.x - 176,
+      utils.withGrid(6) - cameraPerson.y - 176
     );
   }
 
   drawUpperImage(ctx, cameraPerson) {
     ctx.drawImage(
       this.upperImage,
-      utils.withGrid(10.5) - cameraPerson.x,
-      utils.withGrid(6) - cameraPerson.y
+      utils.withGrid(10.5) - cameraPerson.x - 176,
+      utils.withGrid(6) - cameraPerson.y - 176
     );
   }
 
@@ -188,18 +188,12 @@ class OverworldMap {
         }
 
         //Validate that we have all of required
-        if (scenario.required) {
-          return (scenario.required || []).every(
-            (entry) => playerState.storyFlags[entry]
-          );
-        }
-
-        // if (!scenario.bypass && !scenario.required) {
-        return true;
-        // }
+        return (scenario.required || []).every(
+          (entry) => playerState.storyFlags[entry]
+        );
       });
 
-      relevantScenario && this.startCutscene(match[0].events);
+      relevantScenario && this.startCutscene(relevantScenario.events);
     }
   }
 }
@@ -236,7 +230,7 @@ window.OverworldMaps = {
               {
                 type: "stand",
                 who: "amy",
-                direction: "up",
+                direction: "down",
               },
             ],
           },
@@ -244,13 +238,25 @@ window.OverworldMaps = {
             events: [
               {
                 type: "textMessage",
-                text: "Sonic, are you ready to help raise some chao?",
+                text: "Sonic, are you ready to help raise some chao? We need to raise one to age 4.",
                 faceHero: "amy",
                 who: "amy",
               },
               {
                 type: "helpMenu",
                 who: "amy",
+              },
+              {
+                type: "textMessage",
+                text: "Thanks Sonic! I knew I could count on you.",
+                faceHero: "amy",
+                who: "amy",
+              },
+              { type: "addStoryFlag", flag: "CHAO_COMPLETE" },
+              {
+                type: "stand",
+                who: "amy",
+                direction: "down",
               },
             ],
           },
@@ -340,7 +346,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/dulce.png",
         talking: [
           {
-            required: ["TROUBLE_COMPLETE"],
+            required: ["RUNNER_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -377,10 +383,10 @@ window.OverworldMaps = {
           { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 500 },
-          { type: "stand", direction: "down", time: 500 },
-          { type: "walk", direction: "down" },
+          { type: "stand", direction: "left", time: 3500 },
           { type: "stand", direction: "down", time: 1000 },
+          { type: "walk", direction: "down" },
+          { type: "stand", direction: "down", time: 4500 },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
@@ -391,8 +397,8 @@ window.OverworldMaps = {
           { type: "walk", direction: "left" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "left" },
-          { type: "stand", direction: "left", time: 500 },
-          { type: "stand", direction: "down", time: 1000 },
+          { type: "stand", direction: "left", time: 1500 },
+          { type: "stand", direction: "down", time: 5000 },
         ],
       },
       knuckles: {
@@ -429,6 +435,18 @@ window.OverworldMaps = {
               {
                 type: "helpMenu",
                 who: "knuckles",
+              },
+              {
+                type: "textMessage",
+                text: "Thanks Sonic! I knew I could count on you.",
+                faceHero: "knuckles",
+                who: "knuckles",
+              },
+              { type: "addStoryFlag", flag: "ECHIDNA_COMPLETE" },
+              {
+                type: "stand",
+                who: "knuckles",
+                direction: "down",
               },
             ],
           },
@@ -707,6 +725,13 @@ window.OverworldMaps = {
                 type: "helpMenu",
                 who: "tails",
               },
+              {
+                type: "textMessage",
+                text: "Thanks Sonic! I knew I could count on you.",
+                faceHero: "tails",
+                who: "tails",
+              },
+              { type: "addStoryFlag", flag: "WORKSHOP_COMPLETE" },
             ],
           },
         ],
@@ -738,10 +763,14 @@ window.OverworldMaps = {
         ],
         behaviorLoop: [
           { type: "stand", direction: "down", time: 2500 },
+          { type: "walk", direction: "down" },
+          { type: "walk", direction: "down" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
           { type: "walk", direction: "left" },
+          { type: "walk", direction: "up" },
+          { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
           { type: "walk", direction: "up" },
@@ -791,10 +820,14 @@ window.OverworldMaps = {
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
           { type: "walk", direction: "down" },
+          { type: "walk", direction: "down" },
+          { type: "walk", direction: "down" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
           { type: "walk", direction: "right" },
+          { type: "walk", direction: "up" },
+          { type: "walk", direction: "up" },
         ],
       },
       gamma1: {
@@ -957,7 +990,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/sally.png",
         talking: [
           {
-            required: ["TROUBLE_COMPLETE"],
+            required: ["RUNNER_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -995,6 +1028,13 @@ window.OverworldMaps = {
                 type: "helpMenu",
                 who: "sally",
               },
+              {
+                type: "textMessage",
+                text: "Thanks Sonic! I knew I could count on you.",
+                faceHero: "sally",
+                who: "sally",
+              },
+              { type: "addStoryFlag", flag: "RUNNER_COMPLETE" },
               {
                 type: "stand",
                 who: "sally",
@@ -1106,7 +1146,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/nicole.png",
         talking: [
           {
-            required: ["TROUBLE_COMPLETE"],
+            required: ["RUNNER_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -1140,9 +1180,9 @@ window.OverworldMaps = {
         behaviorLoop: [
           { type: "walk", direction: "left" },
           { type: "walk", direction: "down" },
-          { type: "stand", direction: "down", time: 500 },
+          { type: "stand", direction: "down", time: 2500 },
           { type: "walk", direction: "right" },
-          { type: "stand", direction: "right", time: 500 },
+          { type: "stand", direction: "right", time: 3000 },
           { type: "walk", direction: "up" },
         ],
       },
@@ -1238,7 +1278,7 @@ window.OverworldMaps = {
               "CHAO_COMPLETE",
               "WORKSHOP_COMPLETE",
               "ECHIDNA_COMPLETE",
-              "TROUBLE_COMPLETE",
+              "RUNNER_COMPLETE",
             ],
             events: [
               {
@@ -2353,13 +2393,13 @@ window.OverworldMaps = {
       // },
     },
     cutsceneSpaces: {
-      [utils.asGridCoord(40, 24)]: [
+      [utils.asGridCoord(40, 25)]: [
         {
           required: [
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            "TROUBLE_COMPLETE",
+            "RUNNER_COMPLETE",
           ],
           events: [
             {
@@ -2382,13 +2422,13 @@ window.OverworldMaps = {
           ],
         },
       ],
-      [utils.asGridCoord(41, 24)]: [
+      [utils.asGridCoord(41, 25)]: [
         {
           required: [
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            "TROUBLE_COMPLETE",
+            "RUNNER_COMPLETE",
           ],
           events: [
             {
@@ -2903,9 +2943,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 4)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -2952,9 +2992,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 5)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3001,9 +3041,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 6)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3050,9 +3090,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 7)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3099,9 +3139,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 8)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3148,9 +3188,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 9)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3197,9 +3237,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 10)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3246,9 +3286,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 11)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3295,9 +3335,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(54, 12)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3344,9 +3384,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(55, 12)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -3393,9 +3433,9 @@ window.OverworldMaps = {
       ],
       [utils.asGridCoord(56, 12)]: [
         {
-          bypass: ["TROUBLE_SCENE"],
+          bypass: ["RUNNER_SCENE"],
           events: [
-            { type: "addStoryFlag", flag: "TROUBLE_SCENE" },
+            { type: "addStoryFlag", flag: "RUNNER_SCENE" },
 
             { type: "stand", who: "nicole", direction: "down" },
 
@@ -4086,6 +4126,9 @@ window.OverworldMaps = {
             {
               type: "textMessage",
               text: "You've had a long day helping your friends. Sweet dreams Sonic.",
+            },
+            {
+              type: "endingScreen",
             },
           ],
         },
