@@ -152,7 +152,6 @@ class OverworldEvent {
     this.element.addEventListener(
       "animationend",
       () => {
-        console.log("fade in ended");
         const ending = new EndingScreen({
           onComplete: () => {
             resolve();
@@ -164,7 +163,6 @@ class OverworldEvent {
         this.element.addEventListener(
           "animationend",
           () => {
-            console.log("fade out ended");
             this.element.remove();
           },
           { once: true }

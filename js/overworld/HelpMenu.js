@@ -3,6 +3,7 @@ class HelpMenu {
     this.who = who;
     this.onComplete = onComplete;
     this.game = game;
+    this.didWin = false;
   }
 
   getOptions(pageKey) {
@@ -20,44 +21,51 @@ class HelpMenu {
             new Promise(async (resolve) => {
               switch (this.game) {
                 case "memory":
-                  // new Promise(async (resolve) => {
                   game = new Memory({
                     onComplete: (didWin) => {
-                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                      resolve();
+                      this.close(didWin);
                     },
                   });
                   game.init(document.querySelector(".game-container"));
-                  // });
                   break;
 
                 case "tamagotchi":
+                  // create tamagotchi object
                   game = new Tamagotchi({
+                    hunger: 1,
+                    sleepiness: 1,
+                    boredom: 1,
+                    age: 0,
                     onComplete: (didWin) => {
-                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                      resolve();
+                      this.close(didWin);
                     },
                   });
+                  game.init(document.querySelector(".game-container"));
                   break;
 
                 case "treasure":
                   game = new Treasure({
                     onComplete: (didWin) => {
-                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                      resolve();
+                      this.close(didWin);
                     },
                   });
+                  game.init(document.querySelector(".game-container"));
                   break;
 
                 case "runner":
                   game = new Runner({
                     onComplete: (didWin) => {
-                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                      resolve();
+                      this.close(didWin);
                     },
                   });
+                  game.init(document.querySelector(".game-container"));
                   break;
               }
             });
-
-            // game.init(document.querySelector(".game-container"));
-            this.close(game.didWin);
           },
         },
         {

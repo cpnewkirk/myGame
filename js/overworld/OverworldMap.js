@@ -1279,8 +1279,8 @@ window.OverworldMaps = {
         talking: [
           {
             required: [
-              // "CHAO_COMPLETE",
-              "WORKSHOP_COMPLETE",
+              "CHAO_COMPLETE",
+              // "WORKSHOP_COMPLETE",
               // "ECHIDNA_COMPLETE",
               // "RUNNER_COMPLETE",
             ],
@@ -1307,14 +1307,15 @@ window.OverworldMaps = {
               //   faceHero: "omachao",
               //   who: "omachao",
               // },
-              {
-                type: "addStoryFlag",
-                flag: "WORKSHOP_COMPLETE",
-              },
+
               {
                 type: "helpMenu",
-                who: "tails",
-                game: "memory",
+                who: "amy",
+                game: "tamagotchi",
+              },
+              {
+                type: "addStoryFlag",
+                flag: "CHAO_COMPLETE",
               },
               {
                 type: "textMessage",
