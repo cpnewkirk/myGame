@@ -280,7 +280,7 @@ class Overworld {
     this.directionInput.init();
 
     // Make touch controller
-    if (screen.width < 768) {
+    if (screen.width < 1000) {
       this.createController();
     }
 
