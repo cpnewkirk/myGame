@@ -245,6 +245,7 @@ window.OverworldMaps = {
               {
                 type: "helpMenu",
                 who: "amy",
+                game: "tamagotchi",
               },
               {
                 type: "textMessage",
@@ -435,6 +436,7 @@ window.OverworldMaps = {
               {
                 type: "helpMenu",
                 who: "knuckles",
+                game: "treasure",
               },
               {
                 type: "textMessage",
@@ -724,6 +726,7 @@ window.OverworldMaps = {
               {
                 type: "helpMenu",
                 who: "tails",
+                game: "memory",
               },
               {
                 type: "textMessage",
@@ -1027,6 +1030,7 @@ window.OverworldMaps = {
               {
                 type: "helpMenu",
                 who: "sally",
+                game: "runner",
               },
               {
                 type: "textMessage",
@@ -1275,10 +1279,10 @@ window.OverworldMaps = {
         talking: [
           {
             required: [
-              "CHAO_COMPLETE",
+              // "CHAO_COMPLETE",
               "WORKSHOP_COMPLETE",
-              "ECHIDNA_COMPLETE",
-              "RUNNER_COMPLETE",
+              // "ECHIDNA_COMPLETE",
+              // "RUNNER_COMPLETE",
             ],
             events: [
               {
@@ -1291,15 +1295,30 @@ window.OverworldMaps = {
           },
           {
             events: [
+              // {
+              //   type: "textMessage",
+              //   text: "You've been gone for a few weeks on a mission Sonic. Go speak to your friends and see if they need any help.",
+              //   faceHero: "omachao",
+              //   who: "omachao",
+              // },
+              // {
+              //   type: "textMessage",
+              //   text: "Amy is in the chao garden. Knuckles is across the southern bridge. Tails is near your house. Sally is to the east.",
+              //   faceHero: "omachao",
+              //   who: "omachao",
+              // },
               {
-                type: "textMessage",
-                text: "You've been gone for a few weeks on a mission Sonic. Go speak to your friends and see if they need any help.",
-                faceHero: "omachao",
-                who: "omachao",
+                type: "addStoryFlag",
+                flag: "WORKSHOP_COMPLETE",
+              },
+              {
+                type: "helpMenu",
+                who: "tails",
+                game: "memory",
               },
               {
                 type: "textMessage",
-                text: "Amy is in the chao garden. Knuckles is across the southern bridge. Tails is near your house. Sally is to the east.",
+                text: "........",
                 faceHero: "omachao",
                 who: "omachao",
               },

@@ -1,7 +1,8 @@
 class HelpMenu {
-  constructor({ who, onComplete }) {
+  constructor({ who, onComplete, game }) {
     this.who = who;
     this.onComplete = onComplete;
+    this.game = game;
   }
 
   getOptions(pageKey) {
@@ -13,18 +14,57 @@ class HelpMenu {
             this.who.id
           )} and start a minigame.`,
           handler: () => {
-            document.querySelector(".overworld").hidden = true;
+            // document.querySelector(".overworld").hidden = true;
 
-            document.querySelector(`.${this.who.id}-game`).style.visibility =
-              "visible";
-            this.close();
+            let game = null;
+            new Promise(async (resolve) => {
+              switch (this.game) {
+                case "memory":
+                  // new Promise(async (resolve) => {
+                  game = new Memory({
+                    onComplete: (didWin) => {
+                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                    },
+                  });
+                  game.init(document.querySelector(".game-container"));
+                  // });
+                  break;
+
+                case "tamagotchi":
+                  game = new Tamagotchi({
+                    onComplete: (didWin) => {
+                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                    },
+                  });
+                  break;
+
+                case "treasure":
+                  game = new Treasure({
+                    onComplete: (didWin) => {
+                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                    },
+                  });
+                  break;
+
+                case "runner":
+                  game = new Runner({
+                    onComplete: (didWin) => {
+                      resolve(didWin ? "WON_GAME" : "LOST_GAME");
+                    },
+                  });
+                  break;
+              }
+            });
+
+            // game.init(document.querySelector(".game-container"));
+            this.close(game.didWin);
           },
         },
         {
           label: "No",
           description: "Come back when you are ready.",
           handler: () => {
-            this.close();
+            this.close(false);
           },
         },
       ];
@@ -53,7 +93,7 @@ class HelpMenu {
     `;
   }
 
-  close() {
+  close(didWin) {
     this.esc?.unbind();
     this.keyboardMenu.end();
     this.element.remove();
@@ -64,7 +104,7 @@ class HelpMenu {
     if (document.querySelector(".TextMessage")) {
       document.querySelector(".TextMessage").hidden = false;
     }
-    this.onComplete();
+    this.onComplete(didWin);
   }
 
   async init(container) {
@@ -76,10 +116,5 @@ class HelpMenu {
     this.keyboardMenu.setOptions(this.getOptions("root"));
 
     container.appendChild(this.element);
-
-    utils.wait(200);
-    this.esc = new KeyPressListener("Escape", () => {
-      this.close();
-    });
   }
 }

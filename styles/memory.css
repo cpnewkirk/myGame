@@ -1,4 +1,4 @@
-.tails-game {
+.memory {
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -15,7 +15,8 @@
   flex-wrap: wrap;
   perspective: 1000px;
 
-  visibility: hidden;
+  background: #060ab2;
+  z-index: 5;
 }
 
 .memory-card {

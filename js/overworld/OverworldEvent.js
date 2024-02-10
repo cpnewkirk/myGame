@@ -133,6 +133,7 @@ class OverworldEvent {
 
     const helpMenu = new HelpMenu({
       who: this.map.gameObjects[this.event.who],
+      game: this.event.game,
       onComplete: (didWin) => {
         resolve(didWin ? "WON_GAME" : "LOST_GAME");
         this.map.isPaused = false;
