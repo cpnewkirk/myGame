@@ -25,11 +25,19 @@
   border-top: 3px solid var(--menu-border-color);
   border-right: 3px solid var(--menu-border-color);
   color: var(--menu-font-color);
-  font-size: 36px;
+  font-size: 24px;
+
+  @media (min-width: 1256px) {
+    font-size: 36px;
+  }
 }
 .TextMessage_p {
   margin: 0;
-  font-size: 30px;
+  font-size: 15;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
 }
 .TextMessage span {
   opacity: 0;
@@ -40,7 +48,7 @@
 
 .TextMessage_button {
   margin: 5px;
-  font-size: 20px;
+  font-size: 14px;
   padding: 5px;
   -webkit-appearance: none;
   background: none;
@@ -51,4 +59,8 @@
   position: absolute;
   right: 2px;
   bottom: 0;
+
+  @media (min-width: 1256px) {
+    font-size: 20px;
+  }
 }

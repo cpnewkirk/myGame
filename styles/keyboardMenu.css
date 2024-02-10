@@ -16,7 +16,11 @@
   font-family: inherit;
   padding: 0;
   padding-left: 1em;
-  font-size: 30px;
+  font-size: 20px;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
 }
 .KeyboardMenu button:focus {
   background: var(--menu-selected-background);
@@ -38,10 +42,14 @@
   right: 0;
   top: 0;
   bottom: 0;
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   padding-right: 3px;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
 }
 
 .DescriptionBox {
@@ -55,8 +63,12 @@
   padding: 2px;
 }
 .DescriptionBox p {
-  font-size: 30px;
+  font-size: 20px;
   margin: 0;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
 }
 
 /* Battle specific */
