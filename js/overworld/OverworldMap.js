@@ -703,7 +703,7 @@ window.OverworldMaps = {
             events: [
               {
                 type: "textMessage",
-                text: "Thanks for the help Sonic! I can always count on you.",
+                text: "Thanks for the help Sonic! You're way past cool!",
                 faceHero: "tails",
                 who: "tails",
               },
@@ -1279,9 +1279,9 @@ window.OverworldMaps = {
         talking: [
           {
             required: [
-              "CHAO_COMPLETE",
+              // "CHAO_COMPLETE",
               // "WORKSHOP_COMPLETE",
-              // "ECHIDNA_COMPLETE",
+              "ECHIDNA_COMPLETE",
               // "RUNNER_COMPLETE",
             ],
             events: [
@@ -1310,12 +1310,12 @@ window.OverworldMaps = {
 
               {
                 type: "helpMenu",
-                who: "amy",
-                game: "tamagotchi",
+                who: "knuckles",
+                game: "treasure",
               },
               {
                 type: "addStoryFlag",
-                flag: "CHAO_COMPLETE",
+                flag: "ECHIDNA_COMPLETE",
               },
               {
                 type: "textMessage",
@@ -1323,6 +1323,10 @@ window.OverworldMaps = {
                 faceHero: "omachao",
                 who: "omachao",
               },
+              // {
+              //   type: "addRings",
+              //   rings: 5,
+              // },
             ],
           },
         ],

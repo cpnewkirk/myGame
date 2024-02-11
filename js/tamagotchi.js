@@ -9,6 +9,7 @@ class Tamagotchi {
     this.age = age;
 
     this.winner = false;
+    this.timeouts = [];
   }
 
   createElement() {
@@ -16,44 +17,38 @@ class Tamagotchi {
     this.element.classList.add("tamagotchi-game");
     this.element.innerHTML = `
       <div class="home">
-      <img src="./assets/tamagotchi/tamagotchi-home.png"/>
+        <img src="./assets/tamagotchi/tamagotchi-home.png"/>
       </div>
       <div class="stats">
-      <p id="hunger">Hunger: 1</p>
-      <p id="sleepiness">Sleepiness: 1</p>
-      <p id="boredom">Boredom: 1</p>
-      <p id="age">Age: 0</p>
+       <p id="hunger">Hunger: 1</p>
+        <p id="sleepiness">Sleepiness: 1</p>
+        <p id="boredom">Boredom: 1</p>
+        <p id="age">Age: 0</p>
       </div>
       <div class="tamagotchi">
-      <img src="./assets/tamagotchi/tamagotchi-egg.png"/>
+        <img src="./assets/tamagotchi/tamagotchi-egg.png"/>
       </div>
       <div class="actions">
-      <button id="feed">Feed</button>
-      <button id="sleep">Bedtime</button>
-      <button id="play">Play</button>
-      <button id="restart">Restart</button>
-      <button id="quit">Quit</button>
+        <button id="feed">Feed</button>
+        <button id="sleep">Bedtime</button>
+        <button id="play">Play</button>
+      </div>
+      <div class="actions">
+        <button id="restart">Restart</button>
+        <button id="quit">Quit</button>
+      </div>
+      <div class="close">
+        <button id="close">Close</button>
+      </div>
+      <div class="results">
+        <h2 id="winner">Congratualations, you raised a chao!</h2>
+        <h2 id="loser">Better luck next time.</h2>
       </div>
       `;
   }
 
   //create function to call and start the game
   startGame() {
-    //hide the restart button at start of game
-    $("#restart").hide();
-    $("#quit").hide();
-
-    //set up click event listeners
-    $("#sleep").on("click", this.bedtime(2000));
-
-    $("#play").on("click", this.play());
-
-    $("#feed").on("click", this.feed());
-
-    $("#restart").on("click", this.restart());
-
-    $("#quit").on("click", this.quit());
-
     this.grow();
   }
 
@@ -63,7 +58,7 @@ class Tamagotchi {
       this.hatch();
     } else {
       $(".tamagotchi img").replaceWith(
-        "<img src='../assets/tamagotchi/tamagotchi-bunny-2.png'>"
+        "<img src='../assets/tamagotchi/tamagotchi-chao-2.png'>"
       );
       this.incrementAge();
       this.incrementHunger();
@@ -73,158 +68,217 @@ class Tamagotchi {
   }
 
   hatch() {
+    let self = this;
     let timeoutID = window.setTimeout(function () {
-      this.age += 1;
-      $("#age").replaceWith(`<p id='age'>Age: ${this.age}</p>`);
-      this.grow();
-    }, 15000);
+      self.age += 1;
+      $("#age").replaceWith(`<p id='age'>Age: ${self.age}</p>`);
+      self.grow();
+    }, 5000);
+    this.timeouts.push(timeoutID);
   }
 
   //create functions to increment stats
   incrementHunger() {
+    let self = this;
+
     let timeoutID = window.setTimeout(function () {
-      this.hunger += 1;
-      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${this.hunger}</p>`);
-      if (this.hunger < 10) {
-        this.incrementHunger();
+      self.hunger += 1;
+      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${self.hunger}</p>`);
+
+      if (self.hunger < 10) {
+        self.incrementHunger();
       } else {
-        this.die();
+        self.end();
       }
-    }, 20000);
+    }, 2000);
+    this.timeouts.push(timeoutID);
   }
 
   incrementSleepiness() {
+    let self = this;
+
     let timeoutID = window.setTimeout(function () {
-      this.sleepiness += 1;
+      self.sleepiness += 1;
       $("#sleepiness").replaceWith(
-        `<p id='sleepiness'>Sleepiness: ${this.sleepiness}</p>`
+        `<p id='sleepiness'>Sleepiness: ${self.sleepiness}</p>`
       );
-      if (this.sleepiness < 10) {
-        this.incrementSleepiness();
+      if (self.sleepiness < 10) {
+        self.incrementSleepiness();
       } else {
-        this.die();
+        self.end();
       }
-    }, 30000);
+    }, 4000);
+    this.timeouts.push(timeoutID);
   }
 
   incrementBoredom() {
+    let self = this;
+
     let timeoutID = window.setTimeout(function () {
-      this.boredom += 2;
-      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${this.boredom}</p>`);
-      if (this.boredom < 10) {
-        this.incrementBoredom();
+      self.boredom += 2;
+      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${self.boredom}</p>`);
+
+      if (self.boredom < 10) {
+        self.incrementBoredom();
       } else {
-        this.die();
+        self.end();
       }
-    }, 10000);
+    }, 3000);
+    this.timeouts.push(timeoutID);
   }
 
   incrementAge() {
+    let self = this;
     let timeoutID = window.setTimeout(function () {
-      this.age += 1;
-      if (this.age === 4) {
+      self.age += 1;
+      $("#age").replaceWith(`<p id='age'>Age: ${self.age}</p>`);
+
+      if (self.age < 4) {
+        self.incrementAge();
+      } else {
         // End the minigame
-        setTimeout(this.end(), 1000);
+        self.timeouts.forEach((element) => clearTimeout(element));
+
+        $(".home img").replaceWith(
+          "<img src='../assets/tamagotchi/tamagotchi-home.png'>"
+        );
+
+        $(".stats").hide();
+        $(".actions").hide();
+        $("#winner").show();
+        $("#close").show();
+
+        $("#close").on("click", function () {
+          self.close(true);
+        });
       }
-      $("#age").replaceWith(`<p id='age'>Age: ${this.age}</p>`);
-      if (this.age < 10) {
-        this.incrementAge();
-      }
-    }, 100000);
+    }, 15000);
+    this.timeouts.push(timeoutID);
   }
 
   //create functions to decrease stats
   feed() {
-    if (this.hunger >= 2) {
-      this.hunger -= 2;
-      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${this.hunger}</p>`);
+    let self = this;
+
+    if (self.hunger >= 2) {
+      self.hunger -= 2;
+      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${self.hunger}</p>`);
     } else {
-      this.hunger = 0;
-      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${this.hunger}</p>`);
+      self.hunger = 0;
+      $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${self.hunger}</p>`);
     }
   }
 
   play() {
-    if (this.boredom >= 3) {
-      this.boredom -= 3;
-      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${this.boredom}</p>`);
+    let self = this;
+
+    if (self.boredom >= 3) {
+      self.boredom -= 3;
+      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${self.boredom}</p>`);
     } else {
-      this.boredom = 0;
-      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${this.boredom}</p>`);
+      self.boredom = 0;
+      $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${self.boredom}</p>`);
     }
   }
 
   bedtime(time) {
+    let self = this;
+
     $(".home img").replaceWith(
       "<img src='../assets/tamagotchi/tamagotchi-home-night.png'>"
     );
     let timeoutID = window.setTimeout(function () {
-      this.sleepiness = 0;
+      self.sleepiness = 0;
       $(".home img").replaceWith(
         "<img src='../assets/tamagotchi/tamagotchi-home.png'>"
       );
       $("#sleepiness").replaceWith(
-        `<p id='sleepiness'>Sleepiness: ${this.sleepiness}</p>`
+        `<p id='sleepiness'>Sleepiness: ${self.sleepiness}</p>`
       );
     }, time);
+    this.timeouts.push(timeoutID);
   }
 
-  // create functions for die and to restart game
-  die() {
-    alive = false;
+  // create functions for losing and to restart game
+  end() {
+    this.timeouts.forEach((element) => clearTimeout(element));
+
     $(".tamagotchi img").replaceWith(
-      "<img src='../assets/tamagotchi/tamagotchi-dead.png'>"
+      "<img src='../assets/tamagotchi/tamagotchi-end.png'>"
     );
     $("#sleep").hide();
     $("#play").hide();
     $("#feed").hide();
     $("#restart").show();
     $("#quit").show();
-    $("#actions").after(
-      "<h2>Your Chao died due to your negligence. Shame! Shame! Shame!</h2>"
-    );
+    $("#loser").show();
   }
 
-  end() {
-    this.winner = true;
-    this.element.remove();
-    this.onComplete(this.winner);
-  }
-
-  quit() {
-    this.winner = false;
+  close(didWin) {
+    this.winner = didWin;
     this.element.remove();
     this.onComplete(this.winner);
   }
 
   restart() {
-    let alive = true;
+    let self = this;
+    $("#loser").hide();
     $("#restart").hide();
     $("#quit").hide();
     $(".tamagotchi img").replaceWith(
       "<img src='../assets/tamagotchi/tamagotchi-egg.png'>"
     );
-    this.sleepiness = 0;
+    self.sleepiness = 1;
     $("#sleepiness").replaceWith(
-      `<p id='sleepiness'>Sleepiness: ${this.sleepiness}</p>`
+      `<p id='sleepiness'>Sleepiness: ${self.sleepiness}</p>`
     );
     $("#sleep").show();
-    this.boredom = 0;
-    $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${this.boredom}</p>`);
+    self.boredom = 1;
+    $("#boredom").replaceWith(`<p id='boredom'>Boredom: ${self.boredom}</p>`);
     $("#play").show();
-    this.hunger = 0;
-    $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${this.hunger}</p>`);
+    self.hunger = 1;
+    $("#hunger").replaceWith(`<p id='hunger'>Hunger: ${self.hunger}</p>`);
     $("#feed").show();
-    this.age = 0;
-    $("#age").replaceWith(`<p id='age'>Age: ${this.age}</p>`);
-    this.startGame();
+    self.age = 0;
+    $("#age").replaceWith(`<p id='age'>Age: ${self.age}</p>`);
+    self.startGame();
   }
 
   init(container) {
     this.createElement();
-    console.log(container);
-    console.log(this.element);
     container.appendChild(this.element);
+
+    let self = this;
+
+    //hide the restart button at start of game
+    $("#winner").hide();
+    $("#loser").hide();
+
+    $("#restart").hide();
+    $("#quit").hide();
+    $("#close").hide();
+
+    //set up click event listeners
+    $("#sleep").on("click", function () {
+      self.bedtime(2000);
+    });
+
+    $("#play").on("click", function () {
+      self.play();
+    });
+
+    $("#feed").on("click", function () {
+      self.feed();
+    });
+
+    $("#restart").on("click", function () {
+      self.restart();
+    });
+
+    $("#quit").on("click", function () {
+      self.close(false);
+    });
+
     this.startGame();
   }
 }

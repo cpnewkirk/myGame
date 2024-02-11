@@ -16,7 +16,7 @@ class HelpMenu {
           )} and start a minigame.`,
           handler: () => {
             // document.querySelector(".overworld").hidden = true;
-
+            document.activeElement.blur();
             let game = null;
             new Promise(async (resolve) => {
               switch (this.game) {

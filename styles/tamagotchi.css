@@ -28,32 +28,50 @@ div {
   height: 100%;
   background-color: #060ab2;
   z-index: 5;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  /* align-items: center; */
+  /* display: flex; */
+  /* justify-content: center; */
   /* padding: 200px; */
   /* margin: 20px; */
+  /* grid-row:auto; */
 }
 
 .home {
   max-width: 440px;
+  /* height: 100%; */
+  /* width: 100%; */
+  margin: auto;
+  /* max-height: 100%; */
 }
 
 .tamagotchi {
+  position: absolute;
   max-width: 80px;
   z-index: 20;
+  left: 50%;
+  top: 30%;
 }
 
 .tamagotchi img {
   position: absolute;
   max-width: 40px;
-  top: 260px;
-  left: -80px;
+  /* transform: translate(-50%, -50%); */
+  /* left: 50%; */
+  /* top: 260px;
+  left: -80px; */
 }
 
 .stats {
-  max-width: 110px;
+  max-width: 90%;
+  margin: 0 auto;
   top: 50px;
+  color: white;
+  display: flex;
+  text-align: center;
+  gap: 10%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .stats p {
@@ -61,6 +79,36 @@ div {
 }
 
 .actions {
+  /* top: 330px; */
+  display: flex;
   text-align: center;
-  top: 330px;
+  justify-content: center;
+  gap: 10%;
+  margin: 10px;
+  /* margin-bottom: 100px; */
+}
+
+.actions button {
+  width: 10%;
+  height: 50px;
+}
+
+.results {
+  color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.close {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 10%;
+  margin: 10px;
+}
+
+#close {
+  width: 10%;
+  height: 50px;
 }

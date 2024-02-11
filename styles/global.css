@@ -8,13 +8,6 @@
   --menu-selected-background: #7fc2ff;
 }
 
-body .amy-game {
-  visibility: hidden;
-}
-body .knuckles-game {
-  visibility: hidden;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -70,6 +63,17 @@ body {
   width: 100%;
   max-width: 1400px;
   max-height: 100%;
+  z-index: 5;
+}
+
+.treasureEnding {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: #abcdef;
+  padding: 20px;
 }
 
 .toggle {

@@ -75,3 +75,13 @@
 .front-face {
   transform: rotateY(180deg);
 }
+
+.memoryEnding {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: #abcdef;
+  padding: 20px;
+}

@@ -1,4 +1,4 @@
-class Player extends treasureSprite {
+class Player extends TreasureSprite {
   constructor({ collisionBlocks = [], imageSrc, frameRate, animations, loop }) {
     super({ imageSrc, frameRate, animations, loop });
     this.position = {

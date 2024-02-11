@@ -1,4 +1,4 @@
-class treasureSprite {
+class TreasureSprite {
   constructor({
     position,
     imageSrc,
@@ -45,17 +45,22 @@ class treasureSprite {
       height: this.height,
     };
 
-    c.drawImage(
-      this.image,
-      cropbox.position.x,
-      cropbox.position.y,
-      cropbox.width,
-      cropbox.height,
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height
-    );
+    if (document.querySelector(".treasure")) {
+      document
+        .querySelector(".treasure")
+        .getContext("2d")
+        .drawImage(
+          this.image,
+          cropbox.position.x,
+          cropbox.position.y,
+          cropbox.width,
+          cropbox.height,
+          this.position.x,
+          this.position.y,
+          this.width,
+          this.height
+        );
+    }
 
     this.updateFrames();
   }

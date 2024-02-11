@@ -67,6 +67,14 @@ class Memory {
         <img class="front-face" src="./assets/memory/super-sonic.svg" alt="super-sonic" />
         <img class="back-face" src="./assets/memory/back.png" alt="Sonic the Hedgehog" />
       </div>
+      <div class="memoryEnding">
+        <div class="close">
+          <button id="close">Close</button>
+        </div>
+        <div class="results">
+          <h2 id="results">Congratualations, you matched all the cards!</h2>
+        </div>
+      </div>
       `;
   }
 
@@ -90,9 +98,13 @@ class Memory {
     this.checkForMatch();
 
     if (document.getElementsByClassName("flip").length === 12) {
-      this.winner = true;
-      this.element.remove();
-      this.onComplete(this.winner);
+      document.querySelector(".memoryEnding").style.visibility = "visible";
+
+      document.querySelector("#close").addEventListener("click", (e) => {
+        this.winner = true;
+        this.element.remove();
+        this.onComplete(this.winner);
+      });
     }
   }
 
@@ -140,6 +152,8 @@ class Memory {
   init(container) {
     this.createElement();
     container.appendChild(this.element);
+    document.querySelector(".memoryEnding").style.visibility = "hidden";
+
     this.cards = document.querySelectorAll(".memory-card");
     this.shuffle();
     this.cards.forEach((card) =>
