@@ -41,7 +41,22 @@ div {
   /* height: 100%; */
   /* width: 100%; */
   margin: auto;
+  /* align-items: center; */
+
   /* max-height: 100%; */
+  display: flex;
+  /* justify-content: center; */
+}
+
+.home img {
+  width: 375px;
+  /* height: 100%; */
+  /* width: 100%; */
+  margin: auto;
+  /* max-height: 100%; */
+  @media (min-width: 1256px) {
+    max-width: 440px;
+  }
 }
 
 .tamagotchi {

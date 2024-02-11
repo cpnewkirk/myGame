@@ -33,7 +33,7 @@
 }
 .TextMessage_p {
   margin: 0;
-  font-size: 15;
+  font-size: 24px;
 
   @media (min-width: 1256px) {
     font-size: 30px;
@@ -47,6 +47,7 @@
 }
 
 .TextMessage_button {
+  visibility: hidden;
   margin: 5px;
   font-size: 14px;
   padding: 5px;
@@ -61,6 +62,7 @@
   bottom: 0;
 
   @media (min-width: 1256px) {
+    visibility: visible;
     font-size: 20px;
   }
 }

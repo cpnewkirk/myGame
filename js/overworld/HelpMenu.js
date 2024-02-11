@@ -27,6 +27,7 @@ class HelpMenu {
                       this.close(didWin);
                     },
                   });
+                  document.querySelector(".KeyboardMenu").remove();
                   game.init(document.querySelector(".game-container"));
                   break;
 
@@ -42,6 +43,7 @@ class HelpMenu {
                       this.close(didWin);
                     },
                   });
+                  document.querySelector(".KeyboardMenu").remove();
                   game.init(document.querySelector(".game-container"));
                   break;
 
@@ -52,6 +54,7 @@ class HelpMenu {
                       this.close(didWin);
                     },
                   });
+                  document.querySelector(".KeyboardMenu").remove();
                   game.init(document.querySelector(".game-container"));
                   break;
 
@@ -62,6 +65,7 @@ class HelpMenu {
                       this.close(didWin);
                     },
                   });
+                  document.querySelector(".KeyboardMenu").remove();
                   game.init(document.querySelector(".game-container"));
                   break;
               }
@@ -87,7 +91,7 @@ class HelpMenu {
 
   createElement() {
     this.element = document.createElement("div");
-    this.element.classList.add("PauseMenu");
+    this.element.classList.add("HelpMenu");
     this.element.classList.add("overlayMenu");
     document.querySelector(".game-canvas").classList.add("dullOut");
     if (document.querySelector(".escMenu")) {

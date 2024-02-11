@@ -993,7 +993,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/sally.png",
         talking: [
           {
-            required: ["RUNNER_COMPLETE"],
+            // required: ["RUNNER_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -1227,6 +1227,11 @@ window.OverworldMaps = {
                 faceHero: "uncleChuck",
                 who: "Uncle Chuck",
               },
+              {
+                type: "stand",
+                who: "uncleChuck",
+                direction: "down",
+              },
             ],
           },
         ],
@@ -1279,8 +1284,8 @@ window.OverworldMaps = {
         talking: [
           {
             required: [
-              // "CHAO_COMPLETE",
-              // "WORKSHOP_COMPLETE",
+              "CHAO_COMPLETE",
+              "WORKSHOP_COMPLETE",
               "ECHIDNA_COMPLETE",
               // "RUNNER_COMPLETE",
             ],
@@ -1295,37 +1300,28 @@ window.OverworldMaps = {
           },
           {
             events: [
-              // {
-              //   type: "textMessage",
-              //   text: "You've been gone for a few weeks on a mission Sonic. Go speak to your friends and see if they need any help.",
-              //   faceHero: "omachao",
-              //   who: "omachao",
-              // },
-              // {
-              //   type: "textMessage",
-              //   text: "Amy is in the chao garden. Knuckles is across the southern bridge. Tails is near your house. Sally is to the east.",
-              //   faceHero: "omachao",
-              //   who: "omachao",
-              // },
-
-              {
-                type: "helpMenu",
-                who: "knuckles",
-                game: "treasure",
-              },
-              {
-                type: "addStoryFlag",
-                flag: "ECHIDNA_COMPLETE",
-              },
               {
                 type: "textMessage",
-                text: "........",
+                text: "You've been gone for a few weeks on a mission Sonic. Go speak to your friends and see if they need any help.",
                 faceHero: "omachao",
                 who: "omachao",
               },
+              {
+                type: "textMessage",
+                text: "Amy is in the chao garden. Knuckles is across the southern bridge. Tails is near your house. Sally is to the east.",
+                faceHero: "omachao",
+                who: "omachao",
+              },
+
               // {
               //   type: "addRings",
               //   rings: 5,
+              // },
+              // {
+              //   type: "textMessage",
+              //   text: "........",
+              //   faceHero: "omachao",
+              //   who: "omachao",
               // },
             ],
           },
@@ -2423,7 +2419,7 @@ window.OverworldMaps = {
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            "RUNNER_COMPLETE",
+            // "RUNNER_COMPLETE",
           ],
           events: [
             {
@@ -2452,7 +2448,7 @@ window.OverworldMaps = {
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            "RUNNER_COMPLETE",
+            // "RUNNER_COMPLETE",
           ],
           events: [
             {

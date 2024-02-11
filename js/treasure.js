@@ -12,6 +12,67 @@ class Treasure {
     canvas.classList.add("treasure");
     container.appendChild(canvas);
 
+    if (screen.width < 1000) {
+      this.controllerUp = document.createElement("button");
+      this.controllerUp.classList.add("controllerUp");
+      this.controllerUp.classList.add("controller");
+      this.controllerUp.classList.add("treasureController");
+      // this.controllerUp.textContent = "Enter Door";
+      this.controllerUp.addEventListener("pointerdown", (e) => {
+        if (player.preventInput) return;
+        for (let i = 0; i < doors.length; i++) {
+          const door = doors[i];
+
+          if (
+            player.hitbox.position.x + player.hitbox.width <=
+              door.position.x + door.width &&
+            player.hitbox.position.x >= door.position.x &&
+            player.hitbox.position.y + player.hitbox.height >=
+              door.position.y &&
+            player.hitbox.position.y <= door.position.y + door.height
+          ) {
+            player.velocity.x = 0;
+            player.velocity.y = 0;
+            player.preventInput = true;
+            player.switchSprite("enterDoor");
+            door.play();
+            return;
+          }
+        }
+        if (player.velocity.y === 0) player.velocity.y = -25;
+      });
+      document.querySelector(".game-container").appendChild(this.controllerUp);
+
+      this.controllerRight = document.createElement("button");
+      this.controllerRight.classList.add("controllerRight");
+      this.controllerRight.classList.add("controller");
+      this.controllerRight.classList.add("treasureController");
+      // this.controllerRight.textContent = "Right";
+      this.controllerRight.addEventListener("pointerdown", (e) => {
+        keys.d.pressed = true;
+      });
+      this.controllerRight.addEventListener("pointerup", (e) => {
+        keys.d.pressed = false;
+      });
+      document
+        .querySelector(".game-container")
+        .appendChild(this.controllerRight);
+
+      this.controllerLeft = document.createElement("button");
+      this.controllerLeft.classList.add("controllerLeft");
+      this.controllerLeft.classList.add("controller");
+      this.controllerLeft.classList.add("treasureController");
+      // this.controllerLeft.textContent = "Left";
+      this.controllerLeft.addEventListener("pointerdown", (e) => {
+        keys.a.pressed = true;
+      });
+      this.controllerLeft.addEventListener("pointerup", (e) => {
+        keys.a.pressed = false;
+      });
+      document
+        .querySelector(".game-container")
+        .appendChild(this.controllerLeft);
+    }
     const c = canvas.getContext("2d");
 
     canvas.width = 64 * 16; // 1024
@@ -80,6 +141,11 @@ class Treasure {
                     .addEventListener("click", (e) => {
                       canvas.remove();
                       ending.remove();
+                      const paras =
+                        document.getElementsByClassName("treasureController");
+                      while (paras[0]) {
+                        paras[0].parentNode.removeChild(paras[0]);
+                      }
                       this.onComplete(true);
                     });
                   level = 1;
