@@ -58,7 +58,7 @@ class Tamagotchi {
       this.hatch();
     } else {
       $(".tamagotchi img").replaceWith(
-        "<img src='../assets/tamagotchi/tamagotchi-chao-2.png'>"
+        "<img src='./assets/tamagotchi/tamagotchi-chao-2.png'>"
       );
       this.incrementAge();
       this.incrementHunger();
@@ -140,7 +140,7 @@ class Tamagotchi {
         self.timeouts.forEach((element) => clearTimeout(element));
 
         $(".home img").replaceWith(
-          "<img src='../assets/tamagotchi/tamagotchi-home.png'>"
+          "<img src='./assets/tamagotchi/tamagotchi-home.png'>"
         );
 
         $(".stats").hide();
@@ -185,12 +185,12 @@ class Tamagotchi {
     let self = this;
 
     $(".home img").replaceWith(
-      "<img src='../assets/tamagotchi/tamagotchi-home-night.png'>"
+      "<img src='./assets/tamagotchi/tamagotchi-home-night.png'>"
     );
     let timeoutID = window.setTimeout(function () {
       self.sleepiness = 0;
       $(".home img").replaceWith(
-        "<img src='../assets/tamagotchi/tamagotchi-home.png'>"
+        "<img src='./assets/tamagotchi/tamagotchi-home.png'>"
       );
       $("#sleepiness").replaceWith(
         `<p id='sleepiness'>Sleepiness: ${self.sleepiness}</p>`
@@ -204,7 +204,7 @@ class Tamagotchi {
     this.timeouts.forEach((element) => clearTimeout(element));
 
     $(".tamagotchi img").replaceWith(
-      "<img src='../assets/tamagotchi/tamagotchi-end.png'>"
+      "<img src='./assets/tamagotchi/tamagotchi-end.png'>"
     );
     $("#sleep").hide();
     $("#play").hide();
@@ -226,7 +226,7 @@ class Tamagotchi {
     $("#restart").hide();
     $("#quit").hide();
     $(".tamagotchi img").replaceWith(
-      "<img src='../assets/tamagotchi/tamagotchi-egg.png'>"
+      "<img src='./assets/tamagotchi/tamagotchi-egg.png'>"
     );
     self.sleepiness = 1;
     $("#sleepiness").replaceWith(
