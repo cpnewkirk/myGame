@@ -1,0 +1,239 @@
+:root {
+  --border-color: #291d4d;
+  --dialog-background: #fff3b4;
+
+  --menu-background: #ffe8d2;
+  --menu-border-color: #a48465;
+  --menu-font-color: #3a160d;
+  --menu-selected-background: #7fc2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Ribeye", cursive;
+  height: 100vh;
+  display: flex;
+  background: #060ab2;
+}
+
+.how-to-play {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #fff;
+  visibility: hidden;
+
+  @media (min-width: 1256px) {
+    visibility: visible;
+  }
+}
+
+.game-container {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 1400px;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.game-container canvas {
+  image-rendering: pixelated;
+  width: 100%;
+}
+
+.treasure {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 1400px;
+  max-height: 100%;
+  z-index: 5;
+}
+
+.treasureController {
+  z-index: 20;
+}
+
+.treasureEnding {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: #abcdef;
+  padding: 20px;
+}
+
+.toggle {
+  position: absolute;
+  top: 4%;
+  right: 6%;
+  color: black;
+  font-size: 5px;
+
+  transform: scale(2);
+
+  @media (min-width: 1256px) {
+    /* font-size: 3px; */
+
+    transform: scale(3);
+  }
+}
+
+.escMenu {
+  position: absolute;
+  top: 20%;
+  right: 6%;
+  color: black;
+  font-size: 5px;
+  transform: scale(2);
+
+  @media (min-width: 1256px) {
+    /* font-size: 3px; */
+
+    transform: scale(3);
+  }
+}
+
+.fullscreenButton {
+  position: absolute;
+  top: 12%;
+  right: 6%;
+  color: black;
+  font-size: 5px;
+  transform: scale(2);
+
+  @media (min-width: 1256px) {
+    /* font-size: 3px; */
+
+    transform: scale(3);
+  }
+}
+
+/* a:fullscreen {
+  transform: scale(3);
+} */
+
+.dullOut {
+  opacity: 0.5;
+}
+.controller {
+  position: absolute;
+  opacity: 0.5;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+.controllerUp {
+  bottom: 45%;
+  left: 15%;
+}
+.controllerRight {
+  bottom: 25%;
+  left: 25%;
+}
+.controllerDown {
+  bottom: 5%;
+  left: 15%;
+}
+.controllerLeft {
+  bottom: 25%;
+  left: 5%;
+}
+.controllerEnter {
+  bottom: 25%;
+  right: 15%;
+}
+
+.fade-in-out-image {
+  /* animation: fadeIn 0.5s; */
+  /* -webkit-animation: fadeIn 0.5s; */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: -30px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInController {
+  0% {
+    opacity: 0;
+    bottom: 30px;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: -30px;
+  }
+}
+
+@keyframes fadeOutController {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    bottom: 30px;
+  }
+}
+
+.runner {
+  /* background-color: lightgray; */
+  background: url(../assets/runner/background.png) center;
+  background-size: cover;
+  border-bottom: 5px solid black;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  max-height: 100%;
+  z-index: 5;
+}
+
+.runnerEnding {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: #abcdef;
+  padding: 20px;
+}
+
+#runnerClose {
+  /* width: 10%; */
+  height: 50px;
+}

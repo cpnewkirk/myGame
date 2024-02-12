@@ -1,0 +1,79 @@
+.KeyboardMenu {
+  border: 1px solid var(--border-color);
+  background: var(--menu-background);
+  position: absolute;
+}
+.KeyboardMenu button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  height: 50px;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  padding-left: 1em;
+  font-size: 20px;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
+}
+.KeyboardMenu button:focus {
+  background: var(--menu-selected-background);
+  outline: 0;
+}
+.KeyboardMenu button:disabled,
+.KeyboardMenu button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  opacity: 0.5;
+}
+.KeyboardMenu .option {
+  position: relative;
+  margin: 30px;
+}
+.KeyboardMenu .option .right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  padding-right: 3px;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
+}
+
+.DescriptionBox {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: var(--menu-font-color);
+  border-top: 1px solid var(--border-color);
+  background: var(--menu-background);
+  padding: 2px;
+}
+.DescriptionBox p {
+  font-size: 20px;
+  margin: 0;
+
+  @media (min-width: 1256px) {
+    font-size: 30px;
+  }
+}
+
+/* Battle specific */
+.Battle .KeyboardMenu {
+  right: 0;
+  bottom: 0;
+  width: 140px;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chao in Space II</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ribeye&display=swap" rel="stylesheet">
+    <!-- Overworld styles -->
+    <link href="./styles/global.css" type="text/css" rel="stylesheet">
+    <link href="./styles/textMessage.css" type="text/css" rel="stylesheet">
+    <link href="./styles/sceneTransition.css" type="text/css" rel="stylesheet">
+    <link href="./styles/keyboardMenu.css" type="text/css" rel="stylesheet">
+    <link href="./styles/hud.css" type="text/css" rel="stylesheet">
+    <link href="./styles/titleScreen.css" type="text/css" rel="stylesheet">
+    <link href="./styles/endingScreen.css" type="text/css" rel="stylesheet">
+    <!-- Battle css -->
+    <link href="./styles/battle.css" type="text/css" rel="stylesheet">
+    <link href="./styles/combatant.css" type="text/css" rel="stylesheet">
+    <link href="./styles/submissionMenu.css" type="text/css" rel="stylesheet">
+    <link href="./styles/team.css" type="text/css" rel="stylesheet">
+    <link href="./styles/menus.css" type="text/css" rel="stylesheet">
+
+    <!-- Memory css -->
+    <link href="./styles/memory.css"dsd type="text/css" rel="stylesheet">
+
+    <!-- Tamagotchi css -->
+    <link href="./styles/tamagotchi.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+
+  <section class="overworld">
+    <div class="game-container" >
+      <canvas class="game-canvas" width="352" height="198"></canvas>
+    </div>
+    <p class="how-to-play">Use Arrow Keys to move. Enter to prompt/talk.</p>
+  </section>
+
+    <!-- Content -->
+    <script src="./js/content/pizzas.js"></script>
+    <script src="./js/content/actions.js"></script>
+    <script src="./js/content/enemies.js"></script>
+
+    <!-- State -->
+    <script src="./js/state/PlayerState.js"></script>
+
+    <!-- Scripts -->
+    <script src="./js/overworld/utils.js"></script>
+    <script src="./js/overworld/DirectionInput.js"></script>
+    <script src="./js/overworld/Overworld.js"></script>
+    <script src="./js/overworld/GameObject.js"></script>
+    <script src="./js/overworld/Person.js"></script>
+    <script src="./js/overworld/PizzaStone.js"></script>
+    <script src="./js/overworld/Sprite.js"></script>
+    <script src="./js/overworld/OverworldMap.js"></script>
+    <script src="./js/overworld/OverworldEvent.js"></script>
+    <script src="./js/overworld/TextMessage.js"></script>
+    <script src="./js/overworld/KeyPressListener.js"></script>
+    <script src="./js/overworld/RevealingText.js"></script>
+    <script src="./js/overworld/SceneTransition.js"></script>
+    <script src="./js/overworld/KeyboardMenu.js"></script>
+    <script src="./js/overworld/Hud.js"></script>
+    <script src="./js/overworld/PauseMenu.js"></script>
+    <script src="./js/overworld/CraftingMenu.js"></script>
+    <script src="./js/overworld/Progress.js"></script>
+    <script src="./js/overworld/HelpMenu.js"></script>
+    <script src="./js/overworld/TitleScreen.js"></script>
+    <script src="./js/overworld/EndingScreen.js"></script>
+
+    <!-- Battle -->
+    <script src="./js/battle/Battle.js"></script>
+    <script src="./js/battle/Combatant.js"></script>
+    <script src="./js/battle/Team.js"></script>
+    <script src="./js/battle/SubmissionMenu.js"></script>
+    <script src="./js/battle/ReplacementMenu.js"></script>
+    <script src="./js/battle/BattleEvent.js"></script>
+    <script src="./js/battle/TurnCycle.js"></script>
+    <script src="./js/battle/battleAnimations.js"></script>
+
+    <!-- Runner -->
+    <script src="./js/Runner.js"></script>
+
+    <!-- Memory -->
+    <script src="./js/Memory.js"></script>
+
+    <!-- Tamagotchi -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/Tamagotchi.js"></script>
+
+    <!-- Treasure -->
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"
+    integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/data/collisions.js"></script>
+    <script src="./js/classes/CollisionBlock.js"></script>
+    <script src="./js/classes/TreasureSprite.js"></script>
+    <script src="./js/classes/Player.js"></script>
+    <script src="./js/Treasure.js"></script>
+    
+    <script src="./js/overworld/init.js"></script>
+
+  </body>
+</html>

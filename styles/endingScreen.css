@@ -1,0 +1,62 @@
+.EndingScreen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #dfe0e0;
+}
+
+.EndingScreen_logo {
+  position: relative;
+  display: block;
+  margin: 0;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+
+  @media (min-width: 1256px) {
+    position: static;
+    margin: 0 auto;
+    height: 50%;
+    transform: translate(5%, 10%);
+  }
+}
+
+.EndingScreen .KeyboardMenu {
+  position: absolute;
+  width: 400px;
+  margin: 0 auto;
+  background: transparent;
+  border: 0;
+  padding: 20px;
+  top: 35%;
+  left: 55%;
+
+  @media (min-width: 1256px) {
+    position: relative;
+    right: 0;
+    top: 0;
+    left: 0;
+    margin-top: 40px;
+  }
+}
+
+.EndingScreen button {
+  color: #fff;
+  justify-content: center;
+  padding: 0;
+}
+
+.EndingScreen .DescriptionBox {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  text-align: center;
+}
+
+.ending-text {
+  width: 100%;
+  text-align: center;
+  padding-top: 50px;
+}

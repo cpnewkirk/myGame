@@ -1,0 +1,56 @@
+.TitleScreen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #dfe0e0;
+}
+
+.TitleScreen_logo {
+  position: relative;
+  display: block;
+  margin: 0;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+
+  @media (min-width: 1256px) {
+    position: static;
+    margin: 0 auto;
+    height: 50%;
+    transform: translate(5%, 10%);
+  }
+}
+
+.TitleScreen .KeyboardMenu {
+  position: absolute;
+  width: 400px;
+  margin: 0 auto;
+  background: transparent;
+  border: 0;
+  padding: 20px;
+  top: 35%;
+  left: 55%;
+
+  @media (min-width: 1256px) {
+    position: relative;
+    right: 0;
+    top: 0;
+    left: 0;
+    margin-top: 40px;
+  }
+}
+
+.TitleScreen button {
+  color: #fff;
+  justify-content: center;
+  padding: 0;
+}
+
+.TitleScreen .DescriptionBox {
+  background: transparent;
+  color: #fff;
+  border: 0;
+  text-align: center;
+}
