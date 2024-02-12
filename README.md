@@ -24,7 +24,7 @@ Firsts I brainstormed what kind of game I wanted to make and what skills I wante
 
 ## Challenges
 
-One of the most challenging aspects of this project was incorporating the different minigames into the overworld.
+One of the most challenging aspects of this project was incorporating the different minigames into the overworld. Each tutorial had a working game on its own, but most did not use a class structure the way I was calling it from the help menu. This proved challenging when streamlining the code because certain functions had very specific use cases and were not easily converted to class methods. Overcoming this meant digging down into definitions and learning more about Javascript.
 
 ## Bugs
 
@@ -36,7 +36,6 @@ One of the most challenging aspects of this project was incorporating the differ
 
 - Additional map to the west.
 - Additional map to the east.
-- Additional minigame with Sally.
 - Side-quest with Rouge collecting 100 rings from other characters then purchasing an artifact to bring to Vector.
 - Fully implement save functionality.
 
