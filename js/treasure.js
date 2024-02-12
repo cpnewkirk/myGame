@@ -126,13 +126,13 @@ class Treasure {
                   const ending = document.createElement("div");
                   ending.innerHTML = `
                   <div class="treasureEnding">
-                  <div class="close">
-                    <button id="close">Close</button>
+                    <div class="close">
+                      <button id="close">Close</button>
+                    </div>
+                    <div class="results">
+                      <h2 id="results">Congratualations, you found the chaos emerald!</h2>
+                    </div>
                   </div>
-                  <div class="results">
-                    <h2 id="results">Congratualations, you found the chaos emerald!</h2>
-                  </div>
-                </div>
                   `;
                   container.appendChild(ending);
 

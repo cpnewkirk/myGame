@@ -205,3 +205,35 @@ body {
     bottom: 30px;
   }
 }
+
+.runner {
+  /* background-color: lightgray; */
+  background: url(../assets/runner/background.png) center;
+  background-size: cover;
+  border-bottom: 5px solid black;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  max-height: 100%;
+  z-index: 5;
+}
+
+.runnerEnding {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background: #abcdef;
+  padding: 20px;
+}
+
+#runnerClose {
+  /* width: 10%; */
+  height: 50px;
+}

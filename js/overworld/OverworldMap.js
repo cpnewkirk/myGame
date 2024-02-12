@@ -993,7 +993,7 @@ window.OverworldMaps = {
         src: "assets/characters/people/sally.png",
         talking: [
           {
-            // required: ["RUNNER_COMPLETE"],
+            required: ["RUNNER_COMPLETE"],
             events: [
               {
                 type: "textMessage",
@@ -1284,10 +1284,10 @@ window.OverworldMaps = {
         talking: [
           {
             required: [
-              "CHAO_COMPLETE",
-              "WORKSHOP_COMPLETE",
-              "ECHIDNA_COMPLETE",
-              // "RUNNER_COMPLETE",
+              // "CHAO_COMPLETE",
+              // "WORKSHOP_COMPLETE",
+              // "ECHIDNA_COMPLETE",
+              "RUNNER_COMPLETE",
             ],
             events: [
               {
@@ -1312,17 +1312,6 @@ window.OverworldMaps = {
                 faceHero: "omachao",
                 who: "omachao",
               },
-
-              // {
-              //   type: "addRings",
-              //   rings: 5,
-              // },
-              // {
-              //   type: "textMessage",
-              //   text: "........",
-              //   faceHero: "omachao",
-              //   who: "omachao",
-              // },
             ],
           },
         ],
@@ -2419,7 +2408,7 @@ window.OverworldMaps = {
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            // "RUNNER_COMPLETE",
+            "RUNNER_COMPLETE",
           ],
           events: [
             {
@@ -2448,7 +2437,7 @@ window.OverworldMaps = {
             "CHAO_COMPLETE",
             "WORKSHOP_COMPLETE",
             "ECHIDNA_COMPLETE",
-            // "RUNNER_COMPLETE",
+            "RUNNER_COMPLETE",
           ],
           events: [
             {
