@@ -71,6 +71,12 @@ class Runner {
     requestAnimationFrame(this.update);
     setInterval(this.placeTree, 1000);
     document.addEventListener("keydown", this.moveSonic);
+    document.addEventListener("touchstart", (e) => {
+      if (this.gameOver) return;
+      if (this.sonic.y == this.boardHeight - this.sonic.height) {
+        this.velocityY = -10;
+      }
+    });
   }
 
   loadImage(src, onload) {
