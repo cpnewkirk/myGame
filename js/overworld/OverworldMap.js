@@ -1023,7 +1023,7 @@ window.OverworldMaps = {
               },
               {
                 type: "textMessage",
-                text: "Can you run and get me something? Let's do it to it!",
+                text: "Can you run and get me something? You need a score of at least 1000. Let's do it to it!",
                 faceHero: "sally",
                 who: "sally",
               },
