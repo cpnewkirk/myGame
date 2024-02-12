@@ -38,6 +38,9 @@ One of the most challenging aspects of this project was incorporating the differ
 - Additional map to the east.
 - Side-quest with Rouge collecting 100 rings from other characters then purchasing an artifact to bring to Vector.
 - Fully implement save functionality.
+- Re-style minigames with the line appearing at bottom of page.
+- Re-style runner game because of bad visilibilty.
+- Refactor treasure game to find a chaos emerald at the end.
 
 ## Credit
 
