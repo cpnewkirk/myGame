@@ -6,9 +6,9 @@ class Runner {
     this.treeArray = [];
     this.gameOver = false;
     this.score = 0;
-    this.velocityX = -4;
+    this.velocityX = -6;
     this.velocityY = 0;
-    this.gravity = 0.35;
+    this.gravity = 0.2;
     this.sonic = {
       width: 46,
       height: 39,
@@ -60,7 +60,7 @@ class Runner {
         this.sonic.x,
         this.sonic.y,
         this.sonic.width,
-        this.sonic.height
+        this.sonic.height,
       );
     });
 
@@ -69,12 +69,12 @@ class Runner {
     this.tree3Img = this.loadImage("./assets/runner/tree3.png");
 
     requestAnimationFrame(this.update);
-    setInterval(this.placeTree, 1400);
+    setInterval(this.placeTree, 1500);
     document.addEventListener("keydown", this.moveSonic);
     document.addEventListener("touchstart", (e) => {
       if (this.gameOver) return;
       if (this.sonic.y == this.boardHeight - this.sonic.height) {
-        this.velocityY = -8;
+        this.velocityY = -9;
       }
     });
   }
@@ -94,14 +94,14 @@ class Runner {
     this.velocityY += this.gravity;
     this.sonic.y = Math.min(
       this.sonic.y + this.velocityY,
-      this.board.height - this.sonic.height
+      this.board.height - this.sonic.height,
     );
     this.context.drawImage(
       this.sonicImg,
       this.sonic.x,
       this.sonic.y,
       this.sonic.width,
-      this.sonic.height
+      this.sonic.height,
     );
 
     this.treeArray.forEach((tree) => {
@@ -115,14 +115,14 @@ class Runner {
           this.sonic.x,
           this.sonic.y,
           this.sonic.width,
-          this.sonic.height
+          this.sonic.height,
         );
         this.context.drawImage(
           this.sonicImg,
           this.sonic.x,
           this.sonic.y,
           this.sonic.width,
-          this.sonic.height
+          this.sonic.height,
         );
 
         const message =
@@ -133,7 +133,7 @@ class Runner {
       }
     });
 
-    this.context.fillStyle = "black";
+    this.context.fillStyle = "white";
     this.context.font = "20px courier";
     this.score++;
     this.context.fillText(this.score, 5, 20);
@@ -145,7 +145,7 @@ class Runner {
       (e.code == "Space" || e.code == "ArrowUp") &&
       this.sonic.y == this.boardHeight - this.sonic.height
     ) {
-      this.velocityY = -8;
+      this.velocityY = -9;
     }
   }
 
