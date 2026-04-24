@@ -52,7 +52,7 @@ class OverworldMap {
     ctx.drawImage(
       this.lowerImage,
       utils.withGrid(10.5) - cameraPerson.x - 176,
-      utils.withGrid(6) - cameraPerson.y - 176
+      utils.withGrid(6) - cameraPerson.y - 176,
     );
   }
 
@@ -60,7 +60,7 @@ class OverworldMap {
     ctx.drawImage(
       this.upperImage,
       utils.withGrid(10.5) - cameraPerson.x - 176,
-      utils.withGrid(6) - cameraPerson.y - 176
+      utils.withGrid(6) - cameraPerson.y - 176,
     );
   }
 
@@ -114,8 +114,9 @@ class OverworldMap {
       document.querySelector(".fullscreenButton").style.animation =
         "fadeOut 0.5s forwards";
     }
-    if (document.querySelector(".Hud")) {
-      document.querySelector(".Hud").style.animation = "fadeOut 0.5s forwards";
+    if (document.querySelector(".RingCounter")) {
+      document.querySelector(".RingCounter").style.animation =
+        "fadeOut 0.5s forwards";
     }
     if (document.querySelector(".controller")) {
       let x = document.getElementsByClassName("controller");
@@ -144,8 +145,8 @@ class OverworldMap {
         "fadeIn 0.5s";
     }
 
-    if (document.querySelector(".Hud")) {
-      document.querySelector(".Hud").style.animation = "fadeIn 0.5s";
+    if (document.querySelector(".RingCounter")) {
+      document.querySelector(".RingCounter").style.animation = "fadeIn 0.5s";
     }
     if (document.querySelector(".controller")) {
       let x = document.getElementsByClassName("controller");
@@ -189,7 +190,7 @@ class OverworldMap {
 
         //Validate that we have all of required
         return (scenario.required || []).every(
-          (entry) => playerState.storyFlags[entry]
+          (entry) => playerState.storyFlags[entry],
         );
       });
 
