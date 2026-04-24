@@ -6,9 +6,9 @@ class Runner {
     this.treeArray = [];
     this.gameOver = false;
     this.score = 0;
-    this.velocityX = -6;
+    this.velocityX = -4;
     this.velocityY = 0;
-    this.gravity = 0.2;
+    this.gravity = 0.35;
     this.sonic = {
       width: 46,
       height: 39,
@@ -69,12 +69,12 @@ class Runner {
     this.tree3Img = this.loadImage("./assets/runner/tree3.png");
 
     requestAnimationFrame(this.update);
-    setInterval(this.placeTree, 1000);
+    setInterval(this.placeTree, 1400);
     document.addEventListener("keydown", this.moveSonic);
     document.addEventListener("touchstart", (e) => {
       if (this.gameOver) return;
       if (this.sonic.y == this.boardHeight - this.sonic.height) {
-        this.velocityY = -10;
+        this.velocityY = -8;
       }
     });
   }
@@ -145,7 +145,7 @@ class Runner {
       (e.code == "Space" || e.code == "ArrowUp") &&
       this.sonic.y == this.boardHeight - this.sonic.height
     ) {
-      this.velocityY = -10;
+      this.velocityY = -8;
     }
   }
 

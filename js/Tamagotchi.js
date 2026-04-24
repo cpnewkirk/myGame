@@ -64,6 +64,7 @@ class Tamagotchi {
       this.incrementHunger();
       this.incrementSleepiness();
       this.incrementBoredom();
+      this.moveChao();
     }
   }
 
@@ -74,6 +75,17 @@ class Tamagotchi {
       $("#age").replaceWith(`<p id='age'>Age: ${self.age}</p>`);
       self.grow();
     }, 5000);
+    this.timeouts.push(timeoutID);
+  }
+
+  moveChao() {
+    const container = $(".tamagotchi-game");
+    const maxX = container.width() - 60;
+    const maxY = container.height() - 120;
+    const newX = Math.random() * maxX;
+    const newY = Math.max(100, Math.random() * maxY);
+    $(".tamagotchi").animate({ left: newX, top: newY }, 2000);
+    let timeoutID = window.setTimeout(() => this.moveChao(), 2500);
     this.timeouts.push(timeoutID);
   }
 
