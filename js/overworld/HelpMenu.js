@@ -12,7 +12,7 @@ class HelpMenu {
         {
           label: "Yes",
           description: `Help ${this.toTitleCase(
-            this.who.id
+            this.who.id,
           )} and start a minigame.`,
           handler: () => {
             // document.querySelector(".overworld").hidden = true;
@@ -112,7 +112,7 @@ class HelpMenu {
     }
     this.element.innerHTML = `
       <h2>Will you help me?</h2>
-      <p class="minigame-instructions">${this.getInstructions()}</p>
+      <h2 class="minigame-instructions">${this.getInstructions()}</h2>
     `;
   }
 
