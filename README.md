@@ -58,9 +58,7 @@ One of the most challenging aspects of this project was incorporating the differ
 - Save does not save your data long term. This feature needs to be fully implemented in the future.
 - On some mobile devices, if you tap a direction button and hold, then move to another button and let go, you will be stuck going in that direction unless you tap the button again.
 - Some of the styling for mobile is not correct when full screen is on.
-- Sometimes the text sound will cause the background sound to bug out.
 - Assets take too much time to load if there is no cache.
-- Runner minigame will sometimes change Sonic’s gravity value, making it significantly more difficult to beat.
 
 ## Future Work
 
