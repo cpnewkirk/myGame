@@ -16,7 +16,9 @@ class RingCounter {
 
     this.element.innerHTML = `
       <div class="ring-counter-inner">
-        <span class="ring-icon">💍</span>
+        <span class="ring-icon">
+          <img src="assets/icons/ring.png" alt="ring-icon">
+        </span>
         <span class="ring-count">${collected}/${total}</span>
       </div>
     `;
