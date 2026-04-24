@@ -14,7 +14,7 @@ class RevealingText {
 
     // Audio for text
     const textAudio = new Audio("./assets/audios/Text.wav");
-    textAudio.volume = 0.2;
+    textAudio.volume = 0.05;
     textAudio.play();
 
     if (list.length > 0) {

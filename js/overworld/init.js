@@ -5,4 +5,7 @@
   });
   overworld.init();
 
+  const ringCounter = new RingCounter();
+  ringCounter.init(document.querySelector(".game-container"));
+
 })();

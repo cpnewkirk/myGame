@@ -37,6 +37,24 @@ class PlayerState {
     ];
     this.storyFlags = {};
     this.rings = 0;
+    this.minigameRings = {
+      memory: false,
+      tamagotchi: false,
+      treasure: false,
+      runner: false,
+    };
+  }
+
+  addRing(minigame) {
+    if (!this.minigameRings[minigame]) {
+      this.minigameRings[minigame] = true;
+      this.rings++;
+      utils.emitEvent("RingsChanged");
+    }
+  }
+
+  hasAllRings() {
+    return Object.values(this.minigameRings).every((v) => v);
   }
 
   addPizza(pizzaId) {

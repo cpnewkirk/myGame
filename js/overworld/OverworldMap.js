@@ -25,7 +25,7 @@ class OverworldMap {
     this.element.classList.add("toggle");
 
     this.backgroundMusic.loop = true;
-    this.backgroundMusic.volume = 0.5;
+    this.backgroundMusic.volume = 0.125;
     this.backgroundMusic.muted = false;
     const playPromise = this.backgroundMusic.play();
 

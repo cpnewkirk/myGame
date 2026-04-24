@@ -89,6 +89,16 @@ class HelpMenu {
     });
   }
 
+  getInstructions() {
+    const instructions = {
+      memory: "Match all 6 pairs of cards to win.",
+      tamagotchi: "Keep your chao alive to age 4 without any stat reaching 10.",
+      treasure: "Navigate through 3 levels by entering doors to win.",
+      runner: "Jump over trees and score 1000 points to win.",
+    };
+    return instructions[this.game] || "";
+  }
+
   createElement() {
     this.element = document.createElement("div");
     this.element.classList.add("HelpMenu");
@@ -102,6 +112,7 @@ class HelpMenu {
     }
     this.element.innerHTML = `
       <h2>Will you help me?</h2>
+      <p class="minigame-instructions">${this.getInstructions()}</p>
     `;
   }
 
@@ -115,6 +126,9 @@ class HelpMenu {
     }
     if (document.querySelector(".TextMessage")) {
       document.querySelector(".TextMessage").hidden = false;
+    }
+    if (didWin) {
+      window.playerState.addRing(this.game);
     }
     this.onComplete(didWin);
   }

@@ -24,7 +24,7 @@ class EndingScreen {
 
   createElement() {
     const finaleAudio = new Audio("assets/audios/PlayAgain.wav");
-    finaleAudio.volume = 0.3;
+    finaleAudio.volume = 0.075;
 
     this.element = document.createElement("div");
     this.element.classList.add("EndingScreen");

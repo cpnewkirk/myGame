@@ -14,7 +14,7 @@ class TitleScreen {
         description: "Start a new adventure.",
         handler: () => {
           this.voice.src = "assets/audios/GetGoing.wav";
-          this.voice.volume = 0.3;
+          this.voice.volume = 0.075;
           this.voice.play();
 
           this.close();
