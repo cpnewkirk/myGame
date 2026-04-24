@@ -236,8 +236,10 @@ class Overworld {
     }
 
     //Load the HUD
-    this.hud = new Hud();
-    this.hud.init(container);
+    const ringCounter = new RingCounter();
+    ringCounter.init(document.querySelector(".game-container"));
+    // this.hud = new Hud();
+    // this.hud.init(container);
 
     if (screen.width < 768) {
       this.element = document.createElement("button");

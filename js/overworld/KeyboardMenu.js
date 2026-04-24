@@ -9,7 +9,7 @@ class KeyboardMenu {
 
   setOptions(options) {
     const buttonAudio = new Audio("assets/audios/Button.mp3");
-    buttonAudio.volume = 0.3;
+    buttonAudio.volume = 0.075;
 
     this.options = options;
     this.element.innerHTML = this.options

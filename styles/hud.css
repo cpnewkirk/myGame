@@ -15,3 +15,33 @@
 .Hud .Combatant_type {
   display: none;
 }
+
+.RingCounter {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 100;
+  font-family: 'Ribeye', cursive;
+  font-size: 18px;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ring-counter-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 2px solid #ffd700;
+}
+
+.ring-icon {
+  font-size: 20px;
+}
+
+.ring-count {
+  font-size: 16px;
+  font-weight: bold;
+}

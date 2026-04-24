@@ -60,11 +60,12 @@ div {
 }
 
 .tamagotchi {
-  position: absolute;
+  position: relative;
   max-width: 80px;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
   z-index: 20;
-  left: 50%;
-  top: 30%;
 }
 
 .tamagotchi img {

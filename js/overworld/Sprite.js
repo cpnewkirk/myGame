@@ -104,7 +104,7 @@ class Sprite {
         x + 5,
         y + 2,
         24,
-        32
+        32,
       );
 
     this.updateAnimationProgress();
